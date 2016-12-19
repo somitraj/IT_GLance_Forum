@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'IT_Glance_Forum',
 
     /*
     |--------------------------------------------------------------------------
@@ -162,7 +162,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
@@ -174,17 +173,19 @@ return [
         /*
          * Application Service Providers...
          */
+
         IT_Glance_Forum\Providers\AppServiceProvider::class,
         IT_Glance_Forum\Providers\AuthServiceProvider::class,
         // IT_Glance_Forum\Providers\BroadcastServiceProvider::class,
         IT_Glance_Forum\Providers\EventServiceProvider::class,
         IT_Glance_Forum\Providers\RouteServiceProvider::class,
 
+        Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
         Way\Generators\GeneratorsServiceProvider::class,
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         User11001\EloquentModelGenerator\EloquentModelGeneratorProvider::class,
         Mrabbani\ModuleManager\Providers\ModuleProvider::class,
- /*       Dingo\Api\Provider\LaravelServiceProvider::class,*/
+        Dingo\Api\Provider\LaravelServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
 
 

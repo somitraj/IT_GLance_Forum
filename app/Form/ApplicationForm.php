@@ -98,6 +98,13 @@ class ApplicationForm extends Form
                 'empty_value' => '=== Select Course ==='
             ])
 
+            ->add('language', 'select', [
+                'wrapper' => ['class' => 'form row'],
+                'label'=>'Language ',
+                'choices' => ['Php', 'Java'],
+                'empty_value' => '=== Select Language To Study ==='
+            ])
+
             ->add('comment','textarea', [
                     'wrapper' => ['class' => 'form row'],
                     'label'=>'Why This Language ? ',

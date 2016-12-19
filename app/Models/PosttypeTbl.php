@@ -1,4 +1,4 @@
-<?php namespace IT_Glance_Forum/Models;
+<?php namespace IT_Glance_forum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +13,7 @@ class PosttypeTbl extends Model {
 
 
     public function postTbls() {
-        return $this->hasMany('IT_Glance_Forum/Models\PostTbl', 'post_type_id', 'id');
+        return $this->hasMany('IT_Glance_forum/Models\PostTbl', 'post_type_id', 'id');
     }
 
 

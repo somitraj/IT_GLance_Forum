@@ -2,14 +2,14 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class FeedbackTbl extends Model {
+class AttendanceTbl extends Model {
 
     /**
      * Generated
      */
 
-    protected $table = 'feedback_tbl';
-    protected $fillable = ['id', 'user_id', 'title', 'body'];
+    protected $table = 'attendance_tbl';
+    protected $fillable = ['id', 'user_id'];
 
 
     public function usersTbl() {
