@@ -15,6 +15,8 @@ class UserController extends Controller
                 ['method' => 'POST', 'url' => route('web.application')]);
             return view('ApplicationForm', compact('form'));
 
+
+
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();
