@@ -1,6 +1,6 @@
 <?php
 
-namespace IT_Glance_Forum\Http\Controllers\web;
+namespace IT_Glance_Forum\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use IT_Glance_Forum\Http\Controllers\Controller;
