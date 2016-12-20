@@ -16,5 +16,6 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1',['namespace'=>"IT_Glance_Forum\Http\Controllers\Api"], function ($api) {
     $api->any('appsubmit', 'UserController@ApplicationSubmit');
+    $api->any('login', 'LoginController@Login');
 
 });

@@ -31,7 +31,7 @@ class LoginController extends Controller
                         ]
 
                     ]);
-                    /*$userApi = \GuzzleHttp\json_decode($response->getBody()->getContents())->user; //api bata json format bata ako lai decode gareko
+                    $userApi = \GuzzleHttp\json_decode($response->getBody()->getContents())->user; //api bata json format bata ako lai decode gareko
 
                     $user = new UsersTbl();
                     $user->id = $userApi->id;
@@ -40,7 +40,7 @@ class LoginController extends Controller
                     $user->user_type_id = $userApi->user_type_id;
                     Auth::login($user);
 
-                    return $this->UserCheck();*/
+                    return $this->UserCheck();
                 } catch (\Exception $e) {
                     $validator = Validator::make(Input::all(), []);
                     if ($e->getCode() == 500) {
@@ -69,4 +69,25 @@ class LoginController extends Controller
             die();
         }
     }
+
+    public function UserCheck()
+    {
+        if (Auth::check()) {
+            // print_r(Auth::user()->user_type_id);die();
+            if (Auth::user()->user_type_id == 1) {
+                return redirect()->route('admin.home');
+            } else if (Auth::user()->user_type_id == 2) {
+                // print_r(Auth::user());die();
+                return redirect()->route('mentor.home');
+            } else if (Auth::user()->user_type_id == 3) {
+                return redirect()->route('submentor.home');
+                //return redirect()->to('/');
+            } else {
+                return redirect()->route('intern.hime');
+            }
+
+        }
+
+    }
 }
+
