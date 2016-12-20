@@ -2,11 +2,11 @@
 /**
  * Created by PhpStorm.
  * User: hp
- * Date: 12/13/2016
- * Time: 4:22 PM
+ * Date: 12/20/2016
+ * Time: 6:56 PM
  */
-?>
-<!DOCTYPE html>
+        ?>
+        <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <title>IT Glance Forum</title>
 <head>
@@ -15,9 +15,9 @@
     <title>{{ trans('front/site.title') }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1"> {{--imp to make responsive--}}
-
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">
+
 
     @yield('head')
 

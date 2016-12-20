@@ -12,7 +12,8 @@
         "barryvdh/laravel-debugbar": "^2.3",
         "dingo/api": "1.0.x@dev",
         "tymon/jwt-auth": "0.5.*",
-        "GuzzleHttp/Guzzle": "^6.2"
+        "GuzzleHttp/Guzzle": "^6.2",
+        "lavary/laravel-menu": "^1.6"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

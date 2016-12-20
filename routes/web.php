@@ -19,3 +19,7 @@ Route::any('/applicationform',[
     'as'=>'web.application',
     'uses'=>'web\UserController@ApplicationForm'
 ]);
+Route::any('/loginform',[
+    'as'=>'web.login',
+    'uses'=>'web\LoginController@Login'
+]);

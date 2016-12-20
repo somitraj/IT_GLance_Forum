@@ -186,7 +186,9 @@ return [
         User11001\EloquentModelGenerator\EloquentModelGeneratorProvider::class,
         Mrabbani\ModuleManager\Providers\ModuleProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+
+        Lavary\Menu\ServiceProvider::class
 
 
 
@@ -241,7 +243,9 @@ return [
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+
+        'Menu'   => Lavary\Menu\Facade::class,
 
     ],
 
