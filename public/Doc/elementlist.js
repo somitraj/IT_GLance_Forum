@@ -1,0 +1,3 @@
+
+var ApiGen = ApiGen || {};
+ApiGen.elements = [["c","IT_Glance_Forum\\Http\\Controllers\\Api\\AddressController"],["c","IT_Glance_Forum\\Http\\Controllers\\Api\\LoginController"],["c","IT_Glance_Forum\\Http\\Controllers\\api\\UserController"],["c","IT_Glance_Forum\\Http\\Controllers\\Auth\\ForgotPasswordController"],["c","IT_Glance_Forum\\Http\\Controllers\\Auth\\LoginController"],["c","IT_Glance_Forum\\Http\\Controllers\\Auth\\RegisterController"],["c","IT_Glance_Forum\\Http\\Controllers\\Auth\\ResetPasswordController"],["c","IT_Glance_Forum\\Http\\Controllers\\Controller"],["c","IT_Glance_Forum\\Http\\Controllers\\HomeController"],["c","IT_Glance_Forum\\Http\\Controllers\\Web\\LoginController"],["c","IT_Glance_Forum\\Http\\Controllers\\Web\\UserController"]];
