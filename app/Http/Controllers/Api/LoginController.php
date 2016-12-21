@@ -9,8 +9,17 @@ use IT_Glance_Forum\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
+/**
+ * Class LoginController
+ * @package IT_Glance_Forum\Http\Controllers\Api
+ */
 class LoginController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
     public function Login(Request $request)
     {
         $credentials = $request->only(['username', 'password']);

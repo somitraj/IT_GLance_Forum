@@ -24,13 +24,10 @@ class UsersTbl extends Model {
         return $this->belongsToMany('IT_Glance_Forum\Models\PostTbl', 'comment_tbl', 'user_id', 'post_id');
     }
 
-    public function statusTbls() {
+    public function statusTbls1() {
         return $this->belongsToMany('IT_Glance_Forum\Models\StatusTbl', 'event_tbl', 'user_id', 'status_id');
     }
 
-    public function statusTbls() {
-        return $this->belongsToMany('IT_Glance_Forum\Models\StatusTbl', 'intern_project_tbl', 'user_id', 'status_id');
-    }
 
     public function attendanceTbls() {
         return $this->hasMany('IT_Glance_Forum\Models\AttendanceTbl', 'user_id', 'id');
@@ -60,11 +57,11 @@ class UsersTbl extends Model {
         return $this->hasMany('IT_Glance_Forum\Models\MessageTbl', 'receiver_userid', 'id');
     }
 
-    public function messageTbls() {
+    public function messageTbls1() {
         return $this->hasMany('IT_Glance_Forum\Models\MessageTbl', 'sender_userid', 'id');
     }
 
-    public function postTbls() {
+    public function postTbls1() {
         return $this->hasMany('IT_Glance_Forum\Models\PostTbl', 'user_id', 'id');
     }
 

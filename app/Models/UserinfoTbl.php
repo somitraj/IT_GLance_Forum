@@ -9,7 +9,7 @@ class UserinfoTbl extends Model {
      */
 
     protected $table = 'userinfo_tbl';
-    protected $fillable = ['id', 'user_id', 'fname', 'lname', 'profile_image', 'mobile_no', 'email', 'course_type_id', 'gender', 'dob', 'address_id', 'course_id', 'skill_id', 'phone_no', 'college', 'language_type_id', 'whylanguage'];
+    protected $fillable = ['id', 'user_id', 'fname', 'lname', 'profile_image', 'mobile_no', 'email', 'course_type_id', 'gender', 'dob', 'address_id', 'course_id', 'skill_id', 'phone_no', 'college', 'language_type_id', 'whylanguage', 'mname'];
 
 
     public function addressTbl() {

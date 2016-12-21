@@ -4,13 +4,17 @@ namespace IT_Glance_Forum\Form;
 
 use Kris\LaravelFormBuilder\Form;
 
+/**
+ * Class ApplicationForm
+ * @package IT_Glance_Forum\Form
+ */
 class ApplicationForm extends Form
 {
     public function buildForm()
     {
         try {
             $this
-                ->add('first_name', 'text', [
+                ->add('fname', 'text', [
                         'wrapper' => ['class' => 'form row'],
                         'label' => 'First Name',
                         'label_attr' => ['class' => 'control-label'],
@@ -18,14 +22,14 @@ class ApplicationForm extends Form
                         'rules' => ['required']
                     ]
                 )
-                ->add('middle_name', 'text', [
+                ->add('mname', 'text', [
                         'wrapper' => ['class' => 'form row'],
                         'label' => 'Middle Name',
                         'label_attr' => ['class' => 'control-label'],
                         'attr' => ['class' => 'form-control field-input'],
                     ]
                 )
-                ->add('last_name', 'text', [
+                ->add('lname', 'text', [
                         'wrapper' => ['class' => 'form row'],
                         'label' => 'Last Name',
                         'label_attr' => ['class' => 'control-label'],
@@ -98,6 +102,11 @@ class ApplicationForm extends Form
                     'choices' => ['Php', 'Java'],
                     'empty_value' => '=== Select Language To Study ==='
                 ])
+
+              /*  ->compose(\IT_Glance_Forum\Form\AddressForm::class,
+                    ['course' => $this->getData('course'), 'language' => $this->getData('language')])*/
+
+
                 ->add('comment', 'textarea', [
                         'wrapper' => ['class' => 'form row'],
                         'label' => 'Why This Language ? ',

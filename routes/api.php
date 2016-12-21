@@ -22,5 +22,7 @@ $api->version('v1',['namespace'=>"IT_Glance_Forum\Http\Controllers\Api"], functi
     $api->get('zone', 'AddressController@GetZone');
     $api->get('district', 'AddressController@GetDistrict');
     $api->get('city', 'AddressController@GetCity');
+    $api->get('course', 'AddressController@GetCourse');
+    $api->get('language', 'AddressController@GetLanguage');
 
 });
