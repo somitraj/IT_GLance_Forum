@@ -83,7 +83,7 @@ class LoginController extends Controller
                 return redirect()->route('submentor.home');
                 //return redirect()->to('/');
             } else {
-                return redirect()->route('intern.hime');
+                return redirect()->route('intern.home');
             }
 
         }
