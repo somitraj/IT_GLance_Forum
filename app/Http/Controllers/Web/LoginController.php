@@ -4,10 +4,10 @@ namespace IT_Glance_Forum\Http\Controllers\Web;
 
 use ExceptionCode;
 use GuzzleHttp\Client;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 use IT_Glance_Forum\Http\Controllers\Controller;
 use IT_Glance_Forum\User;
 use Kris\LaravelFormBuilder\FormBuilder;
@@ -53,7 +53,7 @@ class LoginController extends Controller
                 return view('LoginForm', compact('form'));
             }
         } catch (\Exception $e) {
-            $validator = Validator::make(Input::all(), []);
+            $validator=Validator::make(Input::all(),[]);
             if ($e->getCode() == 500) {
                 $error = json_decode($e->getResponse()->getBody()->getContents());
                 if (array_key_exists('code', $error)) {
@@ -81,15 +81,15 @@ class LoginController extends Controller
         if (Auth::check()) {
             // print_r(Auth::user()->user_type_id);die();
             if (Auth::user()->user_type_id == 1) {
-                return redirect()->route('admin.home');
+                return redirect()->route('web.application');
             } else if (Auth::user()->user_type_id == 2) {
                 // print_r(Auth::user());die();
-                return redirect()->route('mentor.home');
+                return redirect()->route('web.application');
             } else if (Auth::user()->user_type_id == 3) {
-                return redirect()->route('submentor.home');
+                return redirect()->route('web.application');
                 //return redirect()->to('/');
             } else {
-                return redirect()->route('intern.home');
+                return redirect()->route('web.application');
             }
 
         }

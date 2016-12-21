@@ -49,7 +49,9 @@ class LoginController extends Controller
             return $this->response->error('could_not_create_token', 500);
         }
 
-        $user = \IT_Glance_Forum\Models\UsersTbl::where('username', '=', $request->username)->first()->toArray();  //database bata data tanna
+        $user = \IT_Glance_Forum\Models\UsersTbl::where('username', '=', $request->username)
+            ->where('status_id', '=', 1)
+            ->first()->toArray();  //database bata data tanna
         return response()->json(compact('user', 'token'));
 
     }
