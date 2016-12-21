@@ -1,4 +1,4 @@
-<?php namespace IT_Glance_forum\Models;
+<?php namespace IT_Glance_Forum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +13,7 @@ class InternshipDetailTbl extends Model {
 
 
     public function usersTbl() {
-        return $this->belongsTo('IT_Glance_forum\Models\UsersTbl', 'user_id', 'id');
+        return $this->belongsTo('IT_Glance_Forum\Models\UsersTbl', 'user_id', 'id');
     }
 
 

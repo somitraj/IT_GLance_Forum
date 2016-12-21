@@ -1,4 +1,4 @@
-<?php namespace IT_Glance_forum\Models;
+<?php namespace IT_Glance_Forum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,11 +13,11 @@ class MessageStatusTbl extends Model {
 
 
     public function messageTbl() {
-        return $this->belongsTo('IT_Glance_forum\Models\MessageTbl', 'message_id', 'id');
+        return $this->belongsTo('IT_Glance_Forum\Models\MessageTbl', 'message_id', 'id');
     }
 
     public function statusTbl() {
-        return $this->belongsTo('IT_Glance_forum\Models\StatusTbl', 'status_id', 'id');
+        return $this->belongsTo('IT_Glance_Forum\Models\StatusTbl', 'status_id', 'id');
     }
 
 

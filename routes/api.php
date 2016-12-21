@@ -17,5 +17,10 @@ $api = app('Dingo\Api\Routing\Router');
 $api->version('v1',['namespace'=>"IT_Glance_Forum\Http\Controllers\Api"], function ($api) {
     $api->any('appsubmit', 'UserController@ApplicationSubmit');
     $api->any('login', 'LoginController@Login');
+    $api->get('country', 'AddressController@GetCountry');
+    $api->get('province', 'AddressController@GetProvince');
+    $api->get('zone', 'AddressController@GetZone');
+    $api->get('district', 'AddressController@GetDistrict');
+    $api->get('city', 'AddressController@GetCity');
 
 });
