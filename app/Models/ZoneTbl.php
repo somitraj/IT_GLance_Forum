@@ -13,15 +13,15 @@ class ZoneTbl extends Model {
 
 
     public function countryTbl() {
-        return $this->belongsTo('IT_Glance_forum/Models\CountryTbl', 'country_id', 'id');
+        return $this->belongsTo('IT_Glance_forum\Models\CountryTbl', 'country_id', 'id');
     }
 
     public function addressTbls() {
-        return $this->hasMany('IT_Glance_forum/Models\AddressTbl', 'zone_id', 'id');
+        return $this->hasMany('IT_Glance_forum\Models\AddressTbl', 'zone_id', 'id');
     }
 
     public function districtTbls() {
-        return $this->hasMany('IT_Glance_forum/Models\DistrictTbl', 'zone_id', 'id');
+        return $this->hasMany('IT_Glance_forum\Models\DistrictTbl', 'zone_id', 'id');
     }
 
 

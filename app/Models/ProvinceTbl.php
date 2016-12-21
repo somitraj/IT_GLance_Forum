@@ -13,7 +13,7 @@ class ProvinceTbl extends Model {
 
 
     public function addressTbls() {
-        return $this->hasMany('IT_Glance_forum/Models\AddressTbl', 'province_id', 'id');
+        return $this->hasMany('IT_Glance_forum\Models\AddressTbl', 'province_id', 'id');
     }
 
 

@@ -13,7 +13,7 @@ class PosttypeTbl extends Model {
 
 
     public function postTbls() {
-        return $this->hasMany('IT_Glance_forum/Models\PostTbl', 'post_type_id', 'id');
+        return $this->hasMany('IT_Glance_forum\Models\PostTbl', 'post_type_id', 'id');
     }
 
 

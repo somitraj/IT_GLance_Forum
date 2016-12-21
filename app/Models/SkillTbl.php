@@ -13,7 +13,7 @@ class SkillTbl extends Model {
 
 
     public function userinfoTbls() {
-        return $this->hasMany('IT_Glance_forum/Models\UserinfoTbl', 'skill_id', 'id');
+        return $this->hasMany('IT_Glance_forum\Models\UserinfoTbl', 'skill_id', 'id');
     }
 
 
