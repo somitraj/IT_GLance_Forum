@@ -13,7 +13,7 @@ class CategoryTbl extends Model {
 
 
     public function postTbls() {
-        return $this->hasMany('IT_Glance_forum/Models\PostTbl', 'category_id', 'id');
+        return $this->hasMany('IT_Glance_forum\Models\PostTbl', 'category_id', 'id');
     }
 
 

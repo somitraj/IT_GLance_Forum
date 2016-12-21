@@ -13,11 +13,11 @@ class CommentTbl extends Model {
 
 
     public function postTbl() {
-        return $this->belongsTo('IT_Glance_forum/Models\PostTbl', 'post_id', 'id');
+        return $this->belongsTo('IT_Glance_forum\Models\PostTbl', 'post_id', 'id');
     }
 
     public function usersTbl() {
-        return $this->belongsTo('IT_Glance_forum/Models\UsersTbl', 'user_id', 'id');
+        return $this->belongsTo('IT_Glance_forum\Models\UsersTbl', 'user_id', 'id');
     }
 
 

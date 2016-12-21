@@ -13,7 +13,7 @@ class CourseTbl extends Model {
 
 
     public function userinfoTbls() {
-        return $this->hasMany('IT_Glance_forum/Models\UserinfoTbl', 'course_type_id', 'id');
+        return $this->hasMany('IT_Glance_forum\Models\UserinfoTbl', 'course_type_id', 'id');
     }
 
 

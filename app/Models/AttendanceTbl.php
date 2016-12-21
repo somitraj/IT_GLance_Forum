@@ -13,7 +13,7 @@ class AttendanceTbl extends Model {
 
 
     public function usersTbl() {
-        return $this->belongsTo('IT_Glance_forum/Models\UsersTbl', 'user_id', 'id');
+        return $this->belongsTo('IT_Glance_forum\Models\UsersTbl', 'user_id', 'id');
     }
 
 

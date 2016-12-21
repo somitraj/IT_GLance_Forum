@@ -13,11 +13,11 @@ class CountryTbl extends Model {
 
 
     public function addressTbls() {
-        return $this->hasMany('IT_Glance_forum/Models\AddressTbl', 'country_id', 'id');
+        return $this->hasMany('IT_Glance_forum\Models\AddressTbl', 'country_id', 'id');
     }
 
     public function zoneTbls() {
-        return $this->hasMany('IT_Glance_forum/Models\ZoneTbl', 'country_id', 'id');
+        return $this->hasMany('IT_Glance_forum\Models\ZoneTbl', 'country_id', 'id');
     }
 
 
