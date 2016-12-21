@@ -1,4 +1,4 @@
-<?php namespace IT_Glance_forum\Models;
+<?php namespace IT_Glance_Forum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +13,7 @@ class ProvinceTbl extends Model {
 
 
     public function addressTbls() {
-        return $this->hasMany('IT_Glance_forum\Models\AddressTbl', 'province_id', 'id');
+        return $this->hasMany('IT_Glance_Forum\Models\AddressTbl', 'province_id', 'id');
     }
 
 

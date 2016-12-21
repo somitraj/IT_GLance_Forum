@@ -1,4 +1,4 @@
-<?php namespace IT_Glance_forum\Models;
+<?php namespace IT_Glance_Forum\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,23 +13,23 @@ class UserinfoTbl extends Model {
 
 
     public function addressTbl() {
-        return $this->belongsTo('IT_Glance_forum\Models\AddressTbl', 'address_id', 'id');
+        return $this->belongsTo('IT_Glance_Forum\Models\AddressTbl', 'address_id', 'id');
     }
 
     public function courseTbl() {
-        return $this->belongsTo('IT_Glance_forum\Models\CourseTbl', 'course_type_id', 'id');
+        return $this->belongsTo('IT_Glance_Forum\Models\CourseTbl', 'course_type_id', 'id');
     }
 
     public function languageTbl() {
-        return $this->belongsTo('IT_Glance_forum\Models\LanguageTbl', 'language_type_id', 'id');
+        return $this->belongsTo('IT_Glance_Forum\Models\LanguageTbl', 'language_type_id', 'id');
     }
 
     public function skillTbl() {
-        return $this->belongsTo('IT_Glance_forum\Models\SkillTbl', 'skill_id', 'id');
+        return $this->belongsTo('IT_Glance_Forum\Models\SkillTbl', 'skill_id', 'id');
     }
 
     public function usersTbl() {
-        return $this->belongsTo('IT_Glance_forum\Models\UsersTbl', 'user_id', 'id');
+        return $this->belongsTo('IT_Glance_Forum\Models\UsersTbl', 'user_id', 'id');
     }
 
 
