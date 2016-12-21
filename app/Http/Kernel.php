@@ -52,5 +52,9 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \IT_Glance_Forum\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'admin.role'=> \IT_Glance_Forum\Http\Middleware\UserCheck::class,
+        'intern.role'=> \IT_Glance_Forum\Http\Middleware\UserCheck::class,
+        'mentor.role'=> \IT_Glance_Forum\Http\Middleware\UserCheck::class,
+        'submentor.role'=> \IT_Glance_Forum\Http\Middleware\UserCheck::class,
     ];
 }
