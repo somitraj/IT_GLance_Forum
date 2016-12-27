@@ -16,43 +16,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::any('/applicationform',[
-    'as'=>'web.application',
-    'uses'=>'web\UserController@ApplicationForm'
+Route::any('/applicationform', [
+    'as' => 'web.application',
+    'uses' => 'Web\UserController@ApplicationForm'
 ]);
-Route::any('/loginform',[
-    'as'=>'web.login',
-    'uses'=>'web\LoginController@Login'
+Route::any('/loginform', [
+    'as' => 'web.login',
+    'uses' => 'Web\LoginController@Login'
 ]);
 
-Route::group(['usertype'=>'1','middleware'=>'admin.role'],function()
-{
-    Route::any('/applicationform',[
-        'as'=>'web.application',
-        'uses'=>'web\UserController@ApplicationForm'
-    ]);
+Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'admin.role'], function () {
+    Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@admin', 'uses' => 'Web\UserController@ApplicationForm']);
+    Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@admin', function () {
+        return redirect()->route('Articles@Top_Articles@admin');
+    }]);
+
+});
+Route::group(['prefix' => 'articles'], function () {
+    Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@admin', 'uses' => 'Web\LoginController@LoginForm']);
+
 });
 
-Route::group(['usertype'=>'2','middleware'=>'mentor.role'],function()
-{
-    Route::any('/applicationform',[
-        'as'=>'web.application',
-        'uses'=>'web\UserController@ApplicationForm'
-    ]);
-});
 
-Route::group(['usertype'=>'3','middleware'=>'submentor.role'],function()
-{
-    Route::any('/applicationform',[
-        'as'=>'web.application',
-        'uses'=>'web\UserController@ApplicationForm'
-    ]);
-});
 
-Route::group(['usertype'=>'4','middleware'=>'intern.role'],function()
-{
-    Route::any('/applicationform',[
-        'as'=>'web.application',
-        'uses'=>'web\UserController@ApplicationForm'
-    ]);
-});
+

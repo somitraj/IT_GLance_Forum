@@ -6,7 +6,7 @@
  * Time: 4:22 PM
  */
 ?>
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <title>IT Glance Forum</title>
 <head>
@@ -23,6 +23,25 @@
 
 </head>
 <body>
+<!--Navbar-->
+{{--<nav class="navbar navbar-dark warning-color-dark ">
+    <!-- Collapse button-->
+    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
+        <i class="fa fa-bars"></i>
+    </button>
+    <div class="container-fluid">
+        <!--Collapse content-->
+        <div class="collapse navbar-toggleable-xs" id="collapseEx2">
+            <!--Navbar Brand-->
+            <a class="navbar-brand">&nbsp;</a>
+            <!--Links-->
+                 @include('navs')
+        </div>
+        <!--/.Collapse content-->
+    </div>
+
+</nav>--}}
+        <!--/.Navbar-->
 <div class="container">
     {!! form($form) !!}
 </div>

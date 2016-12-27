@@ -5,7 +5,7 @@
  * Date: 12/20/2016
  * Time: 6:56 PM
  */
-        ?>
+?>
         <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <title>IT Glance Forum</title>

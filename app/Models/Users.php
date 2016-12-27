@@ -2,13 +2,13 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class UsersTbl extends Model {
+class Users extends Model {
 
     /**
      * Generated
      */
 
-    protected $table = 'users_tbl';
+    protected $table = 'users';
     protected $fillable = ['id', 'username', 'password', 'email', 'user_type_id', 'status_id'];
 
 

@@ -2,7 +2,6 @@
 
 namespace IT_Glance_Forum\Http\Controllers\Web;
 
-use ExceptionCode;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,25 +25,27 @@ class LoginController extends Controller
                 if ($request->getMethod() == 'POST') {//activates login button
                     try {
                         $client = new Client(['base_uri' => config('app.REST_API')]);
-
+                        //print_r($client);die();
+                        // print_r($request->get('username'));die();
                         $response = $client->request('POST', 'login', [
                             'form_params' => [
-
                                 'username' => $request->get('username'),
                                 'password' => $request->get('password')
 
                             ]
 
                         ]);
-                        $userApi = \GuzzleHttp\json_decode($response->getBody()->getContents())->user; //api bata json format bata ako lai decode gareko
-
+                        $data = $response->getBody()->getContents();
+                        // print_r($data);die();
+                        $userApi = \GuzzleHttp\json_decode($data);
+                        print_r($userApi);die();
                         $user = new User();
                         $user->id = $userApi->id;
                         $user->username = $userApi->username;
                         $user->password = $userApi->password;
                         $user->user_type_id = $userApi->user_type_id;
+                        print_r($user);die();
                         Auth::login($user);
-
                         return $this->UserCheck();
                     } catch (\Exception $e) {
                         throw  $e;
@@ -53,7 +54,7 @@ class LoginController extends Controller
                 return view('LoginForm', compact('form'));
             }
         } catch (\Exception $e) {
-            $validator=Validator::make(Input::all(),[]);
+            $validator = Validator::make(Input::all(), []);
             if ($e->getCode() == 500) {
                 $error = json_decode($e->getResponse()->getBody()->getContents());
                 if (array_key_exists('code', $error)) {
@@ -62,6 +63,7 @@ class LoginController extends Controller
                     } elseif ($error->code == \IT_Glance_Forum\ExceptionCode::INVALID_PASSWORD) {
                         $validator->errors()->add('password', $error->message);
                     } else {
+                        print_r($e->getMessage());die();
                         $validator->errors()->add('global', $error->message);
                     }
 
@@ -78,7 +80,10 @@ class LoginController extends Controller
 
     public function UserCheck()
     {
+        print_r('a');
+        die();
         if (Auth::check()) {
+
             // print_r(Auth::user()->user_type_id);die();
             if (Auth::user()->user_type_id == 1) {
                 return redirect()->route('web.application');
