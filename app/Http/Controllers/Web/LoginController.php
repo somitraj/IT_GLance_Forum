@@ -88,7 +88,7 @@ class LoginController extends Controller
 
             // print_r(Auth::user()->user_type_id);die();
             if (Auth::user()->user_type_id == 1) {
-                return redirect()->route('web.demo');
+                return redirect()->route('Demo@admin');
             } else if (Auth::user()->user_type_id == 2) {
                 // print_r(Auth::user());die();
                 return redirect()->route('web.demo');

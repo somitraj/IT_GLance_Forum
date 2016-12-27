@@ -34,14 +34,18 @@ Route::get('/logout',['as'=>'logout',function(){Session::flush();return redirect
 
 
 Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'], function () {
+
+    Route::any('/demo', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Demo@admin', 'uses' => 'Web\UserController@Demo']);
     Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@admin', 'uses' => 'Web\UserController@ApplicationForm']);
     Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@admin', function () {
         return redirect()->route('Articles@Top_Articles@admin');
     }]);
 
+
+    Route::group(['prefix' => 'articles'], function () {
+    Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@admin', 'uses' => 'Web\UserController@Demo']);
+
 });
-Route::group(['prefix' => 'articles'], function () {
-    Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@admin', 'uses' => 'Web\LoginController@LoginForm']);
 
 });
 

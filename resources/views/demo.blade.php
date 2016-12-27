@@ -36,8 +36,9 @@
             <!--Navbar Brand-->
             <a class="navbar-brand">&nbsp;</a>
             <!--Links-->
-            @include('navs')
+
         </div>
+        @include('navs')
         <!--/.Collapse content-->
     </div>
 </nav>
