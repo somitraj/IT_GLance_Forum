@@ -25,6 +25,11 @@ Route::any('/loginform', [
     'uses' => 'Web\LoginController@Login'
 ]);
 
+Route::any('/demo', [
+    'as' => 'web.demo',
+    'uses' => 'Web\UserController@Demo'
+]);
+
 Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'admin.role'], function () {
     Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@admin', 'uses' => 'Web\UserController@ApplicationForm']);
     Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@admin', function () {

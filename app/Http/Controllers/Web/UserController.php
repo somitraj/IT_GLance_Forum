@@ -95,4 +95,7 @@ class UserController extends Controller
             die();
         }
     }
+    public function Demo(){
+        return view('Demo');
+    }
 }

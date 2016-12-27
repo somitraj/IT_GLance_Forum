@@ -17,7 +17,7 @@ class LoginController extends Controller
     {
         try {
             if (Auth::check()) {   //checks user is logged in and if logged in and user try to go back to login page,home is returned
-                return view('ApplicationForm', compact('form'));
+                return view('demo');
 
             } else {
                 $form = $formBuilder->Create('IT_Glance_Forum\Form\LoginForm',
@@ -38,13 +38,15 @@ class LoginController extends Controller
                         $data = $response->getBody()->getContents();
                         // print_r($data);die();
                         $userApi = \GuzzleHttp\json_decode($data);
-                        print_r($userApi);die();
+                        /*print_r($userApi->user->id);die();*/
                         $user = new User();
-                        $user->id = $userApi->id;
-                        $user->username = $userApi->username;
-                        $user->password = $userApi->password;
-                        $user->user_type_id = $userApi->user_type_id;
-                        print_r($user);die();
+                        //print_r($user);die();
+                        $user->id = $userApi->user->id;
+                        $user->username = $userApi->user->username;
+                        $user->password = $userApi->user->password;
+                        $user->user_type_id = $userApi->user->user_type_id;
+                        $user->status_id = $userApi->user->status_id;
+                        //print_r($user);die();
                         Auth::login($user);
                         return $this->UserCheck();
                     } catch (\Exception $e) {
@@ -80,21 +82,21 @@ class LoginController extends Controller
 
     public function UserCheck()
     {
-        print_r('a');
-        die();
+        /*print_r('a');
+        die();*/
         if (Auth::check()) {
 
             // print_r(Auth::user()->user_type_id);die();
             if (Auth::user()->user_type_id == 1) {
-                return redirect()->route('web.application');
+                return redirect()->route('web.demo');
             } else if (Auth::user()->user_type_id == 2) {
                 // print_r(Auth::user());die();
-                return redirect()->route('web.application');
+                return redirect()->route('web.demo');
             } else if (Auth::user()->user_type_id == 3) {
-                return redirect()->route('web.application');
+                return redirect()->route('web.demo');
                 //return redirect()->to('/');
             } else {
-                return redirect()->route('web.application');
+                return redirect()->route('web.demo');
             }
 
         }
