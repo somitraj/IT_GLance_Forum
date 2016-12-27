@@ -3,6 +3,8 @@
 namespace IT_Glance_Forum\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class checkAdmin
 {
@@ -13,13 +15,16 @@ class checkAdmin
         {
             $route=Route::getCurrentRoute()->getAction();
             // print_r(Auth::user()->user_typeid);die();
-            if(array_key_exists('usertype',$route))
+            if(array_key_exists('role',$route))
             {
-                if(Auth::user()->user_type_id!=$route['usertype'])
+                if(Auth::user()->user_type_id!=$route['role'])
                 {
-                    return redirect()->route('login');
+                    return redirect()->route('web.login');
                 }
             }
+        }
+        else{
+            return  Redirect::route('web.demo');
         }
         return $next($request);
     }
