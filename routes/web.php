@@ -42,6 +42,8 @@ Route::group(['prefix' => 'articles'], function () {
 
 });
 
+Route::get('/logout',['as'=>'logout',function(){Session::flush();return redirect()->route('web.login');}]);
+
 
 
 

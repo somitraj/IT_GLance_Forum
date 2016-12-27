@@ -25,6 +25,10 @@
 <body>
 <div class="container">
    <h1>Welcome</h1>
+
+    @if(Auth::check())
+        <a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+    @endif
 </div>
 </body>
 </html>
