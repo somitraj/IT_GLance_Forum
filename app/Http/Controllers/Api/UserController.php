@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use IT_Glance_Forum\Http\Controllers\Controller;
 use IT_Glance_Forum\Models\AddressTbl;
 use IT_Glance_Forum\Models\UserinfoTbl;
+use IT_Glance_Forum\Models\Users;
 use IT_Glance_Forum\Models\UsersTbl;
+use IT_Glance_Forum\Models\UsertypeTbl;
 
 
 /**
@@ -22,7 +24,7 @@ class UserController extends Controller
      */
     public function ApplicationSubmit(Request $request){
         try{
-            $user = new UsersTbl();
+            $user = new Users();
             $user->setAttribute('email', $request->get('email'));
             $user->status_id = 0;
             $user->save();
@@ -36,6 +38,7 @@ class UserController extends Controller
 
 
             $userinfo = new UserinfoTbl();
+            $userinfo->setAttribute('user_id',$user->id);
             $userinfo->setAttribute('fname', $request->get('fname'));
             $userinfo->setAttribute('mname', $request->get('mname'));
             $userinfo->setAttribute('lname', $request->get('lname'));
@@ -55,6 +58,29 @@ class UserController extends Controller
         catch (\Exception $e) {
             throw $e;
         }
+    }
+    public function GetUserTypeList(){
+        try{
+            $usertype = UsertypeTbl::all('id','user_type')->toArray();
+            return $usertype;
+        }
+         catch (\Exception $e) {
+                    print_r($e->getMessage());
+                    die();
+                }
+
+    }
+    public function GetUserDetails($id){
+        try{
+            $userdetails = UserinfoTbl::where('user_id', '=', $id)
+                ->first();
+            return $userdetails;
+        }
+         catch (\Exception $e) {
+                    print_r($e->getMessage());
+                    die();
+                }
+
     }
 }
 

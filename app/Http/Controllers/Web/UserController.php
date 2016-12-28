@@ -98,4 +98,19 @@ class UserController extends Controller
     public function Demo(){
         return view('Demo');
     }
+
+    public function UserDetails($id){
+        try{
+            $client = new Client(['base_uri' => config('app.REST_API')]);
+            $response = $client->request('GET', 'userdetails/' . $id);
+            $data = $response->getBody()->getContents();
+            $details = \GuzzleHttp\json_decode($data);
+            return view('ViewUserDetails', compact('details'));
+        }
+         catch (\Exception $e) {
+                    print_r($e->getMessage());
+                    die();
+                }
+
+    }
 }

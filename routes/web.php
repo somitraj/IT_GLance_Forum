@@ -46,7 +46,11 @@ Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'],
     Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@admin', 'uses' => 'Web\UserController@Demo']);
 
 });
+    Route::any('/notification', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Notification@admin', 'uses' => 'Web\NotificationController@UserNotification']);
+    Route::any('/logout', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Logout@admin',function(){Session::flush();return redirect()->route('web.login');}]);
 
+    Route::any('/userdetails/{id}', ['as' => 'web.userdetails','uses' => 'Web\UserController@UserDetails'
+    ]);
 });
 
 

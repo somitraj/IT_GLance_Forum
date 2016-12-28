@@ -25,21 +25,9 @@
 <body>
 <!--Navbar-->
 <nav class="navbar navbar-dark warning-color-dark ">
-    <!-- Collapse button-->
-    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
-        <i class="fa fa-bars"></i>
-    </button>
 
     <div class="container-fluid">
-        <!--Collapse content-->
-        <div class="collapse navbar-toggleable-xs" id="collapseEx2">
-            <!--Navbar Brand-->
-            <a class="navbar-brand">&nbsp;</a>
-            <!--Links-->
-
-        </div>
         @include('navs')
-        <!--/.Collapse content-->
     </div>
 </nav>
 <!--/.Navbar-->
@@ -47,9 +35,9 @@
 <div class="container">
    <h1>Welcome</h1>
 
-    @if(Auth::check())
+  {{--  @if(Auth::check())
         <a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-    @endif
+    @endif--}}
 </div>
 </body>
 </html>
