@@ -13,7 +13,7 @@ class NotificationController extends Controller
         try{
             $user = DB::table('users')
                 ->join('userinfo_tbl', 'userinfo_tbl.user_id', '=', 'users.id')
-                ->select('users.*', 'userinfo_tbl.*')
+                ->select('userinfo_tbl.*','users.*' )
                 ->where('users.status_id', '=', 0)
                 ->get()->toArray();
 

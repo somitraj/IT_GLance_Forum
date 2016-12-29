@@ -44,7 +44,7 @@ class AddressForm extends Form
                 $districtOption[$district->id] = $district->district;
             }
             foreach ($cities->city_tbls as $city) {
-                $countryOption[$city->id] = $city->city;
+                $cityOption[$city->id] = $city->city;
             }
          /*   foreach ($courses->course_tbls as $course) {
                 $courseOption[$course->id] = $course->course_name;

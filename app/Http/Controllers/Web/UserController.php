@@ -136,9 +136,8 @@ class UserController extends Controller
             //print_r($id);die();
             $client = new Client(['base_uri' => config('app.REST_API')]);
             $response = $client->request('GET', 'userapprove/' . $id);
-            $data = $response->getBody()->getContents();
-            print_r($data);die();
-            $all = \GuzzleHttp\json_decode($data);
+           /* $data = $response->getBody()->getContents();
+            $all = \GuzzleHttp\json_decode($data);*/
             return view('demo');
 
         } catch (\Exception $e) {

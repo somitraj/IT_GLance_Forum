@@ -59,7 +59,6 @@
                 <tr>
                     <th>Email</th>
                     <th></th>
-                    <th>Select Role</th>
                     <th></th>
 
                 </tr>
@@ -69,14 +68,6 @@
                     <tr>
                         <td>{{$no->email}}</td>
                         <td><a href="userdetails\{{$no->id}}" class="btn btn-success  btn">View</a></td>
-
-                        <td><select name="usertype">
-                                <option >Select Role</option>
-                                @foreach($usertype as $ut)
-                                <option value={{$ut->id}}>{{$ut->user_type}}</option>
-                                @endforeach
-                            </select></td>
-
                         <td><a href="userapprove\{{$no->id}}" class="btn btn-primary  btn">Approve</a></td>
                         <td><a href="deleteuser\{{$no->id}}" class="btn btn-danger  btn">Delete</a></td>
 

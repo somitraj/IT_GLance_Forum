@@ -106,7 +106,7 @@ class UserController extends Controller
             if ($user->status_id == 0) {
                 $user = DB::table('users')
                     ->where('id', $id)
-                    ->update(['status_id' => 1,'username'=>$userinfo->fname.$userinfo->lname,'password'=>bcrypt($userinfo->fname)
+                    ->update(['status_id' => 1,'user_type_id'=>4,'username'=>$userinfo->fname.$userinfo->lname,'password'=>bcrypt($userinfo->fname)
                     ]);
             }
 
