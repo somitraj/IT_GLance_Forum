@@ -48,10 +48,11 @@ Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'],
 });
     Route::any('/notification', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Notification@admin', 'uses' => 'Web\NotificationController@UserNotification']);
     Route::any('/memberlist', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Members@admin', 'uses' => 'Web\UserController@GetMemberList']);
+    Route::any('/profile', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'My_Profile@admin', 'uses' => 'Web\UserController@GetUserProfile']);
     Route::any('/logout', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Logout@admin',function(){Session::flush();return redirect()->route('web.login');}]);
 
-    Route::any('/userdetails/{id}', ['as' => 'web.userdetails','uses' => 'Web\UserController@UserDetails']);
-    Route::any('/userapprove/{id}', ['as' => 'web.approve','uses' => 'Web\UserController@UserApprove']);
+    Route::any('/userdetails/{id}', ['as' => 'Userdetails@admin','uses' => 'Web\UserController@UserDetails']);
+    Route::any('/userapprove/{id}', ['as' => 'Approve@admin','uses' => 'Web\UserController@UserApprove']);
 });
 
 

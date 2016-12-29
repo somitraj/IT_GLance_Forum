@@ -145,4 +145,7 @@ class UserController extends Controller
             die();
         }
     }
+    public function GetUserProfile(){
+        return view('UserProfile');
+    }
 }
