@@ -27,5 +27,7 @@ $api->version('v1', ['namespace' => "IT_Glance_Forum\Http\Controllers\Api"], fun
     $api->any('usernotice', 'NotificationController@GetUserNotice');
     $api->any('usertypelist', 'UserController@GetUserTypeList');
     $api->any('userdetails/{id}', 'UserController@GetUserDetails');
+    $api->any('allmemberlist', 'UserController@GetAllMemberList');
+    $api->any('userapprove/{id}', 'UserController@UserApprove');
 
 });

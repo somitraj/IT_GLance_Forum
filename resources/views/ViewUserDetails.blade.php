@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> {{--imp to make responsive--}}
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
 
 
     @yield('head')

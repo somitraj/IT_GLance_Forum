@@ -4492,7 +4492,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-right: 0;
   }
 }
-.navbar-default {
+.<li><a href="#" role="navigation" class="nav navbar-default ">Feedbacks<span
+                                                               class="badge"></span></a></li>
+                                                                                                                                                         navbar-default {
   background-color: #f8f8f8;
   border-color: #e7e7e7;
 }

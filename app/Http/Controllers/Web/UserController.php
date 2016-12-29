@@ -95,22 +95,55 @@ class UserController extends Controller
             die();
         }
     }
-    public function Demo(){
+
+    public function Demo()
+    {
         return view('Demo');
     }
 
-    public function UserDetails($id){
-        try{
+    public function UserDetails($id)
+    {
+        try {
             $client = new Client(['base_uri' => config('app.REST_API')]);
             $response = $client->request('GET', 'userdetails/' . $id);
             $data = $response->getBody()->getContents();
             $details = \GuzzleHttp\json_decode($data);
             return view('ViewUserDetails', compact('details'));
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
         }
-         catch (\Exception $e) {
-                    print_r($e->getMessage());
-                    die();
-                }
 
+    }
+
+    public function GetMemberList()
+    {
+        try {
+            $client = new Client(['base_uri' => config('app.REST_API')]);
+            $response = $client->request('GET', 'allmemberlist');
+            $data = $response->getBody()->getContents();
+            $all = \GuzzleHttp\json_decode($data);
+            return view('AllMemberList', compact('all'));
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+    }
+
+    public function UserApprove($id)
+    {
+        try {
+            //print_r($id);die();
+            $client = new Client(['base_uri' => config('app.REST_API')]);
+            $response = $client->request('GET', 'userapprove/' . $id);
+            $data = $response->getBody()->getContents();
+            print_r($data);die();
+            $all = \GuzzleHttp\json_decode($data);
+            return view('demo');
+
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
     }
 }

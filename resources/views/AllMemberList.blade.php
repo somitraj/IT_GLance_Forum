@@ -37,13 +37,15 @@
     <div class="card" style="min-height: 400px">
         <h2>Notification<span class="badge"></span></h2>
         <div class="nav nav-tabs">
-            <li class="active"><a href="" role="navigation" class="nav navbar-default ">Member Request<span
-                            class="badge">{{count($notice)}}</span></a></li>
-            <li><a href="#" role="navigation" class="nav navbar-default ">Feedbacks<span
+            <li class="active"><a href="" role="navigation" class="nav navbar-default ">All<span
                             class="badge"></span></a></li>
-            <li><a href="#" role="navigation" class="nav navbar-default ">Posts<span
+            <li><a href="#" role="navigation" class="nav navbar-default ">Admin<span
                             class="badge"></span></a></li>
-            <li><a href="#" role="navigation" class="nav navbar-default ">Jobs<span
+            <li><a href="#" role="navigation" class="nav navbar-default ">Mentor<span
+                            class="badge"></span></a></li>
+            <li><a href="#" role="navigation" class="nav navbar-default ">Submentor<span
+                            class="badge"></span></a></li>
+            <li><a href="#" role="navigation" class="nav navbar-default ">Intern<span
                             class="badge"></span></a></li>
         </div>
         {{--<div class="nav nav-tabs">
@@ -57,28 +59,16 @@
                    style="margin-left: 50px;">
                 <thead>
                 <tr>
+                    <th>Name</th>
                     <th>Email</th>
-                    <th></th>
-                    <th>Select Role</th>
-                    <th></th>
-
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($notice as $no)
+                @foreach($all as $a)
                     <tr>
-                        <td>{{$no->email}}</td>
-                        <td><a href="userdetails\{{$no->id}}" class="btn btn-success  btn">View</a></td>
+                        <td>{{$a->fname}}</td>
+                        <td>{{$a->email}}</td>
 
-                        <td><select name="usertype">
-                                <option >Select Role</option>
-                                @foreach($usertype as $ut)
-                                <option value={{$ut->id}}>{{$ut->user_type}}</option>
-                                @endforeach
-                            </select></td>
-
-                        <td><a href="userapprove\{{$no->id}}" class="btn btn-primary  btn">Approve</a></td>
-                        <td><a href="deleteuser\{{$no->id}}" class="btn btn-danger  btn">Delete</a></td>
 
                     </tr>
                 @endforeach

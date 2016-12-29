@@ -4,6 +4,7 @@ namespace IT_Glance_Forum\Http\Controllers\api;
 
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use IT_Glance_Forum\Http\Controllers\Controller;
 use IT_Glance_Forum\Models\AddressTbl;
 use IT_Glance_Forum\Models\UserinfoTbl;
@@ -75,6 +76,40 @@ class UserController extends Controller
             $userdetails = UserinfoTbl::where('user_id', '=', $id)
                 ->first();
             return $userdetails;
+        }
+         catch (\Exception $e) {
+                    print_r($e->getMessage());
+                    die();
+                }
+
+    }
+    public function GetAllMemberList(){
+        try{
+            $useraccount = DB::table('userinfo_tbl')
+                ->join('users', 'users.id', '=', 'userinfo_tbl.user_id')
+                ->select('users.*', 'userinfo_tbl.*')
+                ->where('status_id', '=', 1)
+                ->get()->toArray();
+            return $useraccount;
+            /*$user = Users::where('status_id', '=', 1)->get()->toArray();
+            return $user;*/
+        }
+         catch (\Exception $e) {
+                    print_r($e->getMessage());
+                    die();
+                }
+    }
+    public function UserApprove($id){
+        try{
+            $user = Users::where('id', '=', $id)->first();
+            $userinfo=UserinfoTbl::where('user_id','=',$id)->first();
+            if ($user->status_id == 0) {
+                $user = DB::table('users')
+                    ->where('id', $id)
+                    ->update(['status_id' => 1,'username'=>$userinfo->fname.$userinfo->lname,'password'=>bcrypt($userinfo->fname)
+                    ]);
+            }
+
         }
          catch (\Exception $e) {
                     print_r($e->getMessage());
