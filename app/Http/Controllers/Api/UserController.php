@@ -23,14 +23,15 @@ class UserController extends Controller
      * @param Request $request
      * @throws \Exception
      */
-    public function ApplicationSubmit(Request $request){
-        try{
+    public function ApplicationSubmit(Request $request)
+    {
+        try {
             $user = new Users();
             $user->setAttribute('email', $request->get('email'));
             $user->status_id = 0;
             $user->save();
 
-            $address= new AddressTbl();
+            $address = new AddressTbl();
             $address->country_id = $request->country_id;
             $address->province_id = $request->province_id;
             $address->zone_id = $request->zone_id;
@@ -39,7 +40,7 @@ class UserController extends Controller
 
 
             $userinfo = new UserinfoTbl();
-            $userinfo->setAttribute('user_id',$user->id);
+            $userinfo->setAttribute('user_id', $user->id);
             $userinfo->setAttribute('fname', $request->get('fname'));
             $userinfo->setAttribute('mname', $request->get('mname'));
             $userinfo->setAttribute('lname', $request->get('lname'));
@@ -52,39 +53,42 @@ class UserController extends Controller
             /*$userinfo->course_type_id = $request->course_type_id;
             $userinfo->language_type_id = $request->language_type_id;*/
             $userinfo->setAttribute('whylanguage', $request->get('whylanguage'));
-            $userinfo->address_id=$address->id;
+            $userinfo->address_id = $address->id;
             $userinfo->save();
 
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             throw $e;
         }
     }
-    public function GetUserTypeList(){
-        try{
-            $usertype = UsertypeTbl::all('id','user_type')->toArray();
+
+    public function GetUserTypeList()
+    {
+        try {
+            $usertype = UsertypeTbl::all('id', 'user_type')->toArray();
             return $usertype;
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
         }
-         catch (\Exception $e) {
-                    print_r($e->getMessage());
-                    die();
-                }
 
     }
-    public function GetUserDetails($id){
-        try{
+
+    public function GetUserDetails($id)
+    {
+        try {
             $userdetails = UserinfoTbl::where('user_id', '=', $id)
                 ->first();
             return $userdetails;
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
         }
-         catch (\Exception $e) {
-                    print_r($e->getMessage());
-                    die();
-                }
 
     }
-    public function GetAllMemberList(){
-        try{
+
+    public function GetAllMemberList()
+    {
+        try {
             $useraccount = DB::table('userinfo_tbl')
                 ->join('users', 'users.id', '=', 'userinfo_tbl.user_id')
                 ->select('users.*', 'userinfo_tbl.*')
@@ -93,28 +97,46 @@ class UserController extends Controller
             return $useraccount;
             /*$user = Users::where('status_id', '=', 1)->get()->toArray();
             return $user;*/
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
         }
-         catch (\Exception $e) {
-                    print_r($e->getMessage());
-                    die();
-                }
     }
-    public function UserApprove($id){
-        try{
+
+    public function GetInternList()
+    {
+        try {
+            $interns = DB::table('userinfo_tbl')
+                ->join('users', 'users.id', '=', 'userinfo_tbl.user_id')
+                ->select('users.*', 'userinfo_tbl.*')
+                ->where('status_id', '=', 1)
+                ->where('user_type_id', '=', 4)
+                ->get()->toArray();
+            return $interns;
+            /*$user = Users::where('status_id', '=', 1)->get()->toArray();
+            return $user;*/
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+    }
+
+    public function UserApprove($id)
+    {
+        try {
             $user = Users::where('id', '=', $id)->first();
-            $userinfo=UserinfoTbl::where('user_id','=',$id)->first();
+            $userinfo = UserinfoTbl::where('user_id', '=', $id)->first();
             if ($user->status_id == 0) {
                 $user = DB::table('users')
                     ->where('id', $id)
-                    ->update(['status_id' => 1,'user_type_id'=>4,'username'=>$userinfo->fname.$userinfo->lname,'password'=>bcrypt($userinfo->fname)
+                    ->update(['status_id' => 1, 'user_type_id' => 4, 'username' => $userinfo->fname . $userinfo->lname, 'password' => bcrypt($userinfo->fname)
                     ]);
             }
 
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
         }
-         catch (\Exception $e) {
-                    print_r($e->getMessage());
-                    die();
-                }
 
     }
 }

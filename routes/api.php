@@ -23,11 +23,17 @@ $api->version('v1', ['namespace' => "IT_Glance_Forum\Http\Controllers\Api"], fun
     $api->get('district', 'AddressController@GetDistrict');
     $api->get('city', 'AddressController@GetCity');
     $api->get('course', 'AddressController@GetCourse');
+    $api->get('category', 'AddressController@GetCategory');
     $api->get('language', 'AddressController@GetLanguage');
     $api->any('usernotice', 'NotificationController@GetUserNotice');
+    $api->any('postnotice', 'NotificationController@GetPostNotice');
     $api->any('usertypelist', 'UserController@GetUserTypeList');
     $api->any('userdetails/{id}', 'UserController@GetUserDetails');
+    $api->any('postdetails/{id}', 'PostController@GetPostDetails');
     $api->any('allmemberlist', 'UserController@GetAllMemberList');
+    $api->any('internlist', 'UserController@GetInternList');
     $api->any('userapprove/{id}', 'UserController@UserApprove');
+    $api->any('postapprove/{id}', 'PostController@PostApprove');
+    $api->any('forumpost', 'PostController@ForumPost');
 
 });

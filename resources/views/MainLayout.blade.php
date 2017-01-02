@@ -7,7 +7,7 @@
  */
 ?>
 
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <title>IT Glance Forum</title>
 <head>
@@ -18,6 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> {{--imp to make responsive--}}
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
 
 
     @yield('head')
@@ -34,8 +35,15 @@
 <!--/.Navbar-->
 
 <div class="container">
-
+    @yield('contents')
 </div>
+
+<script src="/tinymce/tinymce.min.js"></script>
+{{--<script src="/tinymce/jquery.tinymce.min.js"></script>--}}
+
+
+
+@yield('script')
 </body>
 </html>
 

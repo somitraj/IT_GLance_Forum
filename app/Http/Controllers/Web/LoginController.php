@@ -65,7 +65,8 @@ class LoginController extends Controller
                     } elseif ($error->code == \IT_Glance_Forum\ExceptionCode::INVALID_PASSWORD) {
                         $validator->errors()->add('password', $error->message);
                     } else {
-                        print_r($e->getMessage());die();
+                        print_r($e->getMessage());
+                        die();
                         $validator->errors()->add('global', $error->message);
                     }
 
@@ -88,15 +89,15 @@ class LoginController extends Controller
 
             // print_r(Auth::user()->user_type_id);die();
             if (Auth::user()->user_type_id == 1) {
-                return redirect()->route('Demo@admin');
+                return redirect()->route('Home@admin');
             } else if (Auth::user()->user_type_id == 2) {
                 // print_r(Auth::user());die();
                 return redirect()->route('web.demo');
             } else if (Auth::user()->user_type_id == 3) {
-                return redirect()->route('web.demo');
+                return redirect()->route('Home@intern');
                 //return redirect()->to('/');
             } else {
-                return redirect()->route('web.demo');
+                return redirect()->route('Home@intern');
             }
 
         }

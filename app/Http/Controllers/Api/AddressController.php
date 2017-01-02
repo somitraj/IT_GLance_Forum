@@ -4,6 +4,7 @@ namespace IT_Glance_Forum\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use IT_Glance_Forum\Http\Controllers\Controller;
+use IT_Glance_Forum\Models\CategoryTbl;
 use IT_Glance_Forum\Models\CityTbl;
 use IT_Glance_Forum\Models\CountryTbl;
 use IT_Glance_Forum\Models\CourseTbl;
@@ -91,13 +92,14 @@ class AddressController extends Controller
      * @param Request $request
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function GetCourse(Request $request)
+    public function GetCourse()
     {
         try {
-            return CourseTbl::all();
+            return CourseTbl::all()->toArray();
         } catch (\Exception $e) {
-            print_r($e->getMessage());
-            die();
+            throw $e;
+          //  print_r($e->getMessage());
+           // die();
         }
     }
 
@@ -114,4 +116,14 @@ class AddressController extends Controller
             die();
         }
     }
+    public function GetCategory(Request $request)
+    {
+        try {
+            return CategoryTbl::all();
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+    }
+
 }

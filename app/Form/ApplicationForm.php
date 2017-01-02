@@ -81,7 +81,8 @@ class ApplicationForm extends Form
                     ]
                 )
                ->compose(\IT_Glance_Forum\Form\AddressForm::class,
-                    ['country' => $this->getData('country'), 'province' => $this->getData('province'), 'zone' => $this->getData('zone'), 'district' => $this->getData('district'), 'city' => $this->getData('city')])
+                    ['country' => $this->getData('country'), 'province' => $this->getData('province'), 'zone' => $this->getData('zone'),
+                        'district' => $this->getData('district'), 'city' => $this->getData('city')])
 
                 ->add('college', 'text', [
                         'wrapper' => ['class' => 'form row'],
@@ -90,12 +91,12 @@ class ApplicationForm extends Form
                         'attr' => ['class' => 'form-control field-input']
                     ]
                 )
-                ->add('course', 'select', [
+               /* ->add('course', 'select', [
                     'wrapper' => ['class' => 'form row'],
                     'label' => 'Course ',
                     'choices' => ['BIM', 'BScCSIT'],
                     'empty_value' => '=== Select Course ==='
-                ])
+                ])*/
                 ->add('language', 'select', [
                     'wrapper' => ['class' => 'form row'],
                     'label' => 'Language ',
@@ -103,8 +104,8 @@ class ApplicationForm extends Form
                     'empty_value' => '=== Select Language To Study ==='
                 ])
 
-              /*  ->compose(\IT_Glance_Forum\Form\AddressForm::class,
-                    ['course' => $this->getData('course'), 'language' => $this->getData('language')])*/
+                ->compose(\IT_Glance_Forum\Form\CourseForm::class,
+                    ['course' => $this->getData('course')])
 
 
                 ->add('comment', 'textarea', [

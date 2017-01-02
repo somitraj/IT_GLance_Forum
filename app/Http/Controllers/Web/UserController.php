@@ -44,11 +44,12 @@ class UserController extends Controller
             $data4 = $response4->getBody()->getContents();
             $city = \GuzzleHttp\json_decode($data4);
 
-            /*$response5 = $client->request('GET', 'course');
+            $response5 = $client->request('GET', 'course');
             $data5 = $response5->getBody()->getContents();
             $course = \GuzzleHttp\json_decode($data5);
+            //print_r($course);die();
 
-            $response6 = $client->request('GET', 'language');
+            /*$response6 = $client->request('GET', 'language');
             $data6 = $response6->getBody()->getContents();
             $language = \GuzzleHttp\json_decode($data6);*/
 
@@ -85,7 +86,8 @@ class UserController extends Controller
 
             $form = $formBuilder->Create('IT_Glance_Forum\Form\ApplicationForm',
                 ['method' => 'POST', 'url' => route('web.application')],
-                ['country' => $country, 'province' => $province, 'zone' => $zone, 'district' => $district, 'city' => $city/*,'course'=>$course,'language'=>$language*/]);
+                ['country' => $country, 'province' => $province, 'zone' => $zone, 'district' => $district,
+                    'city' => $city,'course' => $course]);
 
             return view('ApplicationForm', compact('form'));
 
@@ -96,9 +98,9 @@ class UserController extends Controller
         }
     }
 
-    public function Demo()
+    public function Home()
     {
-        return view('Demo');
+        return view('Home');
     }
 
     public function UserDetails($id)
@@ -130,14 +132,28 @@ class UserController extends Controller
         }
     }
 
+    public function GetInternList()
+    {
+        try {
+            $client = new Client(['base_uri' => config('app.REST_API')]);
+            $response = $client->request('GET', 'internlist');
+            $data = $response->getBody()->getContents();
+            $intern = \GuzzleHttp\json_decode($data);
+            return view('InternList', compact('intern'));
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+    }
+
     public function UserApprove($id)
     {
         try {
             //print_r($id);die();
             $client = new Client(['base_uri' => config('app.REST_API')]);
             $response = $client->request('GET', 'userapprove/' . $id);
-           /* $data = $response->getBody()->getContents();
-            $all = \GuzzleHttp\json_decode($data);*/
+            /* $data = $response->getBody()->getContents();
+             $all = \GuzzleHttp\json_decode($data);*/
             return view('demo');
 
         } catch (\Exception $e) {
@@ -145,7 +161,9 @@ class UserController extends Controller
             die();
         }
     }
-    public function GetUserProfile(){
+
+    public function GetUserProfile()
+    {
         return view('UserProfile');
     }
 }

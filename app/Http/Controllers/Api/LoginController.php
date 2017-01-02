@@ -1,6 +1,7 @@
 <?php
 
 namespace IT_Glance_Forum\Http\Controllers\Api;
+
 use IT_Glance_Forum\ExceptionCode;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Support\Facades\Hash;

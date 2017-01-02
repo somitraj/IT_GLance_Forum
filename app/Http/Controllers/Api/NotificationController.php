@@ -9,23 +9,42 @@ use IT_Glance_Forum\Models\Users;
 
 class NotificationController extends Controller
 {
-    public function GetUserNotice(){
-        try{
+    public function GetUserNotice()
+    {
+        try {
             $user = DB::table('users')
                 ->join('userinfo_tbl', 'userinfo_tbl.user_id', '=', 'users.id')
-                ->select('userinfo_tbl.*','users.*' )
+                ->select('userinfo_tbl.*', 'users.*')
                 ->where('users.status_id', '=', 0)
                 ->get()->toArray();
 
             return $user;
 
-           /* $user = Users::where('status_id', '=', 0)->get()->toArray();
-            return $user;*/
+            /* $user = Users::where('status_id', '=', 0)->get()->toArray();
+             return $user;*/
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
         }
-         catch (\Exception $e) {
-                    print_r($e->getMessage());
-                    die();
-                }
+
+    }
+
+    public function GetPostNotice()
+    {
+        try {
+            $posts = DB::table('users')
+                ->join('post_tbl', 'post_tbl.user_id', '=', 'users.id')
+                ->join('category_tbl', 'category_tbl.id', '=', 'post_tbl.category_id')
+                ->select('category_tbl.*', 'users.*','post_tbl.*')
+                ->where('post_tbl.status_id', '=', 4)
+                ->get()->toArray();
+
+            return $posts;
+
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
 
     }
 }
