@@ -62,7 +62,7 @@ Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'],
 });
 
 
-Route::group(['role' => '3', 'prefix' => 'intern', 'middleware' => 'auth.intern'], function () {
+Route::group(['role' => '4', 'prefix' => 'intern', 'middleware' => 'auth.intern'], function () {
 
     Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@intern', 'uses' => 'Web\UserController@Home']);
     Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@intern', function () {

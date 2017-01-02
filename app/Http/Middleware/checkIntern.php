@@ -24,7 +24,7 @@ class checkIntern
             }
         }
         else{
-            return  Redirect::route('Home@intern');
+            return  Redirect::route('web.demo');
         }
         return $next($request);
     }
