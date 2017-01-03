@@ -44,9 +44,9 @@ class UserController extends Controller
             $data4 = $response4->getBody()->getContents();
             $city = \GuzzleHttp\json_decode($data4);
 
-            $response5 = $client->request('GET', 'course');
+            /*$response5 = $client->request('GET', 'course');
             $data5 = $response5->getBody()->getContents();
-            $course = \GuzzleHttp\json_decode($data5);
+            $course = \GuzzleHttp\json_decode($data5);*/
             //print_r($course);die();
 
             /*$response6 = $client->request('GET', 'language');
@@ -87,7 +87,7 @@ class UserController extends Controller
             $form = $formBuilder->Create('IT_Glance_Forum\Form\ApplicationForm',
                 ['method' => 'POST', 'url' => route('web.application')],
                 ['country' => $country, 'province' => $province, 'zone' => $zone, 'district' => $district,
-                    'city' => $city, 'course' => $course]);
+                    'city' => $city]);
 
             return view('ApplicationForm', compact('form'));
 

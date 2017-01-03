@@ -14,30 +14,31 @@ class ApplicationForm extends Form
     {
         try {
             $this
-                ->add('fname', 'text', [
-                        'wrapper' => ['class' => 'form row'],
-                        'label' => 'First Name',
-                        'label_attr' => ['class' => 'control-label'],
-                        'attr' => ['class' => 'form-control field-input'],
-                        'rules' => ['required']
+                ->add('fname','text',[
+                        'wrapper' =>['class' => 'md-form row'],
+                        'label'=>'First Name',
+                        'label_attr'=>['class'=>'control-label'],
+                        'attr' =>['class' => 'form-control field-input'],
+                        'rules'=>['required']
                     ]
                 )
+
                 ->add('mname', 'text', [
-                        'wrapper' => ['class' => 'form row'],
+                        'wrapper' => ['class' => 'md-form row'],
                         'label' => 'Middle Name',
                         'label_attr' => ['class' => 'control-label'],
                         'attr' => ['class' => 'form-control field-input'],
                     ]
                 )
                 ->add('lname', 'text', [
-                        'wrapper' => ['class' => 'form row'],
+                        'wrapper' => ['class' => 'md-form row'],
                         'label' => 'Last Name',
                         'label_attr' => ['class' => 'control-label'],
                         'attr' => ['class' => 'form-control field-input']
                     ]
                 )
                 ->add('dob', 'date', [
-                        'wrapper' => ['class' => 'form row'],
+                        'wrapper' => ['class' => 'md-form row'],
                         'label' => 'Date Of Birth',
                         'label_attr' => ['class' => 'control-label active'],
                         'attr' => ['class' => 'form-control field-input']
@@ -51,7 +52,7 @@ class ApplicationForm extends Form
                     ]
                 )
                 ->add('email', 'email', [
-                        'wrapper' => ['class' => 'form row'],
+                        'wrapper' => ['class' => 'md-form row'],
                         'label' => 'Email Address',
                         'label_attr' => ['class' => 'control-label'],
                         'attr' => ['class' => 'form-control field-input'],
@@ -59,7 +60,7 @@ class ApplicationForm extends Form
                     ]
                 )
                 ->add('cemail', 'email', [
-                        'wrapper' => ['class' => 'form row'],
+                        'wrapper' => ['class' => 'md-form row'],
                         'label' => 'Confirm Email',
                         'label_attr' => ['class' => 'control-label'],
                         'attr' => ['class' => 'form-control field-input'],
@@ -67,14 +68,14 @@ class ApplicationForm extends Form
                     ]
                 )
                 ->add('phone_no', 'text', [
-                        'wrapper' => ['class' => 'form row'],
+                        'wrapper' => ['class' => 'md-form row'],
                         'label' => 'Phone No.',
                         'label_attr' => ['class' => 'control-label'],
                         'attr' => ['class' => 'form-control field-input']
                     ]
                 )
                 ->add('mobile_no', 'text', [
-                        'wrapper' => ['class' => 'form row'],
+                        'wrapper' => ['class' => 'md-form row'],
                         'label' => 'Mobile No. ',
                         'label_attr' => ['class' => 'control-label'],
                         'attr' => ['class' => 'form-control field-input']
@@ -85,18 +86,18 @@ class ApplicationForm extends Form
                         'district' => $this->getData('district'), 'city' => $this->getData('city')])
 
                 ->add('college', 'text', [
-                        'wrapper' => ['class' => 'form row'],
+                        'wrapper' => ['class' => 'md-form row'],
                         'label' => 'College ',
                         'label_attr' => ['class' => 'control-label'],
                         'attr' => ['class' => 'form-control field-input']
                     ]
                 )
-               /* ->add('course', 'select', [
+                ->add('course', 'select', [
                     'wrapper' => ['class' => 'form row'],
                     'label' => 'Course ',
                     'choices' => ['BIM', 'BScCSIT'],
                     'empty_value' => '=== Select Course ==='
-                ])*/
+                ])
                 ->add('language', 'select', [
                     'wrapper' => ['class' => 'form row'],
                     'label' => 'Language ',
@@ -104,12 +105,12 @@ class ApplicationForm extends Form
                     'empty_value' => '=== Select Language To Study ==='
                 ])
 
-                ->compose(\IT_Glance_Forum\Form\CourseForm::class,
-                    ['course' => $this->getData('course')])
+               /* ->compose(\IT_Glance_Forum\Form\CourseForm::class,
+                    ['course' => $this->getData('course')])*/
 
 
                 ->add('comment', 'textarea', [
-                        'wrapper' => ['class' => 'form row'],
+                        'wrapper' => ['class' => 'md-form row'],
                         'label' => 'Why This Language ? ',
                         'label_attr' => ['class' => 'control-label'],
                         'attr' => ['class' => 'form-control field-input']
