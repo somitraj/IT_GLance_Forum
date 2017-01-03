@@ -10,7 +10,7 @@ class LoginForm extends Form
     {
         $this
             ->add('username', 'text', [
-                    'wrapper' => ['class' => 'form-group'],
+                    'wrapper' => ['class' => 'md-form row'],
                     'label' => 'Username',
                     'attr' => ['class' => 'form-control field-input'],
                     'rules' => ['required'],
@@ -20,7 +20,7 @@ class LoginForm extends Form
             )
 
             ->add('password', 'password', [
-                    'wrapper' => ['class' => 'form-group'],
+                    'wrapper' => ['class' => 'md-form row'],
                     'attr' => ['class' => 'form-control field-input'],
                     'rules' => ['required', 'min:4'],
                     'errors' => ['class' => 'text-danger col-md-offset-4']
@@ -28,7 +28,8 @@ class LoginForm extends Form
                 ]
             )
 
-            ->add('remember me', 'checkbox')
-            ->add('Login', 'submit', ['attr' => ['class' => 'btn btn-danger']]);
+            ->add('rememberme','checkbox',['label'=>'remember me'])
+            ->add('Login', 'submit', ['attr' => ['class' => 'btn btn-primary  btn-block']]);
     }
+
 }
