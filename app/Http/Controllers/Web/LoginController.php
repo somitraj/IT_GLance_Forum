@@ -11,8 +11,17 @@ use IT_Glance_Forum\Http\Controllers\Controller;
 use IT_Glance_Forum\User;
 use Kris\LaravelFormBuilder\FormBuilder;
 
+/**
+ * Class LoginController
+ * @package IT_Glance_Forum\Http\Controllers\Web
+ */
 class LoginController extends Controller
 {
+    /**
+     * @param FormBuilder $formBuilder
+     * @param Request $request
+     * @return $this|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function Login(FormBuilder $formBuilder, Request $request)
     {
         try {
@@ -81,6 +90,9 @@ class LoginController extends Controller
 
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function UserCheck()
     {
         /*print_r('a');

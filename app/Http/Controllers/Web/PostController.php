@@ -9,10 +9,20 @@ use IT_Glance_Forum\Http\Controllers\Controller;
 use Kris\LaravelFormBuilder\FormBuilder;
 
 
+/**
+ * Class PostController
+ * @package IT_Glance_Forum\Http\Controllers\Web
+ */
 class PostController extends Controller
 {
-    public function Post(FormBuilder $formBuilder,Request $request){
-        try{
+    /**
+     * @param FormBuilder $formBuilder
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function Post(FormBuilder $formBuilder, Request $request)
+    {
+        try {
             $client = new Client(['base_uri' => config('app.REST_API')]);
 
             $response = $client->request('GET', 'category');
@@ -26,12 +36,12 @@ class PostController extends Controller
                             'category_id' => $request->get('category'),
                             'posttitle' => $request->get('posttitle'),
                             'postbody' => $request->get('postbody'),
-                            'uid'=>Auth::user()->id,
+                            'uid' => Auth::user()->id,
                         ]
                     ]);
 
-                  /*  $data = $response->getBody()->getContents();
-                    $u = \GuzzleHttp\json_decode($data);*/
+                    /*  $data = $response->getBody()->getContents();
+                      $u = \GuzzleHttp\json_decode($data);*/
 
                 } catch (\Exception $e) {
                     print_r($e->getMessage());
@@ -42,17 +52,20 @@ class PostController extends Controller
 
             $form = $formBuilder->Create('IT_Glance_Forum\Form\CategoryForm',
                 ['method' => 'POST', 'url' => route('Post@admin')],
-                ['category' => $category, ]);
+                ['category' => $category,]);
 
             return view('Post', compact('form'));
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
         }
-         catch (\Exception $e) {
-                    print_r($e->getMessage());
-                    die();
-                }
 
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function PostDetails($id)
     {
         try {
@@ -67,14 +80,19 @@ class PostController extends Controller
         }
 
     }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function PostApprove($id)
     {
         try {
             //print_r($id);die();
             $client = new Client(['base_uri' => config('app.REST_API')]);
             $response = $client->request('GET', 'postapprove/' . $id);
-             //$data = $response->getBody()->getContents();
-             //$all = \GuzzleHttp\json_decode($data);
+            //$data = $response->getBody()->getContents();
+            //$all = \GuzzleHttp\json_decode($data);
             return view('demo');
 
         } catch (\Exception $e) {

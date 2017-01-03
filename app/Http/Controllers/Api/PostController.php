@@ -7,8 +7,15 @@ use Illuminate\Support\Facades\DB;
 use IT_Glance_Forum\Http\Controllers\Controller;
 use IT_Glance_Forum\Models\PostTbl;
 
+/**
+ * Class PostController
+ * @package IT_Glance_Forum\Http\Controllers\Api
+ */
 class PostController extends Controller
 {
+    /**
+     * @param Request $request
+     */
     public function ForumPost(Request $request){
         try{
             $uid=$request->get('uid');
@@ -33,6 +40,11 @@ class PostController extends Controller
                 }
 
     }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function GetPostDetails($id)
     {
         try {
@@ -45,6 +57,10 @@ class PostController extends Controller
         }
 
     }
+
+    /**
+     * @param $id
+     */
     public function PostApprove($id)
     {
         try {

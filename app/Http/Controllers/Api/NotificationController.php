@@ -7,8 +7,15 @@ use Illuminate\Support\Facades\DB;
 use IT_Glance_Forum\Http\Controllers\Controller;
 use IT_Glance_Forum\Models\Users;
 
+/**
+ * Class NotificationController
+ * @package IT_Glance_Forum\Http\Controllers\Api
+ */
 class NotificationController extends Controller
 {
+    /**
+     * @return mixed
+     */
     public function GetUserNotice()
     {
         try {
@@ -29,13 +36,16 @@ class NotificationController extends Controller
 
     }
 
+    /**
+     * @return mixed
+     */
     public function GetPostNotice()
     {
         try {
             $posts = DB::table('users')
                 ->join('post_tbl', 'post_tbl.user_id', '=', 'users.id')
                 ->join('category_tbl', 'category_tbl.id', '=', 'post_tbl.category_id')
-                ->select('category_tbl.*', 'users.*','post_tbl.*')
+                ->select('category_tbl.*', 'users.*', 'post_tbl.*')
                 ->where('post_tbl.status_id', '=', 4)
                 ->get()->toArray();
 

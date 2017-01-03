@@ -19,10 +19,11 @@ use IT_Glance_Forum\Models\ZoneTbl;
  */
 class AddressController extends Controller
 {
+
     /**
-     * @param Request $request
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function GetCountry(Request $request)
+    public function GetCountry()
     {
         try {
             return CountryTbl::all();
@@ -33,10 +34,9 @@ class AddressController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function GetProvince(Request $request)
+    public function GetProvince()
     {
         try {
             return ProvinceTbl::all();
@@ -47,10 +47,9 @@ class AddressController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function GetZone(Request $request)
+    public function GetZone()
     {
         try {
             return ZoneTbl::all();
@@ -61,10 +60,9 @@ class AddressController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function GetDistrict(Request $request)
+    public function GetDistrict()
     {
         try {
             return DistrictTbl::all();
@@ -75,10 +73,9 @@ class AddressController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function GetCity(Request $request)
+    public function GetCity()
     {
         try {
             return CityTbl::all();
@@ -89,7 +86,6 @@ class AddressController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function GetCourse()
@@ -98,16 +94,15 @@ class AddressController extends Controller
             return CourseTbl::all()->toArray();
         } catch (\Exception $e) {
             throw $e;
-          //  print_r($e->getMessage());
-           // die();
+            //  print_r($e->getMessage());
+            // die();
         }
     }
 
     /**
-     * @param Request $request
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function GetLanguage(Request $request)
+    public function GetLanguage()
     {
         try {
             return LanguageTbl::all();
@@ -116,7 +111,11 @@ class AddressController extends Controller
             die();
         }
     }
-    public function GetCategory(Request $request)
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function GetCategory()
     {
         try {
             return CategoryTbl::all();

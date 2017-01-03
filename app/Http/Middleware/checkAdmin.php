@@ -8,23 +8,24 @@ use Illuminate\Support\Facades\Route;
 
 class checkAdmin
 {
+    /**
+     * @param $request
+     * @param Closure $next
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function handle($request, Closure $next)
     {
 
-        if(Auth::check())
-        {
-            $route=Route::getCurrentRoute()->getAction();
+        if (Auth::check()) {
+            $route = Route::getCurrentRoute()->getAction();
             // print_r(Auth::user()->user_typeid);die();
-            if(array_key_exists('role',$route))
-            {
-                if(Auth::user()->user_type_id!=$route['role'])
-                {
+            if (array_key_exists('role', $route)) {
+                if (Auth::user()->user_type_id != $route['role']) {
                     return redirect()->route('web.login');
                 }
             }
-        }
-        else{
-            return  Redirect::route('web.demo');
+        } else {
+            return Redirect::route('web.demo');
         }
         return $next($request);
     }

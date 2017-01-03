@@ -61,6 +61,9 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * @return array
+     */
     public function GetUserTypeList()
     {
         try {
@@ -73,6 +76,10 @@ class UserController extends Controller
 
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function GetUserDetails($id)
     {
         try {
@@ -86,6 +93,9 @@ class UserController extends Controller
 
     }
 
+    /**
+     * @return mixed
+     */
     public function GetAllMemberList()
     {
         try {
@@ -103,6 +113,9 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * @return mixed
+     */
     public function GetInternList()
     {
         try {
@@ -121,6 +134,9 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * @param $id
+     */
     public function UserApprove($id)
     {
         try {

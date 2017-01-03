@@ -87,7 +87,7 @@ class UserController extends Controller
             $form = $formBuilder->Create('IT_Glance_Forum\Form\ApplicationForm',
                 ['method' => 'POST', 'url' => route('web.application')],
                 ['country' => $country, 'province' => $province, 'zone' => $zone, 'district' => $district,
-                    'city' => $city,'course' => $course]);
+                    'city' => $city, 'course' => $course]);
 
             return view('ApplicationForm', compact('form'));
 
@@ -98,11 +98,18 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function Home()
     {
         return view('Home');
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function UserDetails($id)
     {
         try {
@@ -118,6 +125,9 @@ class UserController extends Controller
 
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function GetMemberList()
     {
         try {
@@ -132,6 +142,9 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function GetInternList()
     {
         try {
@@ -146,6 +159,10 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function UserApprove($id)
     {
         try {
@@ -162,6 +179,9 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function GetUserProfile()
     {
         return view('UserProfile');

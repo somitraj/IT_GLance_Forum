@@ -6,8 +6,15 @@ use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use IT_Glance_Forum\Http\Controllers\Controller;
 
+/**
+ * Class NotificationController
+ * @package IT_Glance_Forum\Http\Controllers\Web
+ */
 class NotificationController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function UserNotification()
     {
         try {
@@ -26,6 +33,10 @@ class NotificationController extends Controller
             die();
         }
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function GetPostNotice()
     {
         try {
