@@ -189,7 +189,9 @@ return [
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 
-        Lavary\Menu\ServiceProvider::class
+        Lavary\Menu\ServiceProvider::class,
+        Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
 
 
@@ -247,6 +249,7 @@ return [
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
 
         'Menu'   => Lavary\Menu\Facade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 
