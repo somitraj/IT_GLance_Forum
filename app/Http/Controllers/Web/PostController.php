@@ -93,11 +93,24 @@ class PostController extends Controller
             $response = $client->request('GET', 'postapprove/' . $id);
             //$data = $response->getBody()->getContents();
             //$all = \GuzzleHttp\json_decode($data);
-            return view('demo');
+            return redirect('admin/postnotice');
 
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();
         }
+    }
+    public function PostEvent(FormBuilder $formBuilder){
+        try{
+            $form = $formBuilder->Create('IT_Glance_Forum\Form\EventForm',
+                ['method' => 'POST', 'url' => route('Event@submentor')]);
+
+            return view('Event', compact('form'));
+        }
+         catch (\Exception $e) {
+                    print_r($e->getMessage());
+                    die();
+                }
+
     }
 }

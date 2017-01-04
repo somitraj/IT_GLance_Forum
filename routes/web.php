@@ -87,4 +87,30 @@ Route::group(['role' => '4', 'prefix' => 'intern', 'middleware' => 'auth.intern'
 
 
 
+Route::group(['role' => '3', 'prefix' => 'submentor', 'middleware' => 'auth.submentor'], function () {
+
+    Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@submentor', 'uses' => 'Web\UserController@Home']);
+    Route::any('/event', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Event@submentor', 'uses' => 'Web\PostController@PostEvent']);
+
+    Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@submentor', function () {
+        return redirect()->route('Articles@Top_Articles@intern');
+    }]);
+
+
+    Route::group(['prefix' => 'articles'], function () {
+        Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@submentor', 'uses' => 'Web\UserController@Home']);
+
+    });
+    Route::any('/memberlist', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Members@submentor', 'uses' => 'Web\UserController@GetMemberList']);
+    Route::any('/profile', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'My_Profile@submentor', 'uses' => 'Web\UserController@GetUserProfile']);
+    Route::any('/logout', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Logout@submentor',function(){Session::flush();return redirect()->route('web.login');}]);
+
+    Route::any('/post', ['as' => 'Post@submentor','uses' => 'Web\PostController@Post']);
+    Route::any('/postnotice', ['icon' => 'fa_fa-home', 'as' => 'Postnotice@submentor', 'uses' => 'Web\NotificationController@GetPostNotice']);
+
+
+});
+
+
+
 

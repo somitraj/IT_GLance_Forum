@@ -192,6 +192,7 @@ return [
         Lavary\Menu\ServiceProvider::class,
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class
 
 
 
@@ -250,6 +251,7 @@ return [
 
         'Menu'   => Lavary\Menu\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Calendar'=>MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
 
     ],
 

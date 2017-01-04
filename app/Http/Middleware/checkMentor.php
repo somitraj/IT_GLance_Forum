@@ -3,6 +3,8 @@
 namespace IT_Glance_Forum\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class checkMentor
 {

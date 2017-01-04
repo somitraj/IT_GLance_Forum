@@ -104,9 +104,9 @@ class LoginController extends Controller
                 return redirect()->route('Home@admin');
             } else if (Auth::user()->user_type_id == 2) {
                 // print_r(Auth::user());die();
-                return redirect()->route('web.demo');
+                return redirect()->route('Home@mentor');
             } else if (Auth::user()->user_type_id == 3) {
-                return redirect()->route('Home@intern');
+                return redirect()->route('Home@submentor');
                 //return redirect()->to('/');
             } else {
                 return redirect()->route('Home@intern');

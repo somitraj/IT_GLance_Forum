@@ -171,7 +171,7 @@ class UserController extends Controller
             $response = $client->request('GET', 'userapprove/' . $id);
             /* $data = $response->getBody()->getContents();
              $all = \GuzzleHttp\json_decode($data);*/
-            return view('demo');
+            return redirect('admin/notification');
 
         } catch (\Exception $e) {
             print_r($e->getMessage());
