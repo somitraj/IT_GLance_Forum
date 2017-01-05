@@ -151,8 +151,51 @@ class UserController extends Controller
             $client = new Client(['base_uri' => config('app.REST_API')]);
             $response = $client->request('GET', 'internlist');
             $data = $response->getBody()->getContents();
-            $intern = \GuzzleHttp\json_decode($data);
-            return view('InternList', compact('intern'));
+            $member = \GuzzleHttp\json_decode($data);
+            return view('MemberList', compact('member'));
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+    }
+
+
+    public function GetAdminList()
+    {
+        try {
+            $client = new Client(['base_uri' => config('app.REST_API')]);
+            $response = $client->request('GET', 'adminlist');
+            $data = $response->getBody()->getContents();
+            $member = \GuzzleHttp\json_decode($data);
+            return view('MemberList', compact('member'));
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+    }
+
+    public function GetMentorList()
+    {
+        try {
+            $client = new Client(['base_uri' => config('app.REST_API')]);
+            $response = $client->request('GET', 'mentorlist');
+            $data = $response->getBody()->getContents();
+            $member = \GuzzleHttp\json_decode($data);
+            return view('MemberList', compact('member'));
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+    }
+
+    public function GetSubMentorList()
+    {
+        try {
+            $client = new Client(['base_uri' => config('app.REST_API')]);
+            $response = $client->request('GET', 'submentorlist');
+            $data = $response->getBody()->getContents();
+            $member = \GuzzleHttp\json_decode($data);
+            return view('MemberList', compact('member'));
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();

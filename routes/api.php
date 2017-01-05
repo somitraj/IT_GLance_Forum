@@ -33,6 +33,9 @@ $api->version('v1', ['namespace' => "IT_Glance_Forum\Http\Controllers\Api"], fun
     $api->any('postdetails/{id}', 'PostController@GetPostDetails');
     $api->any('allmemberlist', 'UserController@GetAllMemberList');
     $api->any('internlist', 'UserController@GetInternList');
+    $api->any('adminlist', 'UserController@GetAdminList');
+    $api->any('mentorlist', 'UserController@GetMentorList');
+    $api->any('submentorlist', 'UserController@GetSubMentorList');
     $api->any('userapprove/{id}', 'UserController@UserApprove');
     $api->any('postapprove/{id}', 'PostController@PostApprove');
     $api->any('forumpost', 'PostController@ForumPost');

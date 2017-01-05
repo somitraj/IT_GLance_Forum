@@ -6,11 +6,11 @@
         <div class="nav nav-tabs">
             <li class="active"><a href="" role="navigation" class="nav navbar-default ">All<span
                             class="badge">{{count($all)}}</span></a></li>
-            <li><a href="#" role="navigation" class="nav navbar-default ">Admin<span
+            <li><a href="adminlist" role="navigation" class="nav navbar-default ">Admin<span
                             class="badge"></span></a></li>
-            <li><a href="#" role="navigation" class="nav navbar-default ">Mentor<span
+            <li><a href="mentorlist" role="navigation" class="nav navbar-default ">Mentor<span
                             class="badge"></span></a></li>
-            <li><a href="#" role="navigation" class="nav navbar-default ">Submentor<span
+            <li><a href="submentorlist" role="navigation" class="nav navbar-default ">Submentor<span
                             class="badge"></span></a></li>
             <li><a href="internlist" role="navigation" class="nav navbar-default ">Intern<span
                             class="badge"></span></a></li>

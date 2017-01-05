@@ -134,6 +134,54 @@ class UserController extends Controller
         }
     }
 
+    public function GetSubmentorList()
+    {
+        try {
+            $submentor = DB::table('userinfo_tbl')
+                ->join('users', 'users.id', '=', 'userinfo_tbl.user_id')
+                ->select('users.*', 'userinfo_tbl.*')
+                ->where('status_id', '=', 1)
+                ->where('user_type_id', '=', 3)
+                ->get()->toArray();
+            return $submentor;
+            /*$user = Users::where('status_id', '=', 1)->get()->toArray();
+            return $user;*/
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+    }
+
+    public function GetAdminList()
+    {
+        try {
+            $admin = DB::table('userinfo_tbl')
+                ->join('users', 'users.id', '=', 'userinfo_tbl.user_id')
+                ->select('users.*', 'userinfo_tbl.*')
+                ->where('status_id', '=', 1)
+                ->where('user_type_id', '=', 1)
+                ->get()->toArray();
+            return $admin;
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+    }
+    public function GetMentorList()
+    {
+        try {
+            $mentor = DB::table('userinfo_tbl')
+                ->join('users', 'users.id', '=', 'userinfo_tbl.user_id')
+                ->select('users.*', 'userinfo_tbl.*')
+                ->where('status_id', '=', 1)
+                ->where('user_type_id', '=', 2)
+                ->get()->toArray();
+            return $mentor;
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+    }
     /**
      * @param $id
      */

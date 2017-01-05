@@ -41,15 +41,21 @@ Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'],
         return redirect()->route('Articles@Top_Articles@admin');
     }]);
 
-
     Route::group(['prefix' => 'articles'], function () {
     Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@admin', 'uses' => 'Web\UserController@Home']);
 
 });
+    Route::any('/event', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Event@admin', 'uses' => 'Web\PostController@PostEvent']);
+
     Route::any('/notification', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Notification@admin', 'uses' => 'Web\NotificationController@UserNotification']);
     Route::any('/memberlist', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Members@admin', 'uses' => 'Web\UserController@GetMemberList']);
     Route::any('/internlist', ['icon' => 'fa_fa-home', 'as' => 'Interns@admin', 'uses' => 'Web\UserController@GetInternList']);
     Route::any('/profile', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'My_Profile@admin', 'uses' => 'Web\UserController@GetUserProfile']);
+    Route::any('/internlist', ['icon' => 'fa_fa-home', 'as' => 'Interns@admin', 'uses' => 'Web\UserController@GetInternList']);
+    Route::any('/adminlist', ['icon' => 'fa_fa-home', 'as' => 'Admin@admin', 'uses' => 'Web\UserController@GetAdminList']);
+    Route::any('/mentorlist', ['icon' => 'fa_fa-home', 'as' => 'Mentor@admin', 'uses' => 'Web\UserController@GetMentorList']);
+    Route::any('/submentorlist', ['icon' => 'fa_fa-home', 'as' => 'Submentor@admin', 'uses' => 'Web\UserController@GetSubMentorList']);
+
     Route::any('/logout', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Logout@admin',function(){Session::flush();return redirect()->route('web.login');}]);
 
     Route::any('/userdetails/{id}', ['as' => 'Userdetails@admin','uses' => 'Web\UserController@UserDetails']);
