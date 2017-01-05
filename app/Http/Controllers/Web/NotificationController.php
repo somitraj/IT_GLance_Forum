@@ -51,4 +51,21 @@ class NotificationController extends Controller
             die();
         }
     }
+
+    public function GetEventNotice()
+    {
+        try {
+            $client = new Client(['base_uri' => config('app.REST_API')]);
+            $response = $client->request('GET', 'eventnotice');
+            $data = $response->getBody()->getContents();
+            $eventnotice = \GuzzleHttp\json_decode($data);
+
+            return view('EventNotification', compact('eventnotice'));
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+    }
+
+
 }

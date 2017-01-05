@@ -8,3 +8,7 @@
 #logo{
     border-radius: 50%;
 }
+
+.eventimage:hover{
+    width: 191px; height: 191px;
+}

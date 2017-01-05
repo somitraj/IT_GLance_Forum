@@ -21,6 +21,7 @@
     <link href="/css/mdb.css" rel="stylesheet">
     <link href="/css/mdb.min.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
+    {{--<link href="/css/bootstrap-material-datepicker.css" rel="stylesheet">--}}
     <link href="/css/compiled.min.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
 
@@ -43,6 +44,9 @@
 <script src="/jquery/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/mdb.min.js"></script>
+{{--<script src="/js/material.min.js"></script>
+<script src="/js/moment-with-locales.min.js"></script>
+<script src="/js/bootstrap-material-datepicker.js"></script>--}}
 <script src="/tinymce/tinymce.min.js"></script>
 <script src="/js/tether.min.js"></script>
 <script src="/js/compiled.min.js"></script>

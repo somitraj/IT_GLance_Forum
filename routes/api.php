@@ -27,6 +27,7 @@ $api->version('v1', ['namespace' => "IT_Glance_Forum\Http\Controllers\Api"], fun
     $api->get('language', 'AddressController@GetLanguage');
     $api->any('usernotice', 'NotificationController@GetUserNotice');
     $api->any('postnotice', 'NotificationController@GetPostNotice');
+    $api->any('eventnotice', 'NotificationController@GetEventNotice');
     $api->any('usertypelist', 'UserController@GetUserTypeList');
     $api->any('userdetails/{id}', 'UserController@GetUserDetails');
     $api->any('postdetails/{id}', 'PostController@GetPostDetails');
@@ -35,5 +36,6 @@ $api->version('v1', ['namespace' => "IT_Glance_Forum\Http\Controllers\Api"], fun
     $api->any('userapprove/{id}', 'UserController@UserApprove');
     $api->any('postapprove/{id}', 'PostController@PostApprove');
     $api->any('forumpost', 'PostController@ForumPost');
+    $api->any('eventpost', 'PostController@PostEvent');
 
 });

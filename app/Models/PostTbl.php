@@ -9,7 +9,7 @@ class PostTbl extends Model {
      */
 
     protected $table = 'post_tbl';
-    protected $fillable = ['id', 'user_id', 'post_title', 'post_body', 'date', 'time', 'status_id', 'post_type_id', 'category_id'];
+    protected $fillable = ['id', 'user_id', 'post_title', 'post_body', 'start_datetime', 'end_datetime', 'status_id', 'post_type_id', 'category_id'];
 
 
     public function categoryTbl() {

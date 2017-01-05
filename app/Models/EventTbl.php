@@ -9,7 +9,7 @@ class EventTbl extends Model {
      */
 
     protected $table = 'event_tbl';
-    protected $fillable = ['id', 'event_title', 'event_description', 'event_date', 'event_location', 'event_image', 'user_id', 'status_id'];
+    protected $fillable = ['id', 'event_title', 'event_description', 'start_datetime', 'event_location', 'event_image', 'user_id', 'status_id','end_datetime'];
 
 
     public function usersTbl() {

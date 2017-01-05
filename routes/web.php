@@ -57,7 +57,8 @@ Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'],
     Route::any('/userapprove/{id}', ['as' => 'Approve@admin','uses' => 'Web\UserController@UserApprove']);
     Route::any('/postapprove/{id}', ['as' => 'PostApprove@admin','uses' => 'Web\PostController@PostApprove']);
     Route::any('/post', ['as' => 'Post@admin','uses' => 'Web\PostController@Post']);
-    Route::any('/postnotice', ['icon' => 'fa_fa-home', 'as' => 'Postnotice@admin', 'uses' => 'Web\NotificationController@GetPostNotice']);
+    Route::any('/postnotice', ['as' => 'Postnotice@admin', 'uses' => 'Web\NotificationController@GetPostNotice']);
+    Route::any('/eventnotice', ['as' => 'Eventnotice@admin', 'uses' => 'Web\NotificationController@GetEventNotice']);
 
 });
 
@@ -79,9 +80,7 @@ Route::group(['role' => '4', 'prefix' => 'intern', 'middleware' => 'auth.intern'
      Route::any('/profile', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'My_Profile@intern', 'uses' => 'Web\UserController@GetUserProfile']);
     Route::any('/logout', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Logout@intern',function(){Session::flush();return redirect()->route('web.login');}]);
 
-    Route::any('/post', ['as' => 'Post@admin','uses' => 'Web\PostController@Post']);
-    Route::any('/postnotice', ['icon' => 'fa_fa-home', 'as' => 'Postnotice@admin', 'uses' => 'Web\NotificationController@GetPostNotice']);
-
+    Route::any('/post', ['as' => 'Post@intern','uses' => 'Web\PostController@Post']);
 
 });
 

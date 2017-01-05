@@ -10,7 +10,7 @@ class EventForm extends Form
     {
         try{
             $this
-                ->add('event_name','text',[
+                ->add('event_title','text',[
                         'wrapper' =>['class' => 'md-form row'],
                         'label'=>'Name of Event',
                         'label_attr'=>['class'=>'control-label'],
@@ -45,6 +45,13 @@ class EventForm extends Form
                         'label'=>'Event Image',
                         'label_attr'=>['class'=>'control-label'],
                         'attr' => ['class' => 'form-control field-input','accept'=>'.jpeg,.png,.jpg']
+                    ]
+                )
+                ->add('description','textarea', [
+                        'wrapper' => ['class' => 'form-group row'],
+                        'label'=>'Description',
+                        'label_attr'=>['class'=>'control-label'],
+                        'attr' => ['class' => 'form-control field-input']
                     ]
                 )
                 ->add('Create Event','submit',['attr' =>['class'=> 'btn btn-deep-purple']])
