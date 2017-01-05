@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class SkillTbl extends Model {
+class SkillTbl extends Model
+{
 
     /**
      * Generated
@@ -12,7 +13,8 @@ class SkillTbl extends Model {
     protected $fillable = ['id', 'skills'];
 
 
-    public function userinfoTbls() {
+    public function userinfoTbls()
+    {
         return $this->hasMany('IT_Glance_Forum\Models\UserinfoTbl', 'skill_id', 'id');
     }
 

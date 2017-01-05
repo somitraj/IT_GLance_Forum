@@ -16,7 +16,7 @@ class StatusTbl extends Model {
         return $this->belongsToMany('IT_Glance_Forum\Models\UsersTbl', 'event_tbl', 'status_id', 'user_id');
     }
 
-    public function usersTbls() {
+    public function users1Tbls() {
         return $this->belongsToMany('IT_Glance_Forum\Models\UsersTbl', 'intern_project_tbl', 'status_id', 'user_id');
     }
 
@@ -40,7 +40,7 @@ class StatusTbl extends Model {
         return $this->hasMany('IT_Glance_Forum\Models\PostTbl', 'status_id', 'id');
     }
 
-    public function usersTbls() {
+    public function users2Tbls() {
         return $this->hasMany('IT_Glance_Forum\Models\UsersTbl', 'status_id', 'id');
     }
 
