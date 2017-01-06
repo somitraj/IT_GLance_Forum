@@ -5,7 +5,7 @@
     <div class="row" style="margin-top: -80px">
         <div class="col-md-3">
             @foreach($profiledata as $p)
-            <img src="/images/som.jpg"  width="120" height="120 " style="margin-left: 130px;"><br><br>
+            <img src="/images/som.jpg"  class="img-responsive" width="120" height="120 " style="display: block;margin: 0 auto;"><br><br>
                 <h4  style="color: deepskyblue;text-align: center">  {{$p->fname}} {{$p->mname}} {{$p->lname}}</h4><br>
                 <h6 style="margin-left: 90px"> Status :<b style="color: white;background-color: orange">{{$p->user_type}}</b></h6><br>
                 <h6 style="margin-left: 90px">Studied at {{$p->college}}</h6>
@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-block">
                     <div>
-                    <ul class="nav nav-tabs tabs-4" id="profiledetailtab" role="tablist" style="">
+                    {{--<ul class="nav nav-tabs tabs-4" id="profiledetailtab" role="tablist" style="">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab"> Profile<span
                                         class="badge"></span></a>
@@ -29,12 +29,25 @@
                                         class="badge"></span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#panel4" role="tab"> Settings<span
+                            <a class="nav-link" data-toggle="tab" href="usersetting" role="tab"> Settings<span
                                         class="badge"></span></a>
                         </li>
 
-                    </ul>
+                    </ul>--}}
+
+                        <div class="nav nav-tabs tabs-4" id="profiledetailtab">
+                            <li class="active"><a href="#" role="navigation" class="nav navbar-default ">Profile<span
+                                            class="badge"></span></a></li>
+                            <li style=""><a href="#" role="navigation" class="nav navbar-default ">Activities<span
+                                            class="badge"></span></a></li>
+                            <li><a href="#" role="navigation" class="nav navbar-default ">Projects<span
+                                            class="badge"></span></a></li>
+                            <li><a href="usersettings" role="navigation" class="nav navbar-default ">Settings<span
+                                            class="badge"></span></a></li>
+                        </div>
                     </div>
+
+
                     <div class="container-fluid" style="color: black;margin-top: 50px">
                         <div class="row">
                             <div class="col-md-6">

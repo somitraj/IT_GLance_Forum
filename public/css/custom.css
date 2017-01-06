@@ -25,4 +25,11 @@
 }
 #profiledetailtab{
     background-color: #444754;
+    }
+#profiledetailtab>li>a{
+    background-color: #444754;
+    color: white;
+}
+#profiledetailtab>li.active>a{
+    background-color: grey;
 }
