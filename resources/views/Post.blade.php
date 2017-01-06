@@ -29,5 +29,5 @@
             @endif
         @endforeach
     </div> <!-- end .flash-message -->
-{!! form($form) !!}
+    {!! form($form) !!}
 @endsection

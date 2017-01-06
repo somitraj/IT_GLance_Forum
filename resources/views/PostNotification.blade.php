@@ -5,7 +5,7 @@
     <div class="card" style="min-height: 400px">
         <h2>Notification<span class="badge"></span></h2>
         <div class="nav nav-tabs">
-            <li ><a href="notification" role="navigation" class="nav navbar-default ">Member Request<span
+            <li><a href="notification" role="navigation" class="nav navbar-default ">Member Request<span
                             class="badge"></span></a></li>
             <li><a href="#" role="navigation" class="nav navbar-default ">Feedbacks<span
                             class="badge"></span></a></li>

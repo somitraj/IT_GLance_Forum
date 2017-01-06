@@ -34,7 +34,7 @@
 <!--Navbar-->
 
 <div style="">
-@include('navs')
+    @include('navs')
 </div>
 
 <!--/.Navbar-->

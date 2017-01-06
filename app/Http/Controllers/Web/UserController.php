@@ -153,7 +153,7 @@ class UserController extends Controller
             $data4 = $response4->getBody()->getContents();
             $member4 = \GuzzleHttp\json_decode($data4);
 
-            return view('MemberList', compact('all','member1','member2','member3','member4'));
+            return view('MemberList', compact('all', 'member1', 'member2', 'member3', 'member4'));
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();
@@ -161,62 +161,62 @@ class UserController extends Controller
     }
 
 
-   /* public function GetInternList()
-    {
-        try {
-            $client = new Client(['base_uri' => config('app.REST_API')]);
-            $response = $client->request('GET', 'internlist');
-            $data = $response->getBody()->getContents();
-            $member = \GuzzleHttp\json_decode($data);
-            return view('MemberList', compact('member'));
-        } catch (\Exception $e) {
-            print_r($e->getMessage());
-            die();
-        }
-    }
+    /* public function GetInternList()
+     {
+         try {
+             $client = new Client(['base_uri' => config('app.REST_API')]);
+             $response = $client->request('GET', 'internlist');
+             $data = $response->getBody()->getContents();
+             $member = \GuzzleHttp\json_decode($data);
+             return view('MemberList', compact('member'));
+         } catch (\Exception $e) {
+             print_r($e->getMessage());
+             die();
+         }
+     }
 
 
-    public function GetAdminList()
-    {
-        try {
-            $client = new Client(['base_uri' => config('app.REST_API')]);
-            $response = $client->request('GET', 'adminlist');
-            $data = $response->getBody()->getContents();
-            $member = \GuzzleHttp\json_decode($data);
-            return view('MemberList', compact('member'));
-        } catch (\Exception $e) {
-            print_r($e->getMessage());
-            die();
-        }
-    }
+     public function GetAdminList()
+     {
+         try {
+             $client = new Client(['base_uri' => config('app.REST_API')]);
+             $response = $client->request('GET', 'adminlist');
+             $data = $response->getBody()->getContents();
+             $member = \GuzzleHttp\json_decode($data);
+             return view('MemberList', compact('member'));
+         } catch (\Exception $e) {
+             print_r($e->getMessage());
+             die();
+         }
+     }
 
-    public function GetMentorList()
-    {
-        try {
-            $client = new Client(['base_uri' => config('app.REST_API')]);
-            $response = $client->request('GET', 'mentorlist');
-            $data = $response->getBody()->getContents();
-            $member = \GuzzleHttp\json_decode($data);
-            return view('MemberList', compact('member'));
-        } catch (\Exception $e) {
-            print_r($e->getMessage());
-            die();
-        }
-    }
+     public function GetMentorList()
+     {
+         try {
+             $client = new Client(['base_uri' => config('app.REST_API')]);
+             $response = $client->request('GET', 'mentorlist');
+             $data = $response->getBody()->getContents();
+             $member = \GuzzleHttp\json_decode($data);
+             return view('MemberList', compact('member'));
+         } catch (\Exception $e) {
+             print_r($e->getMessage());
+             die();
+         }
+     }
 
-    public function GetSubMentorList()
-    {
-        try {
-            $client = new Client(['base_uri' => config('app.REST_API')]);
-            $response = $client->request('GET', 'submentorlist');
-            $data = $response->getBody()->getContents();
-            $member = \GuzzleHttp\json_decode($data);
-            return view('MemberList', compact('member'));
-        } catch (\Exception $e) {
-            print_r($e->getMessage());
-            die();
-        }
-    }*/
+     public function GetSubMentorList()
+     {
+         try {
+             $client = new Client(['base_uri' => config('app.REST_API')]);
+             $response = $client->request('GET', 'submentorlist');
+             $data = $response->getBody()->getContents();
+             $member = \GuzzleHttp\json_decode($data);
+             return view('MemberList', compact('member'));
+         } catch (\Exception $e) {
+             print_r($e->getMessage());
+             die();
+         }
+     }*/
 
     /**
      * @param $id
@@ -244,15 +244,81 @@ class UserController extends Controller
     public function GetUserProfile()
     {
         $client = new Client(['base_uri' => config('app.REST_API')]);
-        $id=Auth::user()->id;
+        $id = Auth::user()->id;
         //print_r($id);die();
-        $response = $client->request('POST', 'getuserprofile',[
+        $response = $client->request('POST', 'getuserprofile', [
             'form_params' => [
-                    'id' => $id,
-       ]]);
+                'id' => $id,
+            ]]);
         $data = $response->getBody()->getContents();
-       // print_r($data);die();
-         $profiledata = \GuzzleHttp\json_decode($data);
-        return view('UserProfile',compact('profiledata'));
+        // print_r($data);die();
+        $profiledata = \GuzzleHttp\json_decode($data);
+        return view('UserProfile', compact('profiledata'));
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function UserProfileSettings()
+    {
+        try {
+            $client = new Client(['base_uri' => config('app.REST_API')]);
+            $id = Auth::user()->id;
+            $response = $client->request('POST', 'getuserprofile', [
+                'form_params' => [
+                    'id' => $id,
+                ]]);
+            $data = $response->getBody()->getContents();
+            $profiledata = \GuzzleHttp\json_decode($data);
+            return view('UserSettings', compact('profiledata'));
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function UserProfileProjects()
+    {
+        try {
+            $client = new Client(['base_uri' => config('app.REST_API')]);
+            $id = Auth::user()->id;
+            $response = $client->request('POST', 'getuserprofile', [
+                'form_params' => [
+                    'id' => $id,
+                ]]);
+            $data = $response->getBody()->getContents();
+            $profiledata = \GuzzleHttp\json_decode($data);
+            return view('UserProject', compact('profiledata'));
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function UserProfileActivities()
+    {
+        try {
+            $client = new Client(['base_uri' => config('app.REST_API')]);
+            $id = Auth::user()->id;
+            $response = $client->request('POST', 'getuserprofile', [
+                'form_params' => [
+                    'id' => $id,
+                ]]);
+            $data = $response->getBody()->getContents();
+            $profiledata = \GuzzleHttp\json_decode($data);
+            return view('UserActivities', compact('profiledata'));
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+
     }
 }

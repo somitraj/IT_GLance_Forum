@@ -57,6 +57,10 @@ class NotificationController extends Controller
         }
 
     }
+
+    /**
+     * @return mixed
+     */
     public function GetEventNotice()
     {
         try {

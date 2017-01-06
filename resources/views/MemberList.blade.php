@@ -26,7 +26,7 @@
             </li>
         </ul>
 
-            <!-- Tab panels -->
+        <!-- Tab panels -->
         <div class="tab-content">
 
             <!--Panel 1-->
@@ -34,7 +34,8 @@
             <div class="tab-pane fade in active" id="panel1" role="tabpanel">
                 <br>
                 <table class="table table-bordered">
-                    <table id="example" class="display table table-responsive table-striped" cellspacing="0" width="100%"
+                    <table id="example" class="display table table-responsive table-striped" cellspacing="0"
+                           width="100%"
                            style="margin-left: 50px;">
                         <thead>
                         <tr>
@@ -61,114 +62,118 @@
             <!--Panel 2-->
             @foreach($member1 as $m)
                 @if($m->user_type_id==1)
-            <div class="tab-pane fade in active" id="panel2" role="tabpanel">
-                <br>
-                <table class="table table-bordered">
-                    <table id="example" class="display table table-responsive table-striped" cellspacing="0" width="100%"
-                           style="margin-left: 50px;">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($member1 as $i)
-                            <tr>
-                                <td>{{$i->fname}}</td>
-                                <td>{{$i->email}}</td>
+                    <div class="tab-pane fade in active" id="panel2" role="tabpanel">
+                        <br>
+                        <table class="table table-bordered">
+                            <table id="example" class="display table table-responsive table-striped" cellspacing="0"
+                                   width="100%"
+                                   style="margin-left: 50px;">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($member1 as $i)
+                                    <tr>
+                                        <td>{{$i->fname}}</td>
+                                        <td>{{$i->email}}</td>
 
 
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </table>
-            </div>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </table>
+                    </div>
                     @endif
                     @endforeach
-            <!--/.Panel 2-->
+                            <!--/.Panel 2-->
 
-            <!--Panel 3-->
-            <div class="tab-pane fade in active" id="panel3" role="tabpanel">
-                <br>
-                <table class="table table-bordered">
-                    <table id="example" class="display table table-responsive table-striped" cellspacing="0" width="100%"
-                           style="margin-left: 50px;">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($member2 as $i)
-                            <tr>
-                                <td>{{$i->fname}}</td>
-                                <td>{{$i->email}}</td>
-
-
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </table>
-            </div>
-            <!--/.Panel 3-->
-
-            <!--Panel 4-->
-            <div class="tab-pane fade in active" id="panel4" role="tabpanel">
-                <br>
-                <table class="table table-bordered">
-                    <table id="example" class="display table table-responsive table-striped" cellspacing="0" width="100%"
-                           style="margin-left: 50px;">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($member3 as $i)
-                            <tr>
-                                <td>{{$i->fname}}</td>
-                                <td>{{$i->email}}</td>
+                    <!--Panel 3-->
+                    <div class="tab-pane fade in active" id="panel3" role="tabpanel">
+                        <br>
+                        <table class="table table-bordered">
+                            <table id="example" class="display table table-responsive table-striped" cellspacing="0"
+                                   width="100%"
+                                   style="margin-left: 50px;">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($member2 as $i)
+                                    <tr>
+                                        <td>{{$i->fname}}</td>
+                                        <td>{{$i->email}}</td>
 
 
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </table>
-            </div>
-            <!--/.Panel 4-->
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </table>
+                    </div>
+                    <!--/.Panel 3-->
 
-            <!--Panel 5-->
-            <div class="tab-pane fade in active" id="panel5" role="tabpanel">
-                <br>
-                <table class="table table-bordered">
-                    <table id="example" class="display table table-responsive table-striped" cellspacing="0" width="100%"
-                           style="margin-left: 50px;">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($member4 as $i)
-                            <tr>
-                                <td>{{$i->fname}}</td>
-                                <td>{{$i->email}}</td>
+                    <!--Panel 4-->
+                    <div class="tab-pane fade in active" id="panel4" role="tabpanel">
+                        <br>
+                        <table class="table table-bordered">
+                            <table id="example" class="display table table-responsive table-striped" cellspacing="0"
+                                   width="100%"
+                                   style="margin-left: 50px;">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($member3 as $i)
+                                    <tr>
+                                        <td>{{$i->fname}}</td>
+                                        <td>{{$i->email}}</td>
 
 
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </table>
-            </div>
-            <!--/.Panel 5-->
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </table>
+                    </div>
+                    <!--/.Panel 4-->
+
+                    <!--Panel 5-->
+                    <div class="tab-pane fade in active" id="panel5" role="tabpanel">
+                        <br>
+                        <table class="table table-bordered">
+                            <table id="example" class="display table table-responsive table-striped" cellspacing="0"
+                                   width="100%"
+                                   style="margin-left: 50px;">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($member4 as $i)
+                                    <tr>
+                                        <td>{{$i->fname}}</td>
+                                        <td>{{$i->email}}</td>
+
+
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </table>
+                    </div>
+                    <!--/.Panel 5-->
 
         </div>
 
@@ -182,4 +187,4 @@
         })
 
     </script>
-    @endsection
+@endsection

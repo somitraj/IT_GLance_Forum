@@ -135,6 +135,9 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * @return mixed
+     */
     public function GetSubmentorList()
     {
         try {
@@ -153,6 +156,9 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * @return mixed
+     */
     public function GetAdminList()
     {
         try {
@@ -168,6 +174,10 @@ class UserController extends Controller
             die();
         }
     }
+
+    /**
+     * @return mixed
+     */
     public function GetMentorList()
     {
         try {
@@ -183,6 +193,7 @@ class UserController extends Controller
             die();
         }
     }
+
     /**
      * @param $id
      */
@@ -204,21 +215,26 @@ class UserController extends Controller
         }
 
     }
-    public function GetUserProfile(Request $request){
-        try{
-            $uid=$request->get('id');
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function GetUserProfile(Request $request)
+    {
+        try {
+            $uid = $request->get('id');
             $uinfo = DB::table('userinfo_tbl')
                 ->join('users', 'users.id', '=', 'userinfo_tbl.user_id')
                 ->join('usertype_tbl', 'usertype_tbl.id', '=', 'users.user_type_id')
-                ->select('users.*', 'userinfo_tbl.*','usertype_tbl.*')
+                ->select('users.*', 'userinfo_tbl.*', 'usertype_tbl.*')
                 ->where('user_id', '=', $uid)
                 ->get()->toArray();
             return $uinfo;
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
         }
-         catch (\Exception $e) {
-                    print_r($e->getMessage());
-                    die();
-                }
 
     }
 }
