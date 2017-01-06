@@ -12,3 +12,17 @@
 .eventimage:hover{
     width: 191px; height: 191px;
 }
+
+.banner{
+    background-image: url(/images/banner1.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+#navmain{
+    margin-left: -2px;
+    margin-right: -2px;
+}
+#profiledetailtab{
+    background-color: #444754;
+}

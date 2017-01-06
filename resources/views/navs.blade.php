@@ -132,7 +132,7 @@ Menu::make('SubMenu',function($menu)
 
 @if(Auth::check())
 
-   {!! Menu::get('MainMenu')->asUl(['class'=>"nav nav-tabs  ", 'role'=>"tablist"]) !!}
+   {!! Menu::get('MainMenu')->asUl(['class'=>"nav nav-tabs",'id'=>'navmain', 'role'=>"tablist"]) !!}
    {!! Menu::get('SubMenu')->asUl(['class'=>"nav  ", 'role'=>"tablist"]) !!}
 
 @endif

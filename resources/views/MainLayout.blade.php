@@ -28,14 +28,17 @@
 
     @yield('head')
 
+
 </head>
 <body style="background-color: ghostwhite">
 <!--Navbar-->
 
-
+<div style="">
 @include('navs')
+</div>
 
 <!--/.Navbar-->
+@yield('banner')
 
 <div class="container" style="margin-top: 30px">
     @yield('contents')

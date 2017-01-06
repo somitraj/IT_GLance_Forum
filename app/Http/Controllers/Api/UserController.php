@@ -4,6 +4,7 @@ namespace IT_Glance_Forum\Http\Controllers\api;
 
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use IT_Glance_Forum\Http\Controllers\Controller;
 use IT_Glance_Forum\Models\AddressTbl;
@@ -201,6 +202,22 @@ class UserController extends Controller
             print_r($e->getMessage());
             die();
         }
+
+    }
+    public function GetUserProfile(Request $request){
+        try{
+            $uid=$request->get('id');
+            $uinfo = DB::table('userinfo_tbl')
+                ->join('users', 'users.id', '=', 'userinfo_tbl.user_id')
+                ->select('users.*', 'userinfo_tbl.*')
+                ->where('user_id', '=', $uid)
+                ->get()->toArray();
+            return $uinfo;
+        }
+         catch (\Exception $e) {
+                    print_r($e->getMessage());
+                    die();
+                }
 
     }
 }

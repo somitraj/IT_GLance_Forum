@@ -4,6 +4,7 @@ namespace IT_Glance_Forum\Http\Controllers\Web;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use IT_Glance_Forum\Http\Controllers\Controller;
 use Kris\LaravelFormBuilder\FormBuilder;
 
@@ -135,17 +136,32 @@ class UserController extends Controller
             $response = $client->request('GET', 'allmemberlist');
             $data = $response->getBody()->getContents();
             $all = \GuzzleHttp\json_decode($data);
-            return view('AllMemberList', compact('all'));
+
+            $response1 = $client->request('GET', 'adminlist');
+            $data1 = $response1->getBody()->getContents();
+            $member1 = \GuzzleHttp\json_decode($data1);
+
+            $response2 = $client->request('GET', 'mentorlist');
+            $data2 = $response2->getBody()->getContents();
+            $member2 = \GuzzleHttp\json_decode($data2);
+
+            $response3 = $client->request('GET', 'submentorlist');
+            $data3 = $response3->getBody()->getContents();
+            $member3 = \GuzzleHttp\json_decode($data3);
+
+            $response4 = $client->request('GET', 'internlist');
+            $data4 = $response4->getBody()->getContents();
+            $member4 = \GuzzleHttp\json_decode($data4);
+
+            return view('MemberList', compact('all','member1','member2','member3','member4'));
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();
         }
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function GetInternList()
+
+   /* public function GetInternList()
     {
         try {
             $client = new Client(['base_uri' => config('app.REST_API')]);
@@ -200,7 +216,7 @@ class UserController extends Controller
             print_r($e->getMessage());
             die();
         }
-    }
+    }*/
 
     /**
      * @param $id
@@ -227,6 +243,16 @@ class UserController extends Controller
      */
     public function GetUserProfile()
     {
-        return view('UserProfile');
+        $client = new Client(['base_uri' => config('app.REST_API')]);
+        $id=Auth::user()->id;
+        //print_r($id);die();
+        $response = $client->request('POST', 'getuserprofile',[
+            'form_params' => [
+                    'id' => $id,
+       ]]);
+        $data = $response->getBody()->getContents();
+       // print_r($data);die();
+         $profiledata = \GuzzleHttp\json_decode($data);
+        return view('UserProfile',compact('profiledata'));
     }
 }

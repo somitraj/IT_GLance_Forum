@@ -15,12 +15,6 @@
             <li><a href="internlist" role="navigation" class="nav navbar-default ">Intern<span
                             class="badge"></span></a></li>
         </div>
-        {{--<div class="nav nav-tabs">
-            <li class="active"><a href="" role="navigation" class="nav navbar-default ">Venuelist<span
-                            class="badge">{{count($managerlist)}}</span></a></li>
-            <li><a href="venuedeactive" role="navigation" class="nav navbar-default ">Deleted venue<span
-                            class="badge"></span></a></li>
-        </div>--}}
         <table class="table table-bordered">
             <table id="example" class="display table table-responsive table-striped" cellspacing="0" width="100%"
                    style="margin-left: 50px;">

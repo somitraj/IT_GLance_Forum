@@ -40,5 +40,6 @@ $api->version('v1', ['namespace' => "IT_Glance_Forum\Http\Controllers\Api"], fun
     $api->any('postapprove/{id}', 'PostController@PostApprove');
     $api->any('forumpost', 'PostController@ForumPost');
     $api->any('eventpost', 'PostController@PostEvent');
+    $api->any('getuserprofile', 'UserController@GetUserProfile');
 
 });
