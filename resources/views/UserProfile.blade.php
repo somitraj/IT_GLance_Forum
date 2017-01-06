@@ -4,7 +4,12 @@
     </div>
     <div class="row" style="margin-top: -80px">
         <div class="col-md-3">
-            <img src="/images/som.jpg"  width="120" height="120 " style="margin-left: 130px;">
+            @foreach($profiledata as $p)
+            <img src="/images/som.jpg"  width="120" height="120 " style="margin-left: 130px;"><br><br>
+                <h4  style="color: deepskyblue;text-align: center">  {{$p->fname}} {{$p->mname}} {{$p->lname}}</h4><br>
+                <h6 style="margin-left: 90px"> Status :<b style="color: white;background-color: orange">{{$p->user_type}}</b></h6><br>
+                <h6 style="margin-left: 90px">Studied at {{$p->college}}</h6>
+                @endforeach
         </div>
         <div class="col-md-9" style="right:10px">
             <div class="card">
@@ -31,8 +36,15 @@
                     </ul>
                     </div>
                     <div class="container-fluid" style="color: black;margin-top: 50px">
+                        <div class="row">
+                            <div class="col-md-6">
                        <h4  style="color: deepskyblue"> <i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Personal Information </h4>
-                        <br>
+                            </div>
+                            <div class="col-md-6">
+                        <a href="#"> <button style="color: white;background-color: darkorange;float: right"><i class="fa fa-pencil"></i> Edit</button></a>
+                        </div>
+                            </div>
+                            <br>
                         <div class="row">
                             @foreach($profiledata as $pd)
                             <div class="col-md-3">
@@ -70,8 +82,16 @@
                                 <br>
                             </div>
                         </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4  style="color: deepskyblue"> <i class="fa fa-cubes"></i>&nbsp;&nbsp;&nbsp;Skills </h4>
+                                <br>
 
-                        </table>
+
+                        </div>
+
+
                     </div>
 
 

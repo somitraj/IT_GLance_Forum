@@ -209,7 +209,8 @@ class UserController extends Controller
             $uid=$request->get('id');
             $uinfo = DB::table('userinfo_tbl')
                 ->join('users', 'users.id', '=', 'userinfo_tbl.user_id')
-                ->select('users.*', 'userinfo_tbl.*')
+                ->join('usertype_tbl', 'usertype_tbl.id', '=', 'users.user_type_id')
+                ->select('users.*', 'userinfo_tbl.*','usertype_tbl.*')
                 ->where('user_id', '=', $uid)
                 ->get()->toArray();
             return $uinfo;
