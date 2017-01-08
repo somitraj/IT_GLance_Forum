@@ -14,11 +14,14 @@
 @section('userinfosection')
     <h4 style="color: deepskyblue"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;About </h4>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <br>
             <b><h6>Personal</h6></b>
         </div>
-        <div class="col-md-8">
+
+        <div class="col-md-8 border-left">
+            <h4 style="margin-left: 20px;color: grey">Basic Information</h4><br>
+            <div style="margin-left: 40px">
             <div class="flash-message">
                 @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                     @if(Session::has('alert-' . $msg))
@@ -31,6 +34,7 @@
                 @endforeach
             </div>
             {!! form($form) !!}
+            </div>
         </div>
     </div>
 @endsection

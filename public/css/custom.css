@@ -33,3 +33,6 @@
 #profiledetailtab>li.active>a{
     background-color: grey;
 }
+.border-left {
+    border-left: 5px solid #ddd;
+}
