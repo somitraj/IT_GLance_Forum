@@ -10,7 +10,7 @@
                 <h4 style="color: deepskyblue;text-align: center">  {{$p->fname}} {{$p->mname}} {{$p->lname}}</h4><br>
                 <h6 style="margin-left: 90px"> Status :<b
                             style="color: white;background-color: orange">{{$p->user_type}}</b></h6><br>
-                <h6 style="margin-left: 90px">Studied at {{$p->college}}</h6>
+                <h6 style="margin-left: 90px">Studied {{$p->course_name}} at {{$p->college}}</h6>
             @endforeach
         </div>
 

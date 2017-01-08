@@ -27,6 +27,7 @@ class UserController extends Controller
     public function ApplicationSubmit(Request $request)
     {
         try {
+            //return $request->all();
             $user = new Users();
             $user->setAttribute('email', $request->get('email'));
             $user->status_id = 0;
@@ -47,12 +48,12 @@ class UserController extends Controller
             $userinfo->setAttribute('lname', $request->get('lname'));
             $userinfo->setAttribute('dob', $request->get('dob'));
             $userinfo->setAttribute('gender', $request->get('gender'));
-            /*$userinfo->setAttribute('email', $user->email);*/
+            $userinfo->setAttribute('email', $user->email);
             $userinfo->phone_no = $request->phone_no;
             $userinfo->mobile_no = $request->mobile_no;
             $userinfo->setAttribute('college', $request->get('college'));
-            /*$userinfo->course_type_id = $request->course_type_id;
-            $userinfo->language_type_id = $request->language_type_id;*/
+            $userinfo->course_type_id = $request->course_type_id;
+            $userinfo->language_type_id = $request->language_type_id;
             $userinfo->setAttribute('whylanguage', $request->get('whylanguage'));
             $userinfo->address_id = $address->id;
             $userinfo->save();
@@ -227,7 +228,9 @@ class UserController extends Controller
             $uinfo = DB::table('userinfo_tbl')
                 ->join('users', 'users.id', '=', 'userinfo_tbl.user_id')
                 ->join('usertype_tbl', 'usertype_tbl.id', '=', 'users.user_type_id')
-                ->select('users.*', 'userinfo_tbl.*', 'usertype_tbl.*')
+                ->join('course_tbl', 'course_tbl.id', '=', 'userinfo_tbl.course_type_id')
+                ->join('language_tbl', 'language_tbl.id', '=', 'userinfo_tbl.language_type_id')
+                ->select('users.*', 'userinfo_tbl.*','course_tbl.*','language_tbl.*', 'usertype_tbl.*')
                 ->where('user_id', '=', $uid)
                 ->get()->toArray();
             return $uinfo;

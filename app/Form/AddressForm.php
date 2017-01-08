@@ -19,16 +19,11 @@ class AddressForm extends Form
             $districts = $this->getFormOption('district');
             $cities = $this->getFormOption('city');
 
-            $languages = $this->getFormOptions('language');
-            //print_r($courses);die();
-
             $countryOption = [];
             $provinceOption = [];
             $zoneOption = [];
             $districtOption = [];
             $cityOption = [];
-
-            $languageOption = [];
 
 
             foreach ($countries->country_tbls as $country) {
@@ -46,11 +41,6 @@ class AddressForm extends Form
             foreach ($cities->city_tbls as $city) {
                 $cityOption[$city->id] = $city->city;
             }
-
-            /*
-           foreach ($languages->language_tbls as $language) {
-               $languageOption[$language->id] = $language->language;
-           }*/
 
             $this
                 ->add('country', 'select', [
@@ -96,18 +86,7 @@ class AddressForm extends Form
                         'label_attr' => ['class' => ' control-label'],
                         'attr' => ['class' => ' form-control field-input']
                     ]
-                )
-
-                /*
-               ->add('language', 'select', [
-                       'label' => 'Language',
-                       'choices' => $languageOption,
-                       'empty_value' => 'Select Language',
-                       'wrapper' => ['class' => 'form row'],
-                       'label_attr' => ['class' => ' control-label'],
-                       'attr' => ['class' => ' form-control field-input']
-                   ]
-               )*/;
+                );
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();

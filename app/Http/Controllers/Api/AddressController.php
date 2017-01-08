@@ -91,7 +91,7 @@ class AddressController extends Controller
     public function GetCourse()
     {
         try {
-            return CourseTbl::all()->toArray();
+            return CourseTbl::all();
         } catch (\Exception $e) {
             throw $e;
             //  print_r($e->getMessage());

@@ -45,14 +45,14 @@ class UserController extends Controller
             $data4 = $response4->getBody()->getContents();
             $city = \GuzzleHttp\json_decode($data4);
 
-            /*$response5 = $client->request('GET', 'course');
+            $response5 = $client->request('GET', 'course');
             $data5 = $response5->getBody()->getContents();
-            $course = \GuzzleHttp\json_decode($data5);*/
-            //print_r($course);die();
+            $course = \GuzzleHttp\json_decode($data5);
 
-            /*$response6 = $client->request('GET', 'language');
+            $response6 = $client->request('GET', 'language');
             $data6 = $response6->getBody()->getContents();
-            $language = \GuzzleHttp\json_decode($data6);*/
+            $language = \GuzzleHttp\json_decode($data6);
+            //print_r($language);die();
 
             if ($request->getMethod() == 'POST') { //activates register button
                 try {
@@ -78,6 +78,10 @@ class UserController extends Controller
                             'whylanguage' => $request->get('whylanguage'),
                         ]
                     ]);
+                    /*$data = $response->getBody()->getContents();
+                    $details = \GuzzleHttp\json_decode($data);
+                    print_r($details);
+                    die();*/
                 } catch (\Exception $e) {
                     print_r($e->getMessage());
                     die();
@@ -88,7 +92,7 @@ class UserController extends Controller
             $form = $formBuilder->Create('IT_Glance_Forum\Form\ApplicationForm',
                 ['method' => 'POST', 'url' => route('web.application')],
                 ['country' => $country, 'province' => $province, 'zone' => $zone, 'district' => $district,
-                    'city' => $city]);
+                    'city' => $city,'course'=>$course,'language'=>$language]);
 
             return view('ApplicationForm', compact('form'));
 

@@ -14,15 +14,14 @@ class ApplicationForm extends Form
     {
         try {
             $this
-                ->add('fname','text',[
-                        'wrapper' =>['class' => 'md-form row'],
-                        'label'=>'First Name',
-                        'label_attr'=>['class'=>'control-label'],
-                        'attr' =>['class' => 'form-control field-input'],
-                        'rules'=>['required']
+                ->add('fname', 'text', [
+                        'wrapper' => ['class' => 'md-form row'],
+                        'label' => 'First Name',
+                        'label_attr' => ['class' => 'control-label'],
+                        'attr' => ['class' => 'form-control field-input'],
+                        'rules' => ['required']
                     ]
                 )
-
                 ->add('mname', 'text', [
                         'wrapper' => ['class' => 'md-form row'],
                         'label' => 'Middle Name',
@@ -81,7 +80,7 @@ class ApplicationForm extends Form
                         'attr' => ['class' => 'form-control field-input']
                     ]
                 )
-               ->compose(\IT_Glance_Forum\Form\AddressForm::class,
+                ->compose(\IT_Glance_Forum\Form\AddressForm::class,
                     ['country' => $this->getData('country'), 'province' => $this->getData('province'), 'zone' => $this->getData('zone'),
                         'district' => $this->getData('district'), 'city' => $this->getData('city')])
 
@@ -92,24 +91,23 @@ class ApplicationForm extends Form
                         'attr' => ['class' => 'form-control field-input']
                     ]
                 )
-                ->add('course', 'select', [
-                    'wrapper' => ['class' => 'form row'],
-                    'label' => 'Course ',
-                    'choices' => ['BIM', 'BScCSIT'],
-                    'empty_value' => '=== Select Course ==='
-                ])
-                ->add('language', 'select', [
-                    'wrapper' => ['class' => 'form row'],
-                    'label' => 'Language ',
-                    'choices' => ['Php', 'Java'],
-                    'empty_value' => '=== Select Language To Study ==='
-                ])
+                /* ->add('course', 'select', [
+                     'wrapper' => ['class' => 'form row'],
+                     'label' => 'Course ',
+                     'choices' => ['BIM', 'BScCSIT'],
+                     'empty_value' => '=== Select Course ==='
+                 ])*/
+                /*  ->add('language', 'select', [
+                      'wrapper' => ['class' => 'form row'],
+                      'label' => 'Language ',
+                      'choices' => ['Php', 'Java'],
+                      'empty_value' => '=== Select Language To Study ==='
+                  ])*/
 
-               /* ->compose(\IT_Glance_Forum\Form\CourseForm::class,
-                    ['course' => $this->getData('course')])*/
+                ->compose(\IT_Glance_Forum\Form\CourseForm::class,
+                    ['language' => $this->getData('language'), 'course' => $this->getData('course')])
 
-
-                ->add('comment', 'textarea', [
+                ->add('whylanguage', 'textarea', [
                         'wrapper' => ['class' => 'md-form row'],
                         'label' => 'Why This Language ? ',
                         'label_attr' => ['class' => 'control-label'],
@@ -118,10 +116,9 @@ class ApplicationForm extends Form
                 )
                 ->add('submit', 'submit', ['attr' => ['class' => 'btn btn-deep-purple']])
                 ->add('reset', 'reset', ['attr' => ['class' => 'btn btn-deep-purple']]);
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             print_r($e->getMessage());
             die();
         }
-        }
+    }
 }
