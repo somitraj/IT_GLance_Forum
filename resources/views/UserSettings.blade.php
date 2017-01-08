@@ -13,4 +13,24 @@
 @endsection
 @section('userinfosection')
     <h4 style="color: deepskyblue"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;About </h4>
+    <div class="row">
+        <div class="col-md-4">
+            <br>
+            <b><h6>Personal</h6></b>
+        </div>
+        <div class="col-md-8">
+            <div class="flash-message">
+                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                    @if(Session::has('alert-' . $msg))
+                        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#"
+                                                                                                 class="close"
+                                                                                                 data-dismiss="alert"
+                                                                                                 aria-label="close">&times;</a>
+                        </p>
+                    @endif
+                @endforeach
+            </div>
+            {!! form($form) !!}
+        </div>
+    </div>
 @endsection

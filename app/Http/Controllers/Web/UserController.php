@@ -92,7 +92,7 @@ class UserController extends Controller
             $form = $formBuilder->Create('IT_Glance_Forum\Form\ApplicationForm',
                 ['method' => 'POST', 'url' => route('web.application')],
                 ['country' => $country, 'province' => $province, 'zone' => $zone, 'district' => $district,
-                    'city' => $city,'course'=>$course,'language'=>$language]);
+                    'city' => $city, 'course' => $course, 'language' => $language]);
 
             return view('ApplicationForm', compact('form'));
 
@@ -260,27 +260,69 @@ class UserController extends Controller
         return view('UserProfile', compact('profiledata'));
     }
 
+
     /**
+     * @param FormBuilder $formBuilder
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function UserProfileSettings()
+    public function UserProfileSettings(FormBuilder $formBuilder, Request $request)
     {
         try {
-            $client = new Client(['base_uri' => config('app.REST_API')]);
             $id = Auth::user()->id;
+            $client = new Client(['base_uri' => config('app.REST_API')]);
             $response = $client->request('POST', 'getuserprofile', [
                 'form_params' => [
                     'id' => $id,
                 ]]);
             $data = $response->getBody()->getContents();
             $profiledata = \GuzzleHttp\json_decode($data);
-            return view('UserSettings', compact('profiledata'));
+            //print_r($profiledata);die();
+
+            if ($request->getMethod() == 'POST') {
+
+                $response1 = $client->request('POST', 'commituseredit', [
+                    'form_params' => [
+                        'user_id' => $id,
+                        'fname' => $request->get('fname'),
+                        'lname' => $request->get('lname'),
+                        'username' => $request->get('username'),
+                        'email' => $request->get('email'),
+                        'dob' => $request->get('dob'),
+                        'phone_no' => $request->get('phone_no'),
+                        'mobile_no' => $request->get('mobile_no'),
+                        'college' => $request->get('college'),
+
+                    ]
+                ]);
+                /* $data = $response1->getBody()->getContents();
+                  print_r($data);die();*/
+                $request->session()->flash('alert-success', 'Details Updated!');
+            }
+
+            foreach ($profiledata as $edituser1) {
+                $form = $formBuilder->Create(\IT_Glance_Forum\Form\UserEditForm::class, ['method' => 'POST'],
+                    [
+                        'id' => $edituser1->id,
+                        'fname' => $edituser1->fname,
+                        'lname' => $edituser1->lname,
+                        'username' => $edituser1->username,
+                        'dob' => $edituser1->dob,
+                        'email' => $edituser1->email,
+                        'mobile_no' => $edituser1->mobile_no,
+                        'phone_no' => $edituser1->phone_no,
+                        'college' => $edituser1->college,
+
+                    ]);
+                return view('UserSettings', compact('profiledata', 'form'));
+            }
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();
         }
 
     }
+
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

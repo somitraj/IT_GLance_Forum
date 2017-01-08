@@ -41,5 +41,5 @@ $api->version('v1', ['namespace' => "IT_Glance_Forum\Http\Controllers\Api"], fun
     $api->any('forumpost', 'PostController@ForumPost');
     $api->any('eventpost', 'PostController@PostEvent');
     $api->any('getuserprofile', 'UserController@GetUserProfile');
-
+    $api->any('commituseredit', 'UserController@CommitUserEdit');
 });

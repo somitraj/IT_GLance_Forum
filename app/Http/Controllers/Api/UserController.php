@@ -230,10 +230,44 @@ class UserController extends Controller
                 ->join('usertype_tbl', 'usertype_tbl.id', '=', 'users.user_type_id')
                 ->join('course_tbl', 'course_tbl.id', '=', 'userinfo_tbl.course_type_id')
                 ->join('language_tbl', 'language_tbl.id', '=', 'userinfo_tbl.language_type_id')
-                ->select('users.*', 'userinfo_tbl.*','course_tbl.*','language_tbl.*', 'usertype_tbl.*')
+                ->select('users.*', 'userinfo_tbl.*', 'course_tbl.*', 'language_tbl.*', 'usertype_tbl.*')
                 ->where('user_id', '=', $uid)
                 ->get()->toArray();
             return $uinfo;
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+
+    }
+
+    public function CommitUserEdit(Request $request)
+    {
+        try {
+            //return $request->all();
+            $uid = $request->get('user_id');
+            $f = $request->get('fname');
+            $l = $request->get('lname');
+            $un = $request->get('username');
+            $dob = $request->get('dob');
+            $ph = $request->get('phone_no');
+            $mn = $request->get('mobile_no');
+            $e = $request->get('email');
+            $col = $request->get('college');
+
+            $user = Users::where('id', '=', $uid)->first();
+            $user->setAttribute('username', $un);
+            $user->setAttribute('email', $e);
+
+            $userinfo = UserinfoTbl::where('user_id', '=', $uid)->first();
+            $userinfo->setAttribute('fname', $f);
+            $userinfo->setAttribute('lname', $l);
+            $userinfo->setAttribute('dob', $dob);
+            $userinfo->setAttribute('phone_no', $ph);
+            $userinfo->setAttribute('mobile_no', $mn);
+            $userinfo->setAttribute('email', $e);
+            $userinfo->setAttribute('college', $col);
+            $userinfo->save();
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();
