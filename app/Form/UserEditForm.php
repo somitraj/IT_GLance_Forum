@@ -91,6 +91,6 @@ class UserEditForm extends Form
                     'value' => $college
                 ]
             )
-            ->add('update', 'submit', ['attr' => ['class' => 'btn btn-primary btn-danger']]);
+            ->add('update', 'submit', ['attr' => ['class' => 'btn btn-primary btn-danger','style'=>'width: 40%;margin-left: 35%;margin-right: 30%']]);
     }
 }
