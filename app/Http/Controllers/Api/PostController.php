@@ -20,7 +20,7 @@ class PostController extends Controller
     public function ForumPost(Request $request)
     {
         try {
-           return $request->all();
+           //return $request->all();
             $uid = $request->get('uid');
             //return $uid;
             $title = $request->get('posttitle');

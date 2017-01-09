@@ -42,9 +42,9 @@ class PostController extends Controller
                         ]
                     ]);
 
-                      $data = $response->getBody()->getContents();
-                    print_r($data);die();
-                    $u = \GuzzleHttp\json_decode($data);
+                    /*$data = $response->getBody()->getContents();
+                  print_r($data);die();
+                  $u = \GuzzleHttp\json_decode($data);*/
 
 
                 } catch (\Exception $e) {
