@@ -1,9 +1,136 @@
 @extends('MainLayout')
+@section('banner')
+    <div class="card block" style="overflow:hidden;margin-top: 1%;height: 200px;background-color: orange">
 
+        <div class="container" style="margin-top: 3%">
+
+            <div style="text-align: center;" class="card col-md-3">
+                <h2><b>section 1</b></h2>
+            </div>
+
+            <div style="text-align: center;" class="card col-md-3">
+                <h2><b>section 1</b></h2>
+            </div>
+            <div style="text-align: center;" class="card col-md-3">
+                <h2><b>section 1</b></h2>
+            </div>
+            <div style="text-align: center;" class="card col-md-3">
+                <h2><b>section 1</b></h2>
+            </div>
+
+        </div>
+    </div>
+@endsection
 @section('contents')
     <br><br>
-    <h1>Welcome</h1>
-    <a href="post">
-        <button class="btn-lg">Create Your Question</button>
-    </a>
+
+    <div class="row">
+
+        <div style="text-align: center" class="col-md-4">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <a href="post">
+                        <button class="btn btn-block">Create Your Question</button>
+                    </a>
+                </div>
+            </div>
+            <br>
+            <h3><b>Choose Filtering Option</b></h3>
+            <br>
+            <div class="col-md-9 col-md-offset-2">
+                <ul class="list-group">
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left;"><span
+                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspAll
+                    </li>
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspPopular
+                        All Time
+                    </li>
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspPopular
+                        This Week
+                    </li>
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspMy
+                        Question
+                    </li>
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspAnswered
+                        Question
+                    </li>
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspUnanswered
+                        Question
+                    </li>
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspLast
+                        Question
+                    </li>
+                </ul>
+                <br>
+            </div>
+            <h3><b>Choose Category</b></h3>
+            <br>
+            <div class="col-md-9 col-md-offset-2">
+                <ul class="list-group">
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspJava
+                    </li>
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspLaravel
+                    </li>
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspphp
+                    </li>
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspSpring
+                    </li>
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspSql
+                    </li>
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspAngular
+                    </li>
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspCss
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="col-md-8" style="margin-bottom: 10px;">
+            @foreach($homedata as $hd)
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-2" style="margin-left: 10px;">
+                            <img src="/pic/laf1.jpg" id="logo" style="width:80px;height:80px;margin-top: 15px;">
+                        </div>
+                        <div class="col-md-9" style="margin-left: -10px;">
+                            <h4><b>{{$hd->post_title}} &nbsp&nbsp</b><span class="label label-danger"
+                                                                           style="background-color: red">{{$hd->category}}</span>
+                            </h4>
+                            <p><?php
+                                $now = $nowdate . " " . $nowtime;
+                                $postdate = $hd->created_at;
+                                $dteStart = new DateTime($postdate);
+                                $dteEnd = new DateTime($now);
+                                $dteDiff = $dteStart->diff($dteEnd);
+                                echo $dteDiff->format("%D days, %H hours %I minutes ago");
+                                ?> | Posted By : <b
+                                        style="background-color: deepskyblue;color: white">{{$hd->username}}</b></p>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2" style="margin-bottom: 10px;margin-top: -20px;">
+                            <p><b><?php echo($hd->post_body) ?></b></p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+    </div>
+
+
 @endsection

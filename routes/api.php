@@ -25,6 +25,7 @@ $api->version('v1', ['namespace' => "IT_Glance_Forum\Http\Controllers\Api"], fun
     $api->get('course', 'AddressController@GetCourse');
     $api->get('category', 'AddressController@GetCategory');
     $api->get('language', 'AddressController@GetLanguage');
+    $api->any('userdash', 'ForumController@GetUserDash');
     $api->any('usernotice', 'NotificationController@GetUserNotice');
     $api->any('postnotice', 'NotificationController@GetPostNotice');
     $api->any('eventnotice', 'NotificationController@GetEventNotice');

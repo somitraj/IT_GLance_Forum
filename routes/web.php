@@ -25,7 +25,7 @@ Route::get('/logout', ['as' => 'logout', function () {
 Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'], function () {
 
     /*    Route::any('/demo', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Demo@admin', 'uses' => 'Web\UserController@Demo']);*/
-    Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@admin', 'uses' => 'Web\UserController@Home']);
+    Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@admin', 'uses' => 'Web\ForumController@Home']);
 
     Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@admin', function () {
         return redirect()->route('Articles@Top_Articles@admin');
@@ -65,7 +65,7 @@ Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'],
 
 Route::group(['role' => '2', 'prefix' => 'mentor', 'middleware' => 'auth.mentor'], function () {
 
-    Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@mentor', 'uses' => 'Web\UserController@Home']);
+    Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@mentor', 'uses' => 'Web\ForumController@Home']);
     Route::any('/event', ['type' => 'main', 'icon' => 'glyphicon_glyphicon-calendar', 'as' => 'Event@mentor', 'uses' => 'Web\PostController@PostEvent']);
     Route::any('/profile', ['type' => 'main', 'icon' => 'fa_fa-user', 'as' => 'My_Profile@mentor', 'uses' => 'Web\UserController@GetUserProfile']);
     Route::any('/usersettings', ['as' => 'UserSettings@mentor', 'uses' => 'Web\UserController@UserProfileSettings']);
@@ -82,7 +82,7 @@ Route::group(['role' => '2', 'prefix' => 'mentor', 'middleware' => 'auth.mentor'
 
 Route::group(['role' => '4', 'prefix' => 'intern', 'middleware' => 'auth.intern'], function () {
 
-    Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@intern', 'uses' => 'Web\UserController@Home']);
+    Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@intern', 'uses' => 'Web\ForumController@Home']);
 
     Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@intern', function () {
         return redirect()->route('Articles@Top_Articles@intern');
@@ -110,7 +110,7 @@ Route::group(['role' => '4', 'prefix' => 'intern', 'middleware' => 'auth.intern'
 
 Route::group(['role' => '3', 'prefix' => 'submentor', 'middleware' => 'auth.submentor'], function () {
 
-    Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@submentor', 'uses' => 'Web\UserController@Home']);
+    Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@submentor', 'uses' => 'Web\ForumController@Home']);
     Route::any('/event', ['type' => 'main', 'icon' => 'glyphicon_glyphicon-calendar', 'as' => 'Event@submentor', 'uses' => 'Web\PostController@PostEvent']);
 
     Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@submentor', function () {

@@ -5,7 +5,7 @@
 
         <ul class="nav nav-tabs tabs-5 indigo" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab"> All<span
+                <a class="nav-link" data-toggle="tab" href="#panel1" role="tab"> All<span
                             class="badge">{{count($all)}}</span></a>
             </li>
             <li class="nav-item">
@@ -31,7 +31,7 @@
 
             <!--Panel 1-->
 
-            <div class="tab-pane fade in active" id="panel1" role="tabpanel">
+            <div class="tab-pane fade in" id="panel1" role="tabpanel">
                 <br>
                 <table class="table table-bordered">
                     <table id="example" class="display table table-responsive table-striped" cellspacing="0"
@@ -62,7 +62,7 @@
             <!--Panel 2-->
             @foreach($member1 as $m)
                 @if($m->user_type_id==1)
-                    <div class="tab-pane fade in active" id="panel2" role="tabpanel">
+                    <div class="tab-pane fade in" id="panel2" role="tabpanel">
                         <br>
                         <table class="table table-bordered">
                             <table id="example" class="display table table-responsive table-striped" cellspacing="0"
@@ -92,7 +92,7 @@
                             <!--/.Panel 2-->
 
                     <!--Panel 3-->
-                    <div class="tab-pane fade in active" id="panel3" role="tabpanel">
+                    <div class="tab-pane fade in " id="panel3" role="tabpanel">
                         <br>
                         <table class="table table-bordered">
                             <table id="example" class="display table table-responsive table-striped" cellspacing="0"
@@ -120,7 +120,7 @@
                     <!--/.Panel 3-->
 
                     <!--Panel 4-->
-                    <div class="tab-pane fade in active" id="panel4" role="tabpanel">
+                    <div class="tab-pane fade in" id="panel4" role="tabpanel">
                         <br>
                         <table class="table table-bordered">
                             <table id="example" class="display table table-responsive table-striped" cellspacing="0"
@@ -148,7 +148,7 @@
                     <!--/.Panel 4-->
 
                     <!--Panel 5-->
-                    <div class="tab-pane fade in active" id="panel5" role="tabpanel">
+                    <div class="tab-pane fade in" id="panel5" role="tabpanel">
                         <br>
                         <table class="table table-bordered">
                             <table id="example" class="display table table-responsive table-striped" cellspacing="0"
@@ -183,7 +183,7 @@
 @section('script')
     <script>
         $(function () {
-            $('#myTab a[href="#panel2"]').tab('show')
+            $('#myTab a[href="#panel1"]').tab('show')
         })
 
     </script>
