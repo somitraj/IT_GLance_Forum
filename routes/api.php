@@ -27,6 +27,7 @@ $api->version('v1', ['namespace' => "IT_Glance_Forum\Http\Controllers\Api"], fun
     $api->get('language', 'AddressController@GetLanguage');
     $api->any('userdash', 'ForumController@GetUserDash');
     $api->any('usernotice', 'NotificationController@GetUserNotice');
+    $api->any('changeprofileimage', 'ImageController@ChangeProfileImage');
     $api->any('postnotice', 'NotificationController@GetPostNotice');
     $api->any('eventnotice', 'NotificationController@GetEventNotice');
     $api->any('usertypelist', 'UserController@GetUserTypeList');

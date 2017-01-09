@@ -73,7 +73,7 @@
             <br>
             <div class="col-md-9 col-md-offset-2">
                 <ul class="list-group">
-                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left;"><span
                                 class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspJava
                     </li>
                     <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
@@ -103,7 +103,7 @@
                 <div class="card">
                     <div class="row">
                         <div class="col-md-2" style="margin-left: 10px;">
-                            <img src="/pic/laf1.jpg" id="logo" style="width:80px;height:80px;margin-top: 15px;">
+                            <img src="/profile_pic/{{$hd->profile_image}}" id="logo" style="width:80px;height:80px;margin-top: 15px;">
                         </div>
                         <div class="col-md-9" style="margin-left: -10px;">
                             <h4><b>{{$hd->post_title}} &nbsp&nbsp</b><span class="label label-danger"

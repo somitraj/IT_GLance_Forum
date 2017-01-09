@@ -12,8 +12,9 @@ class ForumController extends Controller
         try{
             $data = DB::table('post_tbl')
                 ->join('users', 'users.id', '=', 'post_tbl.user_id')
+                ->join('userinfo_tbl', 'userinfo_tbl.user_id', '=', 'users.id')
                 ->join('category_tbl', 'category_tbl.id', '=', 'post_tbl.category_id')
-                ->select('users.*', 'category_tbl.*','post_tbl.*')
+                ->select('users.*', 'category_tbl.*','userinfo_tbl.*','post_tbl.*')
                 ->where('post_tbl.status_id', '=', 3)
                 ->get()->toArray();
             return $data;

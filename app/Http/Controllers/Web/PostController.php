@@ -42,8 +42,10 @@ class PostController extends Controller
                         ]
                     ]);
 
-                    /*  $data = $response->getBody()->getContents();
-                      $u = \GuzzleHttp\json_decode($data);*/
+                      $data = $response->getBody()->getContents();
+                    print_r($data);die();
+                    $u = \GuzzleHttp\json_decode($data);
+
 
                 } catch (\Exception $e) {
                     print_r($e->getMessage());
@@ -51,10 +53,25 @@ class PostController extends Controller
                 }
                 $request->session()->flash('alert-success', 'Posted Successfully!');
             }
+            if (Auth::user()->user_type_id == 1) {
+                $form = $formBuilder->Create('IT_Glance_Forum\Form\CategoryForm',
+                    ['method' => 'POST', 'url' => route('Post@admin')],
+                    ['category' => $category,]);
+            } elseif (Auth::user()->user_type_id == 2) {
+                $form = $formBuilder->Create('IT_Glance_Forum\Form\CategoryForm',
+                    ['method' => 'POST', 'url' => route('Post@mentor')],
+                    ['category' => $category,]);
 
-            $form = $formBuilder->Create('IT_Glance_Forum\Form\CategoryForm',
-                ['method' => 'POST', 'url' => route('Post@admin')],
-                ['category' => $category,]);
+            } elseif (Auth::user()->user_type_id == 3) {
+                $form = $formBuilder->Create('IT_Glance_Forum\Form\CategoryForm',
+                    ['method' => 'POST', 'url' => route('Post@submentor')],
+                    ['category' => $category,]);
+
+            } else {
+                $form = $formBuilder->Create('IT_Glance_Forum\Form\CategoryForm',
+                    ['method' => 'POST', 'url' => route('Post@intern')],
+                    ['category' => $category,]);
+            }
 
             return view('Post', compact('form'));
         } catch (\Exception $e) {

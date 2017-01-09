@@ -20,11 +20,14 @@ class PostController extends Controller
     public function ForumPost(Request $request)
     {
         try {
+           return $request->all();
             $uid = $request->get('uid');
             //return $uid;
             $title = $request->get('posttitle');
             $body = $request->get('postbody');
+            //return $body;
             $cid = $request->get('category_id');
+
 
 
             $pos = new PostTbl();

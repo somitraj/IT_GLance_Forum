@@ -6,13 +6,14 @@
         <div class="col-md-3">
             @foreach($profiledata as $p)
                 <div class="proimg">
-                    <img src="/images/som.jpg" class="img-responsive" style="display: block;margin: 0 auto;">
+                    <img src="/profile_pic/{{$p->profile_image}}" class="img-responsive"
+                         style="display: block;margin: 0 auto;">
                     <div class="overlay"></div>
                     <div class="changebutton"><a data-toggle="modal" data-target="#mymodal"> Change </a></div>
 
                 </div>
-                   {{-- <img src="/images/som.jpg" class="img-responsive" width="120" height="120 "
-                         style="display: block;margin: 0 auto;">--}}<br><br>
+                {{-- <img src="/images/som.jpg" class="img-responsive" width="120" height="120 "
+                      style="display: block;margin: 0 auto;">--}}<br><br>
                 <h4 style="color: deepskyblue;text-align: center">  {{$p->fname}} {{$p->mname}} {{$p->lname}}</h4><br>
                 <h6 style="margin-left: 90px"> Status :<b
                             style="color: white;background-color: orange">{{$p->user_type}}</b></h6><br>
@@ -20,7 +21,8 @@
             @endforeach
         </div>
 
-        <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <!--Content-->
                 <div class="modal-content">
@@ -29,17 +31,23 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        <h4 class="modal-title" id="myModalLabel">Change Profile Picture</h4>
                     </div>
                     <!--Body-->
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <!--Footer-->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+
+                    <form action="imageupload" enctype="multipart/form-data" method="post">
+                        {{ csrf_field() }}
+                        <div class="modal-body">
+                            <input type="file" name="proimage" accept='.jpeg,.png,.jpg' required>
+
+                        </div>
+                        <!--Footer-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" value="Save changes">Save Changes</button>
+
+                        </div>
+                    </form>
                 </div>
                 <!--/.Content-->
             </div>
