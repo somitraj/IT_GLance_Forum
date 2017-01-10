@@ -1,6 +1,6 @@
 @extends('MainLayout')
 @section('banner')
-    <div class="banner" style="height: 200px;margin-top: 10px">
+    <div class="banner" style="height: 200px;">
     </div>
     <div class="row" style="margin-top: -80px">
         <div class="col-md-3">
