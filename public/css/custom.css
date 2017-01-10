@@ -90,3 +90,9 @@
 .proimg:hover .changebutton {
     opacity: 1;
 }
+.category>ul>li{
+    border-bottom-style: dashed;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    border-style: solid;
+}

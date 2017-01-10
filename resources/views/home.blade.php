@@ -71,27 +71,27 @@
             </div>
             <h3><b>Choose Category</b></h3>
             <br>
-            <div class="col-md-9 col-md-offset-2">
+            <div class="col-md-9 col-md-offset-2 category">
                 <ul class="list-group">
-                    <li class="b list-group-item" style="background-color:transparent;text-align: left;"><span
+                    <li class="list-group-item" style="background-color:transparent;text-align: left;"><span
                                 class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspJava
                     </li>
-                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                    <li class="list-group-item" style="background-color:transparent;text-align: left"><span
                                 class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspLaravel
                     </li>
-                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                    <li class="list-group-item" style="background-color:transparent;text-align: left"><span
                                 class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspphp
                     </li>
-                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                    <li class="list-group-item" style="background-color:transparent;text-align: left"><span
                                 class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspSpring
                     </li>
-                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                    <li class="list-group-item" style="background-color:transparent;text-align: left"><span
                                 class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspSql
                     </li>
-                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                    <li class="list-group-item" style="background-color:transparent;text-align: left"><span
                                 class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspAngular
                     </li>
-                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                    <li class="list-group-item" style="background-color:transparent;text-align: left"><span
                                 class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspCss
                     </li>
                 </ul>
@@ -103,7 +103,8 @@
                 <div class="card">
                     <div class="row">
                         <div class="col-md-2" style="margin-left: 10px;">
-                            <img src="/profile_pic/{{$hd->profile_image}}" id="logo" style="width:80px;height:80px;margin-top: 15px;">
+                            <img src="/profile_pic/{{$hd->profile_image}}" id="logo"
+                                 style="width:80px;height:80px;margin-top: 15px;">
                         </div>
                         <div class="col-md-9" style="margin-left: -10px;">
                             <h4><b>{{$hd->post_title}} &nbsp&nbsp</b><span class="label label-danger"
