@@ -1,6 +1,6 @@
 @extends('MainLayout')
 @section('banner')
-    <div class="card block" style="overflow:hidden;margin-top: 1%;height: 200px;background-color: orange">
+    <div class="card block" style="height: 200px;background-color: orange">
 
         <div class="container" style="margin-top: 3%">
 
@@ -22,8 +22,7 @@
     </div>
 @endsection
 @section('contents')
-    <br><br>
-
+    <br>
     <div class="row">
 
         <div style="text-align: center" class="col-md-4">
@@ -108,7 +107,7 @@
                         </div>
                         <div class="col-md-9" style="margin-left: -10px;">
                             <h4><b>{{$hd->post_title}} &nbsp&nbsp</b><span class="label label-danger"
-                                                                           style="background-color: red">{{$hd->category}}</span>
+                                                                           style="background-color: red"><a href="specificpost/{{$hd->category}}">{{$hd->category}}</a></span>
                             </h4>
                             <p><?php
                                 $now = $nowdate . " " . $nowtime;
