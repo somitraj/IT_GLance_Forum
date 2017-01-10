@@ -96,3 +96,15 @@
     border-right-style: hidden;
     border-style: solid;
 }
+
+.comment {
+
+}
+a.morelink {
+    text-decoration:none;
+    outline: none;
+}
+.morecontent span {
+    display: none;
+
+}

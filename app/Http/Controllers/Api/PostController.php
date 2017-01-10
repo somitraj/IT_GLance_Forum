@@ -2,6 +2,7 @@
 
 namespace IT_Glance_Forum\Http\Controllers\Api;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use IT_Glance_Forum\Http\Controllers\Controller;
@@ -68,10 +69,16 @@ class PostController extends Controller
     public function PostApprove($id)
     {
         try {
+            $now=Carbon::now();
+
+            $currentdateexplode = explode(' ', $now);
+            $nowdate = $currentdateexplode[0];
+            $nowtime = $currentdateexplode[1];
+            $now = $nowdate . " " . $nowtime;
             //return $id;
             $post = DB::table('post_tbl')
                 ->where('id', $id)
-                ->update(['status_id' => 3
+                ->update(['status_id' => 3,'created_at'=>$now
                 ]);
 
 

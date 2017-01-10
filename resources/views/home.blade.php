@@ -107,7 +107,8 @@
                         </div>
                         <div class="col-md-9" style="margin-left: -10px;">
                             <h4><b>{{$hd->post_title}} &nbsp&nbsp</b><span class="label label-danger"
-                                                                           style="background-color: red"><a href="specificpost/{{$hd->category}}">{{$hd->category}}</a></span>
+                                                                           style="background-color: red"><a
+                                            href="specificpost/{{$hd->category}}">{{$hd->category}}</a></span>
                             </h4>
                             <p><?php
                                 $now = $nowdate . " " . $nowtime;
@@ -122,8 +123,9 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-md-8 col-md-offset-2" style="margin-bottom: 10px;margin-top: -20px;">
-                            <p><b><?php echo($hd->post_body) ?></b></p>
+                        <div class="col-md-8 col-md-offset-2 " style="margin-bottom: 10px;margin-top: -20px;">
+                            <p><b class="comment more"><?php echo($hd->post_body) ?>
+                                </b></p>
                         </div>
                     </div>
                 </div>
@@ -133,4 +135,41 @@
     </div>
 
 
+@endsection
+@section('script')
+    <SCRIPT>
+        $(document).ready(function () {
+            var showChar = 150;
+            var ellipsestext = "...";
+            var moretext = "more";
+            var lesstext = "less";
+            $('.more').each(function () {
+                var content = $(this).html();
+
+                if (content.length > showChar) {
+
+                    var c = content.substr(0, showChar);
+                    var h = content.substr(showChar - 1, content.length - showChar);
+
+                    var html = c + '<span class="moreelipses">' + ellipsestext + '</span>&nbsp;<span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+
+                    $(this).html(html);
+                }
+
+            });
+
+            $(".morelink").click(function () {
+                if ($(this).hasClass("less")) {
+                    $(this).removeClass("less");
+                    $(this).html(moretext);
+                } else {
+                    $(this).addClass("less");
+                    $(this).html(lesstext);
+                }
+                $(this).parent().prev().toggle();
+                $(this).prev().toggle();
+                return false;
+            });
+        });
+    </SCRIPT>
 @endsection

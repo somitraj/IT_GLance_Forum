@@ -16,6 +16,7 @@ class ForumController extends Controller
                 ->join('category_tbl', 'category_tbl.id', '=', 'post_tbl.category_id')
                 ->select('users.*', 'category_tbl.*','userinfo_tbl.*','post_tbl.*')
                 ->where('post_tbl.status_id', '=', 3)
+                ->orderBy('post_tbl.created_at','desc')
                 ->get()->toArray();
             return $data;
             /*$user = Users::where('status_id', '=', 1)->get()->toArray();
@@ -37,6 +38,7 @@ class ForumController extends Controller
                 ->select('users.*', 'category_tbl.*','userinfo_tbl.*','post_tbl.*')
                 ->where('category_tbl.category', '=', $id)
                 ->where('post_tbl.status_id', '=', 3)
+                ->orderBy('post_tbl.created_at','desc')
                 ->get()->toArray();
             return $data;
             /*$user = Users::where('status_id', '=', 1)->get()->toArray();
