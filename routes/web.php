@@ -30,7 +30,7 @@ Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'],
         return redirect()->route('Articles@Top_Articles@admin');
     }]);
     Route::group(['prefix' => 'articles'], function () {
-        Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@admin', 'uses' => 'Web\UserController@Home']);
+        Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@admin', 'uses' => 'Web\ForumController@Home']);
     });
 
     Route::any('/event', ['type' => 'main', 'icon' => 'glyphicon_glyphicon-calendar', 'as' => 'Event@admin', 'uses' => 'Web\PostController@PostEvent']);
@@ -90,7 +90,7 @@ Route::group(['role' => '4', 'prefix' => 'intern', 'middleware' => 'auth.intern'
         return redirect()->route('Articles@Top_Articles@intern');
     }]);
     Route::group(['prefix' => 'articles'], function () {
-        Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@intern', 'uses' => 'Web\UserController@Home']);
+        Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@intern', 'uses' => 'Web\ForumController@Home']);
 
     });
 
@@ -119,7 +119,7 @@ Route::group(['role' => '3', 'prefix' => 'submentor', 'middleware' => 'auth.subm
         return redirect()->route('Articles@Top_Articles@intern');
     }]);
     Route::group(['prefix' => 'articles'], function () {
-        Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@submentor', 'uses' => 'Web\UserController@Home']);
+        Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@submentor', 'uses' => 'Web\ForumController@Home']);
 
     });
 
