@@ -9,13 +9,13 @@
             </div>
 
             <div style="text-align: center;" class="card col-md-3">
-                <h2><b>section 1</b></h2>
+                <h2><b>section 2</b></h2>
             </div>
             <div style="text-align: center;" class="card col-md-3">
-                <h2><b>section 1</b></h2>
+                <h2><b>section 3</b></h2>
             </div>
             <div style="text-align: center;" class="card col-md-3">
-                <h2><b>section 1</b></h2>
+                <h2><b>section 4</b></h2>
             </div>
 
         </div>
@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <a href="post">
-                        <button class="btn btn-block">Create Your Question</button>
+                        <button class="btn btn-block btn-outline-primary">Create Your Question</button>
                     </a>
                 </div>
             </div>
@@ -106,9 +106,11 @@
                                  style="width:80px;height:80px;margin-top: 15px;">
                         </div>
                         <div class="col-md-9" style="margin-left: -10px;">
-                            <h4><b>{{$hd->post_title}} &nbsp&nbsp</b><span class="label label-danger"
-                                                                           style="background-color: red"><a
-                                            href="specificpost/{{$hd->category}}">{{$hd->category}}</a></span>
+                            <h4><b>{{$hd->post_title}} &nbsp&nbsp</b>
+                                <span class="label label-danger" id="categorybackground">
+                                    <a style="color: white;" onMouseOver="this.style.color='#0F0'" onMouseOut="this.style.color='white'"
+                                       href="specificpost/{{$hd->category}}">{{$hd->category}}</a>
+                                </span>
                             </h4>
                             <p><?php
                                 $now = $nowdate . " " . $nowtime;
