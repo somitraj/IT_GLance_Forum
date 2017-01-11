@@ -129,6 +129,10 @@ class PostController extends Controller
     {
         try {
             $client = new Client(['base_uri' => config('app.REST_API')]);
+            $response = $client->request('GET', 'getevent');
+            $data = $response->getBody()->getContents();
+            $postedevent = \GuzzleHttp\json_decode($data);
+            //rint_r($postedevent);die();
 
             if ($request->getMethod() == 'POST') { //activates register button
                 try {
@@ -169,7 +173,7 @@ class PostController extends Controller
             $form = $formBuilder->Create('IT_Glance_Forum\Form\EventForm',
                 ['method' => 'POST', 'url' => route('Event@submentor')]);
 
-            return view('Event', compact('form'));
+            return view('Event', compact('form','postedevent'));
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();

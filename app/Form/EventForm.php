@@ -48,7 +48,7 @@ class EventForm extends Form
                     ]
                 )
                 ->add('description','textarea', [
-                        'wrapper' => ['class' => 'form-group row'],
+                        'wrapper' => ['class' => 'md-form row'],
                         'label'=>'Description',
                         'label_attr'=>['class'=>'control-label'],
                         'attr' => ['class' => 'form-control field-input']
