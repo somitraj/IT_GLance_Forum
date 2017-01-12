@@ -32,7 +32,7 @@
                 <tbody>
                 @foreach($eventnotice as $en)
                     <tr>
-                        <td><img src="/images/{{$en->event_image}}" height="50px" width="50px" class="eventimage"></td>
+                        <td><img src="/eventimage/{{$en->event_image}}" height="50px" width="50px" class="eventimage"></td>
                         <td>{{$en->username}}</td>
                         <td>{{$en->event_location}}</td>
                         <td>{{$en->event_title}}</td>
