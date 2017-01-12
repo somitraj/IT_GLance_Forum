@@ -4,10 +4,10 @@
         <div class="col-md-4 col-md-offset-3">
 
 
-            <img src="images/IT-Glance-logo.png" class="img-responsive "
-                 style="width: 300px;height: 70px;margin-left: 80px">
+            <a href="/"> <img src="images/IT-Glance-logo.png" class="img-responsive "
+                 style="width: 80%;height: 50%;margin-left:25%;margin-right: 30%"></a>
             <div class="card" style="margin-top: 70px;width: 500px"><br><br>
-                <img src="images/som.jpg" id="logo" width="120" height="120 " style="margin-left: 200px">
+                <img src="images/som.jpg" id="logo" width="25%" height="25% " style="margin-left: 200px">
 
                 <div class="card-block" style="margin-top: 50px">
 

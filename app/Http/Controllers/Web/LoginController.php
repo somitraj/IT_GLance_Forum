@@ -26,7 +26,15 @@ class LoginController extends Controller
     {
         try {
             if (Auth::check()) {   //checks user is logged in and if logged in and user try to go back to login page,home is returned
-                return view('demo');
+                if (Auth::user()->user_type_id == 1) {
+                    return redirect('admin/home');
+                } elseif (Auth::user()->user_type_id == 2) {
+                    return redirect('mentor/home');
+                } elseif (Auth::user()->user_type_id == 3) {
+                    return redirect('submentor/home');
+                } else {
+                    return redirect('intern/home');
+                }
 
             } else {
                 $form = $formBuilder->Create('IT_Glance_Forum\Form\LoginForm',

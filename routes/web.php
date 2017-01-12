@@ -23,7 +23,6 @@ Route::get('/logout', ['as' => 'logout', function () {
 
 Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'], function () {
 
-    /*    Route::any('/demo', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Demo@admin', 'uses' => 'Web\UserController@Demo']);*/
     Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@admin', 'uses' => 'Web\ForumController@Home']);
 
     Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@admin', function () {
@@ -32,8 +31,10 @@ Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'],
     Route::group(['prefix' => 'articles'], function () {
         Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@admin', 'uses' => 'Web\ForumController@Home']);
     });
+//added event calendar
+    Route::get('/eventshow',[ 'as' => 'ShowEvent@admin','uses'=>'Web\EventController@ShowEvent'])->name('events');
 
-    Route::any('/event', ['type' => 'main', 'icon' => 'glyphicon_glyphicon-calendar', 'as' => 'Event@admin', 'uses' => 'Web\PostController@PostEvent']);
+    Route::any('/event', ['type' => 'main', 'icon' => 'glyphicon_glyphicon-calendar', 'as' => 'Event@admin', 'uses' => 'Web\EventController@ShowEvent']);
     Route::any('/notification', ['type' => 'main', 'icon' => 'fa_fa-envelope', 'as' => 'Notification@admin', 'uses' => 'Web\NotificationController@UserNotification']);
     Route::any('/profile', ['type' => 'main', 'icon' => 'fa_fa-user', 'as' => 'My_Profile@admin', 'uses' => 'Web\UserController@GetUserProfile']);
     Route::any('/usersettings', ['as' => 'UserSettings@admin', 'uses' => 'Web\UserController@UserProfileSettings']);

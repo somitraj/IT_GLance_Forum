@@ -79,7 +79,7 @@
                 <div class="card">
                     <div class="row">
                         <div class="col-md-2" style="margin-left: 10px;">
-                            <img src="/images/{{$hd->event_image}}" id="logo"
+                            <img src="/eventimage/{{$hd->event_image}}" id="logo"
                                  style="width:80px;height:80px;margin-top: 15px;">
                         </div>
                         <div class="col-md-9" style="margin-left: -10px;">
