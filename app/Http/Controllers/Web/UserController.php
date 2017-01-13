@@ -196,7 +196,7 @@ class UserController extends Controller
         $data = $response->getBody()->getContents();
         // print_r($data);die();
         $profiledata = \GuzzleHttp\json_decode($data);
-        return view('UserProfile', compact('profiledata'));
+        return view('UserProfile.UserProfile', compact('profiledata'));
     }
 
 
@@ -253,7 +253,7 @@ class UserController extends Controller
                         'college' => $edituser1->college,
 
                     ]);
-                return view('UserSettings', compact('profiledata', 'form'));
+                return view('UserProfile.UserSettings', compact('profiledata', 'form'));
             }
         } catch (\Exception $e) {
             print_r($e->getMessage());
@@ -277,7 +277,7 @@ class UserController extends Controller
                 ]]);
             $data = $response->getBody()->getContents();
             $profiledata = \GuzzleHttp\json_decode($data);
-            return view('UserProject', compact('profiledata'));
+            return view('UserProfile.UserProject', compact('profiledata'));
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();
@@ -299,7 +299,7 @@ class UserController extends Controller
                 ]]);
             $data = $response->getBody()->getContents();
             $profiledata = \GuzzleHttp\json_decode($data);
-            return view('UserActivities', compact('profiledata'));
+            return view('UserProfile.UserActivities', compact('profiledata'));
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();

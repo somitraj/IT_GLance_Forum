@@ -32,7 +32,7 @@
 </head>
 <body style="background-color: ghostwhite">
 <!--Navbar-->
-
+@yield('sign')
 <div style="">
     @include('navs')
 </div>

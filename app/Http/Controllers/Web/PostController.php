@@ -39,10 +39,11 @@ class PostController extends Controller
                             'posttitle' => $request->get('posttitle'),
                             'postbody' => $request->get('postbody'),
                             'uid' => Auth::user()->id,
+                            'utypeid'=>Auth::user()->user_type_id
                         ]
                     ]);
 
-                    /*$data = $response->getBody()->getContents();
+                   /* $data = $response->getBody()->getContents();
                   print_r($data);die();
                   $u = \GuzzleHttp\json_decode($data);*/
 

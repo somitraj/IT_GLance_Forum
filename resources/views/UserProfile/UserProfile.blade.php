@@ -1,4 +1,4 @@
-@extends('UserProfileLayout')
+@extends('UserProfile.UserProfileLayout')
 @section('profilenav')
     <div class="nav nav-tabs tabs-4" id="profiledetailtab">
         <li class="active"><a href="#" role="navigation" class="nav navbar-default ">Profile<span

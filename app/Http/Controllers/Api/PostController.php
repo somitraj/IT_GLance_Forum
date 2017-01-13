@@ -4,6 +4,7 @@ namespace IT_Glance_Forum\Http\Controllers\Api;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use IT_Glance_Forum\Http\Controllers\Controller;
 use IT_Glance_Forum\Models\EventTbl;
@@ -23,7 +24,8 @@ class PostController extends Controller
         try {
            //return $request->all();
             $uid = $request->get('uid');
-            //return $uid;
+            $utypeid = $request->get('utypeid');
+            //return $utypeid;
             $title = $request->get('posttitle');
             $body = $request->get('postbody');
             //return $body;
@@ -35,7 +37,10 @@ class PostController extends Controller
             $pos->setAttribute('post_title', $title);
             $pos->setAttribute('post_body', $body);
             $pos->category_id = $cid;
-            $pos->status_id = 4;
+            if($utypeid==1)
+            {$pos->status_id = 3;}
+            else
+            { $pos->status_id = 4;}
             $pos->setAttribute('user_id', $uid);
             $pos->save();
 

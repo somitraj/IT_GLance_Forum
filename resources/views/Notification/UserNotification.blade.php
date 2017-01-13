@@ -13,8 +13,6 @@
                             class="badge"></span></a></li>
             <li><a href="#" role="navigation" class="nav navbar-default ">Jobs<span
                             class="badge"></span></a></li>
-            <li><a href="eventnotice" role="navigation" class="nav navbar-default ">Events<span
-                            class="badge"></span></a></li>
         </div>
 
         <table class="table table-bordered">

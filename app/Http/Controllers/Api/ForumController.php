@@ -2,7 +2,6 @@
 
 namespace IT_Glance_Forum\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use IT_Glance_Forum\Http\Controllers\Controller;
 

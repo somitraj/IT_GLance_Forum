@@ -61,20 +61,5 @@ class NotificationController extends Controller
     /**
      * @return mixed
      */
-    public function GetEventNotice()
-    {
-        try {
-            $posts = DB::table('users')
-                ->join('event_tbl', 'event_tbl.user_id', '=', 'users.id')
-                ->select('users.*', 'event_tbl.*')
-                ->get()->toArray();
 
-            return $posts;
-
-        } catch (\Exception $e) {
-            print_r($e->getMessage());
-            die();
-        }
-
-    }
 }

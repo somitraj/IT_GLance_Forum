@@ -27,7 +27,7 @@ class NotificationController extends Controller
             $data1 = $response1->getBody()->getContents();
             $usertype = \GuzzleHttp\json_decode($data1);
             //print_r($notice);die();
-            return view('UserNotification', compact('notice', 'usertype'));
+            return view('Notification.UserNotification', compact('notice', 'usertype'));
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();
@@ -45,7 +45,7 @@ class NotificationController extends Controller
             $data = $response->getBody()->getContents();
             $postnotice = \GuzzleHttp\json_decode($data);
 
-            return view('PostNotification', compact('postnotice'));
+            return view('Notification.PostNotification', compact('postnotice'));
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();
@@ -55,20 +55,6 @@ class NotificationController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function GetEventNotice()
-    {
-        try {
-            $client = new Client(['base_uri' => config('app.REST_API')]);
-            $response = $client->request('GET', 'eventnotice');
-            $data = $response->getBody()->getContents();
-            $eventnotice = \GuzzleHttp\json_decode($data);
-
-            return view('EventNotification', compact('eventnotice'));
-        } catch (\Exception $e) {
-            print_r($e->getMessage());
-            die();
-        }
-    }
 
 
 }

@@ -30,7 +30,6 @@ $api->version('v1', ['namespace' => "IT_Glance_Forum\Http\Controllers\Api"], fun
     $api->any('usernotice', 'NotificationController@GetUserNotice');
     $api->any('changeprofileimage', 'ImageController@ChangeProfileImage');
     $api->any('postnotice', 'NotificationController@GetPostNotice');
-    $api->any('eventnotice', 'NotificationController@GetEventNotice');
     $api->any('usertypelist', 'UserController@GetUserTypeList');
     $api->any('userdetails/{id}', 'UserController@GetUserDetails');
     $api->any('postdetails/{id}', 'PostController@GetPostDetails');

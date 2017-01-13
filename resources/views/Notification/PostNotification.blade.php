@@ -9,36 +9,30 @@
                             class="badge"></span></a></li>
             <li><a href="#" role="navigation" class="nav navbar-default ">Feedbacks<span
                             class="badge"></span></a></li>
-            <li><a href="postnotice" role="navigation" class="nav navbar-default ">Posts<span
-                            class="badge"></span></a></li>
+            <li class="active"><a href="#" role="navigation" class="nav navbar-default ">Posts<span
+                            class="badge">{{count($postnotice)}}</span></a></li>
             <li><a href="#" role="navigation" class="nav navbar-default ">Jobs<span
                             class="badge"></span></a></li>
-            <li class="active"><a href="#" role="navigation" class="nav navbar-default ">Events<span
-                            class="badge">{{count($eventnotice)}}</span></a></li>
         </div>
         <table class="table table-bordered">
             <table id="example" class="display table table-responsive table-striped" cellspacing="0" width="100%"
                    style="margin-left: 50px;">
                 <thead>
                 <tr>
-                    <th></th>
                     <th>Username</th>
-                    <th>Location</th>
-                    <th>Title</th>
+                    <th>Category</th>
                     <th></th>
 
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($eventnotice as $en)
+                @foreach($postnotice as $po)
                     <tr>
-                        <td><img src="/eventimage/{{$en->event_image}}" height="50px" width="50px" class="eventimage"></td>
-                        <td>{{$en->username}}</td>
-                        <td>{{$en->event_location}}</td>
-                        <td>{{$en->event_title}}</td>
-                        <td><a href="eventdetails\{{$en->id}}" class="btn btn-success  btn">View</a></td>
-                        <td><a href="eventapprove\{{$en->id}}" class="btn btn-primary  btn">Approve</a></td>
-                        <td><a href="deleteevent\{{$en->id}}" class="btn btn-danger  btn">Delete</a></td>
+                        <td>{{$po->username}}</td>
+                        <td>{{$po->category}}</td>
+                        <td><a href="postdetails\{{$po->id}}" class="btn btn-success  btn">View</a></td>
+                        <td><a href="postapprove\{{$po->id}}" class="btn btn-primary  btn">Approve</a></td>
+                        <td><a href="deletepost\{{$po->id}}" class="btn btn-danger  btn">Delete</a></td>
 
                     </tr>
                 @endforeach
