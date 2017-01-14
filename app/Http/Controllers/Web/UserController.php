@@ -306,4 +306,15 @@ class UserController extends Controller
         }
 
     }
+
+    public function Demo(){
+        try{
+            return view('DynamicTextPractice');
+        }
+         catch (\Exception $e) {
+                    print_r($e->getMessage());
+                    die();
+                }
+
+    }
 }

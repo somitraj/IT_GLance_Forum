@@ -95,7 +95,6 @@ Route::group(['role' => '4', 'prefix' => 'intern', 'middleware' => 'auth.intern'
 
     });
 
-    Route::any('/notification', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Notification@intern', 'uses' => 'Web\NotificationController@UserNotification']);
     Route::any('/memberlist', ['type' => 'main', 'icon' => 'fa_fa-group', 'as' => 'Members@intern', 'uses' => 'Web\UserController@GetMemberList']);
     Route::any('/profile', ['type' => 'main', 'icon' => 'fa_fa-user', 'as' => 'My_Profile@intern', 'uses' => 'Web\UserController@GetUserProfile']);
     Route::any('/imageupload', ['as' => 'ImageUpload@intern', 'uses' => 'Web\ImageController@ImageUploadPost']);

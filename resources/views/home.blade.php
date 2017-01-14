@@ -1,7 +1,8 @@
 @extends('MainLayout')
 @section('banner')
     <div class="card block" style="height: 200px;background-color: orange">
-
+        <br>
+        <h5 style="float: right;color: black;background-color: yellow"> welcome, {{Auth::user()->username}}</h5>
         <div class="container" style="margin-top: 3%">
 
             <div style="text-align: center;" class="card col-md-3">
@@ -28,9 +29,11 @@
         <div style="text-align: center" class="col-md-4">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <a href="post">
-                        <button class="btn btn-block btn-outline-primary">Create Your Question</button>
-                    </a>
+                    @foreach($usertype as $ut)
+                        <a href="/{{$ut->user_type}}/post">
+                            <button class="btn btn-block btn-outline-primary">Create Your Question</button>
+                        </a>
+                    @endforeach
                 </div>
             </div>
             <br>
@@ -72,27 +75,16 @@
             <br>
             <div class="col-md-9 col-md-offset-2 category">
                 <ul class="list-group">
-                    <li class="list-group-item" style="background-color:transparent;text-align: left;"><span
-                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspJava
-                    </li>
-                    <li class="list-group-item" style="background-color:transparent;text-align: left"><span
-                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspLaravel
-                    </li>
-                    <li class="list-group-item" style="background-color:transparent;text-align: left"><span
-                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspphp
-                    </li>
-                    <li class="list-group-item" style="background-color:transparent;text-align: left"><span
-                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspSpring
-                    </li>
-                    <li class="list-group-item" style="background-color:transparent;text-align: left"><span
-                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspSql
-                    </li>
-                    <li class="list-group-item" style="background-color:transparent;text-align: left"><span
-                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspAngular
-                    </li>
-                    <li class="list-group-item" style="background-color:transparent;text-align: left"><span
-                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspCss
-                    </li>
+                    @foreach($category as $cat)
+                        @foreach($usertype as $u)
+                            <a href="/{{$u->user_type}}/specificpost/{{$cat->category}}">
+                                <li class="list-group-item" style="background-color:transparent;text-align: left;"><span
+                                            class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbsp {{$cat->category}}
+                                </li>
+                            </a>
+                        @endforeach
+                    @endforeach
+
                 </ul>
             </div>
 
@@ -108,8 +100,11 @@
                         <div class="col-md-9" style="margin-left: -10px;">
                             <h4><b>{{$hd->post_title}} &nbsp&nbsp</b>
                                 <span class="label label-danger" id="categorybackground">
-                                    <a style="color: white;" onMouseOver="this.style.color='#0F0'" onMouseOut="this.style.color='white'"
-                                       href="specificpost/{{$hd->category}}">{{$hd->category}}</a>
+                                    @foreach($usertype as $u)
+                                        <a style="color: white;" onMouseOver="this.style.color='#0F0'"
+                                           onMouseOut="this.style.color='white'"
+                                           href="/{{$u->user_type}}/specificpost/{{$hd->category}}">{{$hd->category}}</a>
+                                    @endforeach
                                 </span>
                             </h4>
                             <p><?php
@@ -130,7 +125,13 @@
                                 </b></p>
                         </div>
                     </div>
+                    <hr>
+                    <form name="myForm">
+                        <input type="text" value="" name="Test Name" id="box4" style="display:none">
+                        <i class="fa fa-comment" onclick="addTextBox()"></i>
+                    </form>
                 </div>
+
             @endforeach
         </div>
 
@@ -174,4 +175,15 @@
             });
         });
     </SCRIPT>
+    <script>
+        function addTextBox() {
+            var box4 = document.getElementById("box4");
+            box4.style.display = "inline";
+            var myForm = document.forms['myForm'];
+            for (var i = 0; i < myForm.elements.length; i++) {
+                box4.value += myForm.elements[i].value + ",";
+            }
+        }
+    </script>
+
 @endsection

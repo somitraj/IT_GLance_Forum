@@ -203,10 +203,17 @@ class UserController extends Controller
         try {
             $user = Users::where('id', '=', $id)->first();
             $userinfo = UserinfoTbl::where('user_id', '=', $id)->first();
+            if($userinfo->fname && $userinfo->lname){
+                $uname= $userinfo->fname . $userinfo->lname.rand();
+            }
+            else{
+                $uname= $userinfo->fname . $userinfo->lname;
+            }
             if ($user->status_id == 0) {
                 $user = DB::table('users')
                     ->where('id', $id)
-                    ->update(['status_id' => 1, 'user_type_id' => 4, 'username' => $userinfo->fname . $userinfo->lname, 'password' => bcrypt($userinfo->fname)
+                    ->update(['status_id' => 1, 'user_type_id' => 4,
+                        'username' => $uname, 'password' => bcrypt($userinfo->fname)
                     ]);
             }
 
