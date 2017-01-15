@@ -41,9 +41,9 @@
             <br>
             <div class="col-md-9 col-md-offset-2">
                 <ul class="list-group">
-                    <li class="b list-group-item" style="background-color:transparent;text-align: left;"><span
-                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspAll
-                    </li>
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left;">@foreach($usertype as $ut)<a href="/{{$ut->user_type}}/home">
+                            <span class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspAll
+                        </a>@endforeach</li>
                     <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
                                 class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspPopular
                         All Time
@@ -52,9 +52,9 @@
                                 class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspPopular
                         This Week
                     </li>
-                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><a href="myquestions"> <span
                                 class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspMy
-                        Question
+                        Question</a>
                     </li>
                     <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
                                 class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspAnswered
@@ -113,7 +113,15 @@
                                 $dteStart = new DateTime($postdate);
                                 $dteEnd = new DateTime($now);
                                 $dteDiff = $dteStart->diff($dteEnd);
-                                echo $dteDiff->format("%D days, %H hours %I minutes ago");
+
+                                if ($dteDiff->format("%D") > 0) {
+                                    echo $dteDiff->format("%D days ago");
+                                } elseif ($dteDiff->format("%D") == 0 && $dteDiff->format("%H") > 0) {
+                                    echo $dteDiff->format("%H hours ago");
+                                } else {
+                                    echo $dteDiff->format("%I minutes ago");
+                                }
+                                //echo $dteDiff->format("%D days, %H hours %I minutes ago");
                                 ?> | Posted By : <b
                                         style="background-color: deepskyblue;color: white">{{$hd->username}}</b></p>
                         </div>

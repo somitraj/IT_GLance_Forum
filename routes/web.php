@@ -60,6 +60,8 @@ Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'],
     Route::any('/imageupload', ['as' => 'ImageUpload@admin', 'uses' => 'Web\ImageController@ImageUploadPost']);
     Route::any('/eventnotice', ['as' => 'Eventnotice@admin', 'uses' => 'Web\NotificationController@GetEventNotice']);
     Route::any('/specificpost/{id}', ['as' => 'SpecificPost@admin', 'uses' => 'Web\ForumController@GetSpecificPost']);
+    Route::any('/myquestions', ['as' => 'MyQuestions@admin', 'uses' => 'Web\ForumController@GetMyQuestions']);
+
 });
 
 
@@ -71,6 +73,7 @@ Route::group(['role' => '2', 'prefix' => 'mentor', 'middleware' => 'auth.mentor'
     Route::any('/imageupload', ['as' => 'ImageUpload@mentor', 'uses' => 'Web\ImageController@ImageUploadPost']);
     Route::any('/usersettings', ['as' => 'UserSettings@mentor', 'uses' => 'Web\UserController@UserProfileSettings']);
     Route::any('/specificpost/{id}', ['as' => 'SpecificPost@mentor', 'uses' => 'Web\ForumController@GetSpecificPost']);
+    Route::any('/myquestions', ['as' => 'MyQuestions@mentor', 'uses' => 'Web\ForumController@GetMyQuestions']);
     Route::any('/userprojects', ['as' => 'UserProjects@mentor', 'uses' => 'Web\UserController@UserProfileProjects']);
     Route::any('/useractivities', ['as' => 'UserActivities@mentor', 'uses' => 'Web\UserController@UserProfileActivities']);
     Route::any('/post', ['as' => 'Post@mentor', 'uses' => 'Web\PostController@Post']);
@@ -107,6 +110,7 @@ Route::group(['role' => '4', 'prefix' => 'intern', 'middleware' => 'auth.intern'
     }]);
     Route::any('/post', ['as' => 'Post@intern', 'uses' => 'Web\PostController@Post']);
     Route::any('/specificpost/{id}', ['as' => 'SpecificPost@intern', 'uses' => 'Web\ForumController@GetSpecificPost']);
+    Route::any('/myquestions', ['as' => 'MyQuestions@intern', 'uses' => 'Web\ForumController@GetMyQuestions']);
 });
 
 
@@ -136,6 +140,7 @@ Route::group(['role' => '3', 'prefix' => 'submentor', 'middleware' => 'auth.subm
     Route::any('/post', ['as' => 'Post@submentor', 'uses' => 'Web\PostController@Post']);
     Route::any('/postnotice', ['icon' => 'fa_fa-home', 'as' => 'Postnotice@submentor', 'uses' => 'Web\NotificationController@GetPostNotice']);
     Route::any('/specificpost/{id}', ['as' => 'SpecificPost@submentor', 'uses' => 'Web\ForumController@GetSpecificPost']);
+    Route::any('/myquestions', ['as' => 'MyQuestions@submentor', 'uses' => 'Web\ForumController@GetMyQuestions']);
 });
 
 

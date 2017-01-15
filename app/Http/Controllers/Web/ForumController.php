@@ -78,6 +78,38 @@ class ForumController extends Controller
             print_r($e->getMessage());
             die();
         }
+    }
+    public function GetMyQuestions()
+    {
+        try {
+            //print_r($id);die();
+            $client = new Client(['base_uri' => config('app.REST_API')]);
+            $id=Auth::user()->id;
+            $response = $client->request('GET', 'getmyquestions/'.$id);
+            $data = $response->getBody()->getContents();
+            //print_r($data);die();
+            $homedata = \GuzzleHttp\json_decode($data);
+            //print_r($homedata);die();
+
+            $response1 = $client->request('GET', 'getcategory');
+            $data1 = $response1->getBody()->getContents();
+            $category = \GuzzleHttp\json_decode($data1);
+
+            $utypeid=Auth::user()->user_type_id;
+            $response2 = $client->request('GET', 'getcurrentrole/'.$utypeid);
+            $data2 = $response2->getBody()->getContents();
+            $usertype = \GuzzleHttp\json_decode($data2);
+
+            $now=Carbon::now();
+
+            $currentdateexplode = explode(' ', $now);
+            $nowdate = $currentdateexplode[0];
+            $nowtime = $currentdateexplode[1];
+            return view('Home', compact('homedata','category','usertype','nowdate','nowtime'));
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
 
 
     }
