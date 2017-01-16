@@ -25,6 +25,7 @@ $api->version('v1', ['namespace' => "IT_Glance_Forum\Http\Controllers\Api"], fun
     $api->get('course', 'AddressController@GetCourse');
     $api->get('category', 'AddressController@GetCategory');
     $api->get('getcategory', 'ForumController@GetAllCategory');
+    $api->get('getcomment', 'ForumController@GetUserComment');
     $api->get('getcurrentrole/{utid}', 'ForumController@GetCurrentRole');
     $api->get('getmyquestions/{id}', 'ForumController@GetMyQuestions');
     $api->get('language', 'AddressController@GetLanguage');
@@ -48,4 +49,5 @@ $api->version('v1', ['namespace' => "IT_Glance_Forum\Http\Controllers\Api"], fun
     $api->any('getevent', 'EventController@GetEvent');
     $api->any('getuserprofile', 'UserController@GetUserProfile');
     $api->any('commituseredit', 'UserController@CommitUserEdit');
+    $api->any('postcomment', 'ForumController@PostComment');
 });

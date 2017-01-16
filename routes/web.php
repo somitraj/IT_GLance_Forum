@@ -49,6 +49,7 @@ Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'],
     Route::any('/logout', ['type' => 'main', 'icon' => 'fa_fa-sign-out', 'as' => 'Logout@admin', function () {
         Session::flush();
         return redirect()->route('web.login');
+
     }]);
 
     Route::any('/userdetails/{id}', ['as' => 'Userdetails@admin', 'uses' => 'Web\UserController@UserDetails']);
@@ -61,8 +62,7 @@ Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'],
     Route::any('/eventnotice', ['as' => 'Eventnotice@admin', 'uses' => 'Web\NotificationController@GetEventNotice']);
     Route::any('/specificpost/{id}', ['as' => 'SpecificPost@admin', 'uses' => 'Web\ForumController@GetSpecificPost']);
     Route::any('/myquestions', ['as' => 'MyQuestions@admin', 'uses' => 'Web\ForumController@GetMyQuestions']);
-
-});
+   });
 
 
 Route::group(['role' => '2', 'prefix' => 'mentor', 'middleware' => 'auth.mentor'], function () {
