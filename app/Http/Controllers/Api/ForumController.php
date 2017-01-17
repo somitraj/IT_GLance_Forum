@@ -99,9 +99,10 @@ class ForumController extends Controller
          try{
              $data = DB::table('post_tbl')
                  ->join('comment_tbl', 'comment_tbl.post_id', '=', 'post_tbl.id')
-                 ->select('comment_tbl.*','post_tbl.*')
+                 ->join('userinfo_tbl', 'userinfo_tbl.user_id', '=', 'comment_tbl.user_id')
+                 ->select('userinfo_tbl.*','post_tbl.*','comment_tbl.*')
                  ->where('post_tbl.status_id', '=', 3)
-                 ->orderBy('post_tbl.created_at','desc')
+                 ->orderBy('comment_tbl.updated_at','asc')
                  ->get()->toArray();
              return $data;
          }

@@ -317,4 +317,19 @@ class UserController extends Controller
                 }
 
     }
+
+    public function GetMemberProfile($id)
+    {
+        $client = new Client(['base_uri' => config('app.REST_API')]);
+        //print_r($id);die();
+        $response = $client->request('POST', 'getuserprofile', [
+            'form_params' => [
+                'id' => $id,
+            ]]);
+        $data = $response->getBody()->getContents();
+        // print_r($data);die();
+        $profiledata = \GuzzleHttp\json_decode($data);
+        //print_r($profiledata);die();
+        return view('UserProfile.MemberProfile', compact('profiledata'));
+    }
 }

@@ -18,6 +18,21 @@
             <div style="text-align: center;" class="card col-md-3">
                 <h2><b>section 4</b></h2>
             </div>
+            <div>
+                {!! Form::open(['method'=>'GET','url'=>'search','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
+
+                <div class="input-group custom-search-form md-form">
+                    <input type="text" id="form9" class="form-control" name="search" required style="width: 350px;">
+                    <label for="form1" class="">Search Here</label>
+                    <span class="input-group-btn">
+        <button class="btn-btn-unique" type="submit" style="font-size: 16px"><i
+                    class="fa fa-search "></i> Search
+        </button>
+
+    </span>
+                    {!! Form::close() !!}
+                </div>
+            </div>
 
         </div>
     </div>
@@ -41,7 +56,9 @@
             <br>
             <div class="col-md-9 col-md-offset-2">
                 <ul class="list-group">
-                    <li class="b list-group-item" style="background-color:transparent;text-align: left;">@foreach($usertype as $ut)<a href="/{{$ut->user_type}}/home">
+                    <li class="b list-group-item"
+                        style="background-color:transparent;text-align: left;">@foreach($usertype as $ut)<a
+                                href="/{{$ut->user_type}}/home">
                             <span class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspAll
                         </a>@endforeach</li>
                     <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
@@ -52,9 +69,10 @@
                                 class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspPopular
                         This Week
                     </li>
-                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><a href="myquestions"> <span
-                                class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspMy
-                        Question</a>
+                    <li class="b list-group-item" style="background-color:transparent;text-align: left"><a
+                                href="myquestions"> <span
+                                    class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspMy
+                            Question</a>
                     </li>
                     <li class="b list-group-item" style="background-color:transparent;text-align: left"><span
                                 class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>&nbsp&nbspAnswered
@@ -90,7 +108,7 @@
 
         </div>
         <div class="col-md-8" style="margin-bottom: 10px;">
-            @foreach($homedata as $hd)
+            @foreach($homedata as $key=> $hd)
                 <div class="card">
                     <div class="row">
                         <div class="col-md-2" style="margin-left: 10px;">
@@ -131,15 +149,42 @@
                         <div class="col-md-8 col-md-offset-2 " style="margin-bottom: 10px;margin-top: -20px;">
                             <p><b class="comment more"><?php echo($hd->post_body) ?>
                                 </b></p>
+
                         </div>
                     </div>
-                    <hr>
-                    <form name="myForm">
-                        <input type="text" value="" name="Test Name" id="box4" style="display:none">
-                        <i class="fa fa-comment" onclick="addTextBox()"></i>
-                    </form>
-                </div>
 
+                    <hr>
+
+                    <div>
+
+
+                        <div class="row">
+                            @foreach($comment as $cc)
+                                @if($hd->id==$cc->post_id)
+                                    <div class="col-md-2" style="padding-left: 10%">
+                                       <a href="memberprofile/{{$cc->user_id}}"><img src="/profile_pic/{{$cc->profile_image}}"
+                                             style="width:40px;height:40px;" class="img-responsive"></a>
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 10px;margin-top: -20px;">
+                                        <div class="row" style="height:40px">
+                                            <p><h6>
+                                                -{{$cc->comment}}</h6></p>
+                                        </div>
+                                        <div class="row"><p style="font-size: 12px;color: grey">
+                                                at {{$cc->updated_at}}</p>
+                                        </div>
+
+                                    </div>
+                                @endif
+                            @endforeach
+                                <div  id="comment-{{$hd->id}}" style="margin-left:16.5%"></div>
+                        </div>
+                        <div id="<?php echo $hd->id; ?>"></div>
+
+                        <i class="fa fa-comment" onclick="addTextBox('<?php echo $hd->id; ?>')"></i>
+                        {{-- <input type="hidden" id="userid" value="{{Auth::user()->id}}">--}}
+                    </div>
+                </div>
             @endforeach
         </div>
 
@@ -148,6 +193,63 @@
 
 @endsection
 @section('script')
+    <script>
+        function addTextBox(boxId) {
+            //  $('#'+boxId).clear();
+            $('.comment-box').remove();
+            $('.combutton').remove();
+            $('#' + boxId).append('<input type="text" id="comment" placeholder="write a comment" name="comment" class="comment-box"/>' +
+                    '<input type="hidden" id="box_id" value="boxId" class="comment-box"/ >' +
+                    '<input type="hidden" id="postid" value="' + boxId + '" class="comment-box">' +
+                    '<button onclick="postComment1();" id="combutton" class="comment-box">Ok</button> ');
+            /*document.getElementById('myForm').submit();*/
+        }
+    </script>1
+
+    <script>
+
+        function postComment1() {
+            var box = $('#postid').val();
+            //window.alert(box);
+            var com = $('#comment').val();
+            var userId = '<?php echo Auth::user()->id;?>';
+
+            $.post("/api/postcomment", {userId: userId, comment: com, postId: box}, function (data) {
+                        // $( ".result" ).html( data );
+                    })
+                    .done(function () {
+                        //window.alert('success');
+                        // $('#'+boxId).clear();
+                        //$('#combutton').clear();
+                        // alert(box);
+                        $('.comment-box').remove();
+                        $('#comment-' + box).append('<p>' + '<h6>' + '-' + com + '</h6>' + '</p>');
+                        // $('.comment-box').hide();
+
+                        // $('.combutton').hide();
+
+                    });
+        }
+        /* function postcomment(userId,postId) {
+         /!*window.alert(userId);
+         window.alert(postId);*!/
+         var com= $('#comment').val();
+         var us=userId;
+         var pd=postId;
+         $.ajax({
+         url: 'api/postcomment',
+         type: 'POST',
+         //dataType: 'json',
+         data:JSON.stringify(com,us,pd),
+         contentType:"application/json",
+         success: function (data, textStatus, xhr) {
+         alert('test');
+         },
+         error: function (xhr, textStatus, errorThrown) {
+         alert('fail');
+         }
+         })}*/
+    </script>
     <SCRIPT>
         $(document).ready(function () {
             var showChar = 150;
@@ -183,15 +285,6 @@
             });
         });
     </SCRIPT>
-    <script>
-        function addTextBox() {
-            var box4 = document.getElementById("box4");
-            box4.style.display = "inline";
-            var myForm = document.forms['myForm'];
-            for (var i = 0; i < myForm.elements.length; i++) {
-                box4.value += myForm.elements[i].value + ",";
-            }
-        }
-    </script>
+
 
 @endsection
