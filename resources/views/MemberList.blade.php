@@ -50,10 +50,24 @@
                             <tr>
                                 <td>{{$i->fname}}</td>
                                 <td>{{$i->email}}</td>
+
+                                @if(Auth::user()->id==$i->user_id)
+                                    <td><a href="profile">
+                                            <button class="btn btn-unique">View Profile</button>
+                                        </a></td>
+                                @else
+                                    <td><a href="memberprofile/{{$i->user_id}}">
+                                            <button class="btn btn-unique">View Profile</button>
+                                        </a></td>
+                                @endif
                                 @if(Auth::user()->user_type_id==1)
-                                <td><a href="memberprofile/{{$i->user_id}}"> <button class="btn btn-unique">View Profile</button></a></td>
-                                <td><a href="#"><button class="btn btn-primary">Message</button></a></td>
+                                    @if(!(Auth::user()->id==$i->user_id))
+                                        <td><a href="#">
+                                                <button class="btn btn-primary">Message</button>
+                                            </a></td>
                                     @endif
+                                @endif
+
                             </tr>
                         @endforeach
                         </tbody>
@@ -85,10 +99,23 @@
                                     <tr>
                                         <td>{{$i->fname}}</td>
                                         <td>{{$i->email}}</td>
-                                        @if(Auth::user()->user_type_id==1)
-                                            <td><a href="memberprofile/{{$i->user_id}}"><button class="btn btn-unique">View Profile</button></a></td>
-                                            <td><a href="#"><button class="btn btn-primary">Message</button></a></td>
+                                        @if(Auth::user()->id==$i->user_id)
+                                            <td><a href="profile">
+                                                    <button class="btn btn-unique">View Profile</button>
+                                                </a></td>
+                                        @else
+                                            <td><a href="memberprofile/{{$i->user_id}}">
+                                                    <button class="btn btn-unique">View Profile</button>
+                                                </a></td>
                                         @endif
+                                        @if(Auth::user()->user_type_id==1)
+                                            @if(!(Auth::user()->id==$i->user_id))
+                                                <td><a href="#">
+                                                        <button class="btn btn-primary">Message</button>
+                                                    </a></td>
+                                            @endif
+                                        @endif
+
 
                                     </tr>
                                 @endforeach
@@ -120,9 +147,22 @@
                                     <tr>
                                         <td>{{$i->fname}}</td>
                                         <td>{{$i->email}}</td>
+
+                                        @if(Auth::user()->id==$i->user_id)
+                                            <td><a href="profile">
+                                                    <button class="btn btn-unique">View Profile</button>
+                                                </a></td>
+                                        @else
+                                            <td><a href="memberprofile/{{$i->user_id}}">
+                                                    <button class="btn btn-unique">View Profile</button>
+                                                </a></td>
+                                        @endif
                                         @if(Auth::user()->user_type_id==1||Auth::user()->user_type_id==2)
-                                            <td><a href="memberprofile/{{$i->user_id}}"><button class="btn btn-unique">View Profile</button></a></td>
-                                            <td><a href="#"><button class="btn btn-primary">Message</button></a></td>
+                                            @if(!(Auth::user()->id==$i->user_id))
+                                                <td><a href="#">
+                                                        <button class="btn btn-primary">Message</button>
+                                                    </a></td>
+                                            @endif
                                         @endif
 
                                     </tr>
@@ -153,10 +193,20 @@
                                     <tr>
                                         <td>{{$i->fname}}</td>
                                         <td>{{$i->email}}</td>
-                                        <td><a href="memberprofile/{{$i->user_id}}"><button class="btn btn-unique">View Profile</button></a></td>
-                                        <td><a href="#"><button class="btn btn-primary">Message</button></a></td>
-
-
+                                        @if(Auth::user()->id==$i->user_id)
+                                            <td><a href="profile">
+                                                    <button class="btn btn-unique">View Profile</button>
+                                                </a></td>
+                                        @else
+                                            <td><a href="memberprofile/{{$i->user_id}}">
+                                                    <button class="btn btn-unique">View Profile</button>
+                                                </a></td>
+                                        @endif
+                                        @if(!(Auth::user()->id==$i->user_id))
+                                            <td><a href="#">
+                                                    <button class="btn btn-primary">Message</button>
+                                                </a></td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -183,8 +233,20 @@
                                     <tr>
                                         <td>{{$i->fname}}</td>
                                         <td>{{$i->email}}</td>
-                                        <td><a href="memberprofile/{{$i->user_id}}"><button class="btn btn-unique">View Profile</button></a></td>
-                                        <td><a href="#"><button class="btn btn-primary">Message</button></a></td>
+                                        @if(Auth::user()->id==$i->user_id)
+                                            <td><a href="profile">
+                                                    <button class="btn btn-unique">View Profile</button>
+                                                </a></td>
+                                        @else
+                                            <td><a href="memberprofile/{{$i->user_id}}">
+                                                    <button class="btn btn-unique">View Profile</button>
+                                                </a></td>
+                                        @endif
+                                        @if(!(Auth::user()->id==$i->user_id))
+                                            <td><a href="#">
+                                                    <button class="btn btn-primary">Message</button>
+                                                </a></td>
+                                        @endif
 
                                     </tr>
                                 @endforeach
