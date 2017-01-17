@@ -16,7 +16,7 @@ class MessageTbl extends Model {
         return $this->belongsTo('IT_Glance_Forum\Models\UsersTbl', 'receiver_userid', 'id');
     }
 
-    public function usersTbl() {
+    public function usersTbl1() {
         return $this->belongsTo('IT_Glance_Forum\Models\UsersTbl', 'sender_userid', 'id');
     }
 

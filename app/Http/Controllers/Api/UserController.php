@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use IT_Glance_Forum\Http\Controllers\Controller;
 use IT_Glance_Forum\Models\AddressTbl;
+use IT_Glance_Forum\Models\MessageTbl;
 use IT_Glance_Forum\Models\UserinfoTbl;
 use IT_Glance_Forum\Models\Users;
 use IT_Glance_Forum\Models\UsersTbl;
@@ -203,11 +204,10 @@ class UserController extends Controller
         try {
             $user = Users::where('id', '=', $id)->first();
             $userinfo = UserinfoTbl::where('user_id', '=', $id)->first();
-            if($userinfo->fname && $userinfo->lname){
-                $uname= $userinfo->fname . $userinfo->lname.rand();
-            }
-            else{
-                $uname= $userinfo->fname . $userinfo->lname;
+            if ($userinfo->fname && $userinfo->lname) {
+                $uname = $userinfo->fname . $userinfo->lname . rand();
+            } else {
+                $uname = $userinfo->fname . $userinfo->lname;
             }
             if ($user->status_id == 0) {
                 $user = DB::table('users')
@@ -275,6 +275,30 @@ class UserController extends Controller
             $userinfo->setAttribute('email', $e);
             $userinfo->setAttribute('college', $col);
             $userinfo->save();
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+
+    }
+
+    public function SendMessage(Request $request)
+    {
+        try {
+
+            //print_r('hi');die();
+            $uid = ($request->get('userId'));
+            $destid = $request->get('destId');
+            $msg = $request->get('msg');
+            //print_r($msg);die();
+                if(!$msg==''){
+                $ms = new MessageTbl();
+                $ms->sender_userid = $uid;
+                $ms->receiver_userid = $destid;
+                $ms->message = $msg;
+                $ms->save();
+                }
+
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();

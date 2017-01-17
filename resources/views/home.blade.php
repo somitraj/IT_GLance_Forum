@@ -112,8 +112,21 @@
                 <div class="card">
                     <div class="row">
                         <div class="col-md-2" style="margin-left: 10px;">
-                            <img src="/profile_pic/{{$hd->profile_image}}" id="logo"
-                                 style="width:80px;height:80px;margin-top: 15px;">
+                            @if(Auth::user()->id==$hd->user_id)
+                                <a href="profile">
+                                    <img src="/profile_pic/{{$hd->profile_image}}"
+                                         id="logo"
+                                         style="width:80px;height:80px;margin-top: 15px;" class="img-responsive">
+                                </a>
+                            @else
+                                <a href="memberprofile/{{$hd->user_id}}">
+                                    <img src="/profile_pic/{{$hd->profile_image}}"
+                                         id="logo"
+                                         style="width:80px;height:80px;margin-top: 15px;" class="img-responsive">
+                                </a>
+                            @endif
+                            {{--<img src="/profile_pic/{{$hd->profile_image}}" id="logo"
+                                 style="width:80px;height:80px;margin-top: 15px;">--}}
                         </div>
                         <div class="col-md-9" style="margin-left: -10px;">
                             <h4><b>{{$hd->post_title}} &nbsp&nbsp</b>
@@ -162,8 +175,15 @@
                             @foreach($comment as $cc)
                                 @if($hd->id==$cc->post_id)
                                     <div class="col-md-2" style="padding-left: 10%">
-                                       <a href="memberprofile/{{$cc->user_id}}"><img src="/profile_pic/{{$cc->profile_image}}"
-                                             style="width:40px;height:40px;" class="img-responsive"></a>
+                                        @if(Auth::user()->id==$cc->user_id)
+                                            <a href="profile"><img
+                                                        src="/profile_pic/{{$cc->profile_image}}"
+                                                        style="width:40px;height:40px;" class="img-responsive"></a>
+                                        @else
+                                            <a href="memberprofile/{{$cc->user_id}}"><img
+                                                        src="/profile_pic/{{$cc->profile_image}}"
+                                                        style="width:40px;height:40px;" class="img-responsive"></a>
+                                        @endif
                                     </div>
                                     <div class="col-md-10" style="margin-bottom: 10px;margin-top: -20px;">
                                         <div class="row" style="height:40px">
@@ -177,7 +197,7 @@
                                     </div>
                                 @endif
                             @endforeach
-                                <div  id="comment-{{$hd->id}}" style="margin-left:16.5%"></div>
+                            <div id="comment-{{$hd->id}}" style="margin-left:16.5%"></div>
                         </div>
                         <div id="<?php echo $hd->id; ?>"></div>
 

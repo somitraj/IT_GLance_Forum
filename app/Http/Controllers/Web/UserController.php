@@ -318,7 +318,7 @@ class UserController extends Controller
 
     }
 
-    public function GetMemberProfile($id)
+    public function GetMemberProfile($id,FormBuilder $formBuilder,Request $request)
     {
         $client = new Client(['base_uri' => config('app.REST_API')]);
         //print_r($id);die();
@@ -330,6 +330,9 @@ class UserController extends Controller
         // print_r($data);die();
         $profiledata = \GuzzleHttp\json_decode($data);
         //print_r($profiledata);die();
-        return view('UserProfile.MemberProfile', compact('profiledata'));
+
+        $destid=$id;  //for message sending
+
+        return view('UserProfile.MemberProfile', compact('profiledata','destid'));
     }
 }
