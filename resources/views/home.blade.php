@@ -144,7 +144,6 @@
                                 $dteStart = new DateTime($postdate);
                                 $dteEnd = new DateTime($now);
                                 $dteDiff = $dteStart->diff($dteEnd);
-
                                 if ($dteDiff->format("%D") > 0) {
                                     echo $dteDiff->format("%D days ago");
                                 } elseif ($dteDiff->format("%D") == 0 && $dteDiff->format("%H") > 0) {
@@ -186,7 +185,7 @@
                                         @endif
                                     </div>
                                     <div class="col-md-10" style="margin-bottom: 10px;margin-top: -20px;">
-                                        <div class="row" style="height:40px">
+                                        <div class="row" style="">
                                             <p><h6>
                                                 -{{$cc->comment}}</h6></p>
                                         </div>
@@ -227,13 +226,11 @@
     </script>1
 
     <script>
-
         function postComment1() {
             var box = $('#postid').val();
             //window.alert(box);
             var com = $('#comment').val();
             var userId = '<?php echo Auth::user()->id;?>';
-
             $.post("/api/postcomment", {userId: userId, comment: com, postId: box}, function (data) {
                         // $( ".result" ).html( data );
                     })
@@ -245,9 +242,7 @@
                         $('.comment-box').remove();
                         $('#comment-' + box).append('<p>' + '<h6>' + '-' + com + '</h6>' + '</p>');
                         // $('.comment-box').hide();
-
                         // $('.combutton').hide();
-
                     });
         }
         /* function postcomment(userId,postId) {
@@ -278,19 +273,13 @@
             var lesstext = "less";
             $('.more').each(function () {
                 var content = $(this).html();
-
                 if (content.length > showChar) {
-
                     var c = content.substr(0, showChar);
                     var h = content.substr(showChar - 1, content.length - showChar);
-
                     var html = c + '<span class="moreelipses">' + ellipsestext + '</span>&nbsp;<span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
-
                     $(this).html(html);
                 }
-
             });
-
             $(".morelink").click(function () {
                 if ($(this).hasClass("less")) {
                     $(this).removeClass("less");

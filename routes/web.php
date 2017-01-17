@@ -71,6 +71,7 @@ Route::group(['role' => '2', 'prefix' => 'mentor', 'middleware' => 'auth.mentor'
     Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@mentor', 'uses' => 'Web\ForumController@Home']);
     Route::any('/event', ['type' => 'main', 'icon' => 'glyphicon_glyphicon-calendar', 'as' => 'Event@mentor', 'uses' => 'Web\EventController@ShowEvent']);
     Route::any('/profile', ['type' => 'main', 'icon' => 'fa_fa-user', 'as' => 'My_Profile@mentor', 'uses' => 'Web\UserController@GetUserProfile']);
+    Route::any('/memberlist', ['type' => 'main', 'icon' => 'fa_fa-group', 'as' => 'Members@mentor', 'uses' => 'Web\UserController@GetMemberList']);
     Route::any('/memberprofile/{id}', ['icon' => 'fa_fa-user', 'as' => 'MemberProfile@mentor', 'uses' => 'Web\UserController@GetMemberProfile']);
     Route::any('/imageupload', ['as' => 'ImageUpload@mentor', 'uses' => 'Web\ImageController@ImageUploadPost']);
     Route::any('/usersettings', ['as' => 'UserSettings@mentor', 'uses' => 'Web\UserController@UserProfileSettings']);

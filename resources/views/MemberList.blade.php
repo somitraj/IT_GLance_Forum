@@ -41,6 +41,8 @@
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -48,8 +50,10 @@
                             <tr>
                                 <td>{{$i->fname}}</td>
                                 <td>{{$i->email}}</td>
-
-
+                                @if(Auth::user()->user_type_id==1)
+                                <td><a href="memberprofile/{{$i->user_id}}"> <button class="btn btn-unique">View Profile</button></a></td>
+                                <td><a href="#"><button class="btn btn-primary">Message</button></a></td>
+                                    @endif
                             </tr>
                         @endforeach
                         </tbody>
@@ -72,6 +76,8 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -79,7 +85,10 @@
                                     <tr>
                                         <td>{{$i->fname}}</td>
                                         <td>{{$i->email}}</td>
-
+                                        @if(Auth::user()->user_type_id==1)
+                                            <td><a href="memberprofile/{{$i->user_id}}"><button class="btn btn-unique">View Profile</button></a></td>
+                                            <td><a href="#"><button class="btn btn-primary">Message</button></a></td>
+                                        @endif
 
                                     </tr>
                                 @endforeach
@@ -102,6 +111,8 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -109,7 +120,10 @@
                                     <tr>
                                         <td>{{$i->fname}}</td>
                                         <td>{{$i->email}}</td>
-
+                                        @if(Auth::user()->user_type_id==1||Auth::user()->user_type_id==2)
+                                            <td><a href="memberprofile/{{$i->user_id}}"><button class="btn btn-unique">View Profile</button></a></td>
+                                            <td><a href="#"><button class="btn btn-primary">Message</button></a></td>
+                                        @endif
 
                                     </tr>
                                 @endforeach
@@ -130,6 +144,8 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -137,6 +153,8 @@
                                     <tr>
                                         <td>{{$i->fname}}</td>
                                         <td>{{$i->email}}</td>
+                                        <td><a href="memberprofile/{{$i->user_id}}"><button class="btn btn-unique">View Profile</button></a></td>
+                                        <td><a href="#"><button class="btn btn-primary">Message</button></a></td>
 
 
                                     </tr>
@@ -165,7 +183,8 @@
                                     <tr>
                                         <td>{{$i->fname}}</td>
                                         <td>{{$i->email}}</td>
-
+                                        <td><a href="memberprofile/{{$i->user_id}}"><button class="btn btn-unique">View Profile</button></a></td>
+                                        <td><a href="#"><button class="btn btn-primary">Message</button></a></td>
 
                                     </tr>
                                 @endforeach
