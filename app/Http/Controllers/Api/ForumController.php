@@ -19,6 +19,7 @@ class ForumController extends Controller
                 ->join('userinfo_tbl', 'userinfo_tbl.user_id', '=', 'users.id')
                 ->join('category_tbl', 'category_tbl.id', '=', 'post_tbl.category_id')
                 ->join('usertype_tbl', 'usertype_tbl.id', '=', 'users.user_type_id')
+                /*->join('comment_tbl', 'comment_tbl.post_id', '=', 'post_tbl.id')*/
                 ->select('users.*', 'category_tbl.*', 'userinfo_tbl.*', 'usertype_tbl.*', 'post_tbl.*')
                 ->where('post_tbl.status_id', '=', 3)
                 ->orderBy('post_tbl.created_at', 'desc')
@@ -94,14 +95,11 @@ class ForumController extends Controller
 
     }
 
-    /* public function GetUserComment(){
+     public function GetUserComment(){
          try{
              $data = DB::table('post_tbl')
-                 ->join('users', 'users.id', '=', 'post_tbl.user_id')
-                 ->join('userinfo_tbl', 'userinfo_tbl.user_id', '=', 'users.id')
-                 ->join('category_tbl', 'category_tbl.id', '=', 'post_tbl.category_id')
-                 ->select('users.*', 'category_tbl.*','userinfo_tbl.*','post_tbl.*')
-                 ->where('category_tbl.category', '=', $id)
+                 ->join('comment_tbl', 'comment_tbl.post_id', '=', 'post_tbl.id')
+                 ->select('comment_tbl.*','post_tbl.*')
                  ->where('post_tbl.status_id', '=', 3)
                  ->orderBy('post_tbl.created_at','desc')
                  ->get()->toArray();
@@ -111,7 +109,7 @@ class ForumController extends Controller
                      print_r($e->getMessage());
                      die();
                  }
-     }*/
+     }
     public function PostComment(Request $request)
     {
         try {

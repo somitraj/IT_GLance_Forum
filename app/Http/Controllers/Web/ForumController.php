@@ -32,13 +32,17 @@ class ForumController extends Controller
             $data2 = $response2->getBody()->getContents();
             $usertype = \GuzzleHttp\json_decode($data2);
 
+            $response3 = $client->request('GET', 'getcomment');
+            $data3 = $response3->getBody()->getContents();
+            $comment = \GuzzleHttp\json_decode($data3);
+            //print_r($homedata);die();
 
             $now = Carbon::now();
 
             $currentdateexplode = explode(' ', $now);
             $nowdate = $currentdateexplode[0];
             $nowtime = $currentdateexplode[1];
-            return view('Home', compact('homedata', 'category', 'usertype', 'nowdate', 'nowtime'));
+            return view('Home', compact('homedata', 'category', 'usertype', 'nowdate', 'nowtime','comment'));
         } catch (\Exception $e) {
             print_r($e->getMessage());
             die();
