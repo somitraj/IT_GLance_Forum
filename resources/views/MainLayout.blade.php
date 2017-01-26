@@ -24,6 +24,7 @@
     {{--<link href="/css/bootstrap-material-datepicker.css" rel="stylesheet">--}}
     <link href="/css/compiled.min.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/ionicons.min.css" rel="stylesheet">
 
 
     @yield('head')
@@ -56,6 +57,7 @@
 <script src="/js/tether.min.js"></script>
 <script src="/js/compiled.min.js"></script>
 <script src="/tinymce/jquery.tinymce.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
 
 
 

@@ -50,5 +50,6 @@ $api->version('v1', ['namespace' => "IT_Glance_Forum\Http\Controllers\Api"], fun
     $api->any('getuserprofile', 'UserController@GetUserProfile');
     $api->any('commituseredit', 'UserController@CommitUserEdit');
     $api->any('postcomment', 'ForumController@PostComment');
-    $api->any('sendmessage', 'UserController@SendMessage');
+    $api->any('sendmessage', 'MessageController@SendMessage');
+    $api->any('getmessages', 'MessageController@GetMessage');
 });

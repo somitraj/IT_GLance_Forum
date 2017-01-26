@@ -282,28 +282,6 @@ class UserController extends Controller
 
     }
 
-    public function SendMessage(Request $request)
-    {
-        try {
 
-            //print_r('hi');die();
-            $uid = ($request->get('userId'));
-            $destid = $request->get('destId');
-            $msg = $request->get('msg');
-            //print_r($msg);die();
-                if(!$msg==''){
-                $ms = new MessageTbl();
-                $ms->sender_userid = $uid;
-                $ms->receiver_userid = $destid;
-                $ms->message = $msg;
-                $ms->save();
-                }
-
-        } catch (\Exception $e) {
-            print_r($e->getMessage());
-            die();
-        }
-
-    }
 }
 

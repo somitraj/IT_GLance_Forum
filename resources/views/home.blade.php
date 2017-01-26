@@ -5,7 +5,7 @@
         <h5 style="float: right;color: black;background-color: yellow"> welcome, {{Auth::user()->username}}</h5>
         <div class="container" style="margin-top: 3%">
 
-            <div style="text-align: center;" class="card col-md-3">
+            {{--<div style="text-align: center;" class="card col-md-3">
                 <h2><b>section 1</b></h2>
             </div>
 
@@ -17,15 +17,15 @@
             </div>
             <div style="text-align: center;" class="card col-md-3">
                 <h2><b>section 4</b></h2>
-            </div>
-            <div>
+            </div>--}}
+            <div class="container" style="margin-left: 25%;margin-right: 35%">
                 {!! Form::open(['method'=>'GET','url'=>'search','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
 
                 <div class="input-group custom-search-form md-form">
                     <input type="text" id="form9" class="form-control" name="search" required style="width: 350px;">
-                    <label for="form1" class="">Search Here</label>
-                    <span class="input-group-btn">
-        <button class="btn-btn-unique" type="submit" style="font-size: 16px"><i
+                    <label for="form1" class="" style="color:white">Search Here</label>
+                    <span >
+        <button class="btn btn-danger" type="submit" style="font-size: 16px"><i
                     class="fa fa-search "></i> Search
         </button>
 

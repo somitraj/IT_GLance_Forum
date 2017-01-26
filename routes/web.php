@@ -25,18 +25,19 @@ Route::group(['role' => '1', 'prefix' => 'admin', 'middleware' => 'auth.admin'],
 
     Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@admin', 'uses' => 'Web\ForumController@Home']);
 
-    Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@admin', function () {
+    /*Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@admin', function () {
         return redirect()->route('Articles@Top_Articles@admin');
     }]);
     Route::group(['prefix' => 'articles'], function () {
         Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@admin', 'uses' => 'Web\ForumController@Home']);
-    });
+    });*/
 //added event calendar
     Route::get('/eventshow',[ 'as' => 'ShowEvent@admin','uses'=>'Web\EventController@ShowEvent'])->name('events');
 
     Route::any('/event', ['type' => 'main', 'icon' => 'glyphicon_glyphicon-calendar', 'as' => 'Event@admin', 'uses' => 'Web\EventController@ShowEvent']);
     Route::any('/notification', ['type' => 'main', 'icon' => 'fa_fa-envelope', 'as' => 'Notification@admin', 'uses' => 'Web\NotificationController@UserNotification']);
     Route::any('/profile', ['type' => 'main', 'icon' => 'fa_fa-user', 'as' => 'My_Profile@admin', 'uses' => 'Web\UserController@GetUserProfile']);
+    Route::any('/messages', ['type' => 'main', 'icon' => 'fa_fa-user', 'as' => 'Messages@admin', 'uses' => 'Web\MessageControler@GetMessage']);
     Route::any('/memberprofile/{id}', ['icon' => 'fa_fa-user', 'as' => 'MemberProfile@admin', 'uses' => 'Web\UserController@GetMemberProfile']);
     Route::any('/usersettings', ['as' => 'UserSettings@admin', 'uses' => 'Web\UserController@UserProfileSettings']);
     Route::any('/userprojects', ['as' => 'UserProjects@admin', 'uses' => 'Web\UserController@UserProfileProjects']);
@@ -71,6 +72,7 @@ Route::group(['role' => '2', 'prefix' => 'mentor', 'middleware' => 'auth.mentor'
     Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@mentor', 'uses' => 'Web\ForumController@Home']);
     Route::any('/event', ['type' => 'main', 'icon' => 'glyphicon_glyphicon-calendar', 'as' => 'Event@mentor', 'uses' => 'Web\EventController@ShowEvent']);
     Route::any('/profile', ['type' => 'main', 'icon' => 'fa_fa-user', 'as' => 'My_Profile@mentor', 'uses' => 'Web\UserController@GetUserProfile']);
+    Route::any('/messages', ['type' => 'main', 'icon' => 'fa_fa-user', 'as' => 'Messages@mentor', 'uses' => 'Web\MessageControler@GetMessage']);
     Route::any('/memberlist', ['type' => 'main', 'icon' => 'fa_fa-group', 'as' => 'Members@mentor', 'uses' => 'Web\UserController@GetMemberList']);
     Route::any('/memberprofile/{id}', ['icon' => 'fa_fa-user', 'as' => 'MemberProfile@mentor', 'uses' => 'Web\UserController@GetMemberProfile']);
     Route::any('/imageupload', ['as' => 'ImageUpload@mentor', 'uses' => 'Web\ImageController@ImageUploadPost']);
@@ -93,16 +95,17 @@ Route::group(['role' => '4', 'prefix' => 'intern', 'middleware' => 'auth.intern'
 
     Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@intern', 'uses' => 'Web\ForumController@Home']);
 
-    Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@intern', function () {
+   /* Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@intern', function () {
         return redirect()->route('Articles@Top_Articles@intern');
     }]);
     Route::group(['prefix' => 'articles'], function () {
         Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@intern', 'uses' => 'Web\ForumController@Home']);
 
-    });
+    });*/
 
     Route::any('/memberlist', ['type' => 'main', 'icon' => 'fa_fa-group', 'as' => 'Members@intern', 'uses' => 'Web\UserController@GetMemberList']);
     Route::any('/profile', ['type' => 'main', 'icon' => 'fa_fa-user', 'as' => 'My_Profile@intern', 'uses' => 'Web\UserController@GetUserProfile']);
+    Route::any('/messages', ['type' => 'main', 'icon' => 'fa_fa-envelope', 'as' => 'Messages@intern', 'uses' => 'Web\MessageController@GetMessage']);
     Route::any('/memberprofile/{id}', ['icon' => 'fa_fa-user', 'as' => 'MemberProfile@intern', 'uses' => 'Web\UserController@GetMemberProfile']);
     Route::any('/imageupload', ['as' => 'ImageUpload@intern', 'uses' => 'Web\ImageController@ImageUploadPost']);
     Route::any('/usersettings', ['as' => 'UserSettings@intern', 'uses' => 'Web\UserController@UserProfileSettings']);
@@ -123,16 +126,17 @@ Route::group(['role' => '3', 'prefix' => 'submentor', 'middleware' => 'auth.subm
     Route::any('/home', ['type' => 'main', 'icon' => 'fa_fa-home', 'as' => 'Home@submentor', 'uses' => 'Web\ForumController@Home']);
     Route::any('/event', ['type' => 'main', 'icon' => 'glyphicon_glyphicon-calendar', 'as' => 'Event@submentor', 'uses' => 'Web\EventController@ShowEvent']);
 
-    Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@submentor', function () {
+    /*Route::any('/articles', ['type' => 'main', 'icon' => 'fa_fa-newspaper-o', 'as' => 'Articles@submentor', function () {
         return redirect()->route('Articles@Top_Articles@intern');
     }]);
     Route::group(['prefix' => 'articles'], function () {
         Route::any('/toparticles', ['type' => 'sub', 'icon' => 'fa_fa-briefcase', 'as' => 'Articles@Top_Articles@submentor', 'uses' => 'Web\ForumController@Home']);
 
-    });
+    });*/
 
     Route::any('/memberlist', ['type' => 'main', 'icon' => 'fa_fa-group ', 'as' => 'Members@submentor', 'uses' => 'Web\UserController@GetMemberList']);
     Route::any('/profile', ['type' => 'main', 'icon' => 'fa_fa-user', 'as' => 'My_Profile@submentor', 'uses' => 'Web\UserController@GetUserProfile']);
+    Route::any('/messages', ['type' => 'main', 'icon' => 'fa_fa-user', 'as' => 'Messages@submentor', 'uses' => 'Web\MessageController@GetMessage']);
     Route::any('/memberprofile/{id}', ['icon' => 'fa_fa-user', 'as' => 'MemberProfile@submentor', 'uses' => 'Web\UserController@GetMemberProfile']);
     Route::any('/imageupload', ['as' => 'ImageUpload@submentor', 'uses' => 'Web\ImageController@ImageUploadPost']);
     Route::any('/usersettings', ['as' => 'UserSettings@submentor', 'uses' => 'Web\UserController@UserProfileSettings']);
