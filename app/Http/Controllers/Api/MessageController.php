@@ -39,12 +39,14 @@ class MessageController extends Controller
             $uid = ($request->get('userId'));
             $destid = $request->get('destId');
             $msg = $request->get('msg');
+            $msgtitle=$request->get('msgtitle');
             //print_r($msg);die();
             if(!$msg==''){
                 $ms = new MessageTbl();
                 $ms->sender_userid = $uid;
                 $ms->receiver_userid = $destid;
                 $ms->message = $msg;
+                $ms->subject = $msgtitle;
                 $ms->save();
 
                 $m_stat=new MessageStatusTbl();
@@ -54,6 +56,61 @@ class MessageController extends Controller
             }
 
         } catch (\Exception $e) {
+            print_r($e->getMessage());
+            die();
+        }
+
+    }
+    public function ViewFullMessage(Request $request){
+        try{
+            $mid=$request->get('messageid');
+                $mupdte = DB::table('message_status_tbl')
+                    ->where('message_id', $mid)
+                    ->update(['status_id' => 3
+                    ]);
+
+            $mdata = DB::table('users')
+                ->join('message_tbl', 'message_tbl.sender_userid', '=', 'users.id')
+                // ->join('message_tbl', 'message_tbl.receiver_userid', '=', 'users.id')
+                ->join('message_status_tbl', 'message_status_tbl.message_id', '=', 'message_tbl.id')
+                ->select('users.*', 'message_status_tbl.*','message_tbl.*')
+                ->where('message_tbl.id', '=', $mid)
+                ->get()->toArray();
+
+            return $mdata;
+            //return $mid;
+        }
+         catch (\Exception $e) {
+                    print_r($e->getMessage());
+                    die();
+                }
+    }
+    public  function ViewSentMessage(Request $request){
+        try{
+            $uid=$request->get('uid');
+            $sentdata = DB::table('users')
+                ->join('message_tbl', 'message_tbl.receiver_userid', '=', 'users.id')
+                // ->join('message_tbl', 'message_tbl.receiver_userid', '=', 'users.id')
+                ->join('message_status_tbl', 'message_status_tbl.message_id', '=', 'message_tbl.id')
+                ->select('users.*', 'message_status_tbl.*','message_tbl.*')
+                ->where('message_status_tbl.status_id', '=', 4)
+                ->where('message_tbl.sender_userid', '=', $uid)
+                ->get()->toArray();
+
+            return $sentdata;
+
+        }
+         catch (\Exception $e) {
+                    print_r($e->getMessage());
+                    die();
+                }
+
+    }
+
+    public  function ViewSeenMessage(){
+        try{
+        }
+        catch (\Exception $e) {
             print_r($e->getMessage());
             die();
         }

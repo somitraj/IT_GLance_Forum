@@ -1,34 +1,6 @@
 @extends('MainLayout')
 
 @section('contents')
-    {{--<div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2">
-
-                <div class="row">
-                    <ul class="list-group">
-                        <li class="b list-group-item"
-                            style="background-color:transparent;text-align: left;"><a
-                                    href="#">
-                                <button class="btn btn-danger">COMPOSE</button>
-                            </a></li>
-                        <li class="b list-group-item" style="background-color:transparent;text-align: left"><a href="#"><span
-                                    style="">&nbsp&nbspInbox</span></a>
-
-                        </li>
-                        <li class="b list-group-item" style="background-color:transparent;text-align: left"><a href="#"><span
-                                   style="">&nbsp&nbspSent</span></a>
-
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-10">
-
-            </div>
-        </div>
-    </div>--}}
-
     <div class="row">
         <div class="col-md-3">
             <a href="#" class="btn btn-primary btn-block margin-bottom">Compose</a>
@@ -39,10 +11,10 @@
                 </div>
                 <div class="box-body no-padding">
                     <ul class="nav nav-pills nav-stacked">
-                        <li class="active"><a href=""><i class="fa fa-inbox"></i> Inbox
+                        <li><a href="#"><i class="fa fa-inbox"></i> Inbox
                                 <span class="label label-primary pull-right">{{count($msgdata)}}</span></a></li>
-                        <li><a href="messagesent"><i class="fa fa-envelope-o"></i> Sent</a></li>
-                        <li><a href="#"><i class="fa fa-archive"></i> Seen</a></li>
+                        <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
+                        <li  class="active"><a href="#"><i class="fa fa-archive"></i> Seen</a></li>
                         <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>
                     </ul>
                 </div>

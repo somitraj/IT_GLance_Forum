@@ -52,4 +52,7 @@ $api->version('v1', ['namespace' => "IT_Glance_Forum\Http\Controllers\Api"], fun
     $api->any('postcomment', 'ForumController@PostComment');
     $api->any('sendmessage', 'MessageController@SendMessage');
     $api->any('getmessages', 'MessageController@GetMessage');
+    $api->any('viewfullmessage', 'MessageController@ViewFullMessage');
+    $api->any('viewsentmessage', 'MessageController@ViewSentMessage');
+    $api->any('viewseenmessage', 'MessageController@ViewSeenMessage');
 });

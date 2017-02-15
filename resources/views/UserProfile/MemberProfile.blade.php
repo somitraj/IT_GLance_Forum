@@ -34,7 +34,7 @@
                     <!--Body-->
                     <div class="modal-body">
 
-
+                            <input type="text" id="msg-title" placeholder="Enter Title">
                             <textarea placeholder="Type Your Message Here" class="form-control field-input" id="message"></textarea>
                             <input type="hidden" value="{{$destid}}" id="destId">
 
@@ -114,12 +114,12 @@
     <script>
 
         function SendMessage() {
-
             var msg=$('#message').val();
             var destId=$('#destId').val();
             var userId = '<?php echo Auth::user()->id;?>';
+            var msgtitle=$('#msg-title').val();
             //window.alert(msg);
-            $.post("/api/sendmessage", {msg: msg,destId: destId,userId: userId}, function (data) {
+            $.post("/api/sendmessage", {msg: msg,destId: destId,userId: userId,msgtitle:msgtitle}, function (data) {
                     })
                     .done(function () {
 
